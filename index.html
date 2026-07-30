@@ -3,153 +3,324 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>HatBazar</title>
+  <title>HatBazar - আধুনিক ডিজাইন</title>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Bengali:wght@400;500;600;700&display=swap" rel="stylesheet">
   <style>
-    * { box-sizing: border-box; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
-    body { margin: 0; padding: 15px; background-color: #f4f6f9; color: #333; }
-    
-    header { text-align: center; margin-bottom: 20px; }
-    header h1 { color: #2c3e50; margin-bottom: 5px; }
-    
-    /* Layout styling */
-    .container { max-width: 1000px; margin: 0 auto; }
-    
-    /* Form Section */
-    .form-container { background: #fff; padding: 20px; border-radius: 10px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); margin-bottom: 30px; }
-    .form-container h3 { margin-top: 0; color: #27ae60; }
-    
-    input, select, button { width: 100%; padding: 10px; margin-bottom: 12px; border: 1px solid #ccc; border-radius: 6px; font-size: 14px; }
-    button.add-btn { background-color: #27ae60; color: white; border: none; font-weight: bold; cursor: pointer; transition: 0.3s; }
-    button.add-btn:hover { background-color: #219150; }
-    
-    /* Grid layout for products */
-    .product-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 20px; }
-    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Noto Sans Bengali', sans-serif;
+      background: #f1f5f9;
+      color: #1e293b;
+      line-height: 1.5;
+      padding-bottom: 40px;
+    }
+
+    /* Header */
+    .header {
+      background: white;
+      padding: 16px 20px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+      position: sticky;
+      top: 0;
+      z-index: 50;
+    }
+
+    .header h1 {
+      font-size: 22px;
+      font-weight: 700;
+      color: #0f172a;
+    }
+
+    .header p {
+      font-size: 13px;
+      color: #64748b;
+      margin-top: 2px;
+    }
+
+    /* Container */
+    .container {
+      max-width: 480px;
+      margin: 0 auto;
+      padding: 20px 16px;
+    }
+
+    /* Card */
+    .card {
+      background: white;
+      border-radius: 16px;
+      padding: 20px;
+      margin-bottom: 24px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    }
+
+    .card-title {
+      font-size: 17px;
+      font-weight: 600;
+      color: #10b981;
+      margin-bottom: 18px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    /* Form */
+    .form-group {
+      margin-bottom: 16px;
+    }
+
+    .form-group label {
+      display: block;
+      font-size: 13px;
+      font-weight: 500;
+      color: #475569;
+      margin-bottom: 6px;
+    }
+
+    .input-wrapper {
+      position: relative;
+    }
+
+    .input-wrapper input,
+    .input-wrapper select {
+      width: 100%;
+      padding: 12px 14px 12px 42px;
+      border: 1.5px solid #e2e8f0;
+      border-radius: 10px;
+      font-size: 15px;
+      font-family: inherit;
+      background: #f8fafc;
+      transition: all 0.2s;
+    }
+
+    .input-wrapper input:focus,
+    .input-wrapper select:focus {
+      outline: none;
+      border-color: #10b981;
+      background: white;
+      box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.12);
+    }
+
+    .input-icon {
+      position: absolute;
+      left: 14px;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 16px;
+      color: #94a3b8;
+    }
+
+    /* File upload */
+    .file-upload {
+      border: 1.5px dashed #cbd5e1;
+      border-radius: 10px;
+      padding: 18px;
+      text-align: center;
+      background: #f8fafc;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .file-upload:hover {
+      border-color: #10b981;
+      background: #ecfdf5;
+    }
+
+    .file-upload input {
+      display: none;
+    }
+
+    /* Button */
+    .btn-primary {
+      width: 100%;
+      background: #10b981;
+      color: white;
+      border: none;
+      padding: 14px;
+      border-radius: 10px;
+      font-size: 16px;
+      font-weight: 600;
+      font-family: inherit;
+      cursor: pointer;
+      transition: all 0.2s;
+      margin-top: 8px;
+    }
+
+    .btn-primary:hover {
+      background: #059669;
+      transform: translateY(-1px);
+    }
+
     /* Product Card */
-    .product-card { background: white; border-radius: 8px; padding: 12px; box-shadow: 0 2px 6px rgba(0,0,0,0.08); display: flex; flex-direction: column; justify-content: space-between; }
-    .product-card img { width: 100%; height: 160px; object-fit: cover; border-radius: 6px; margin-bottom: 10px; }
-    .product-card h3 { margin: 5px 0; font-size: 16px; color: #2c3e50; }
-    .product-card p { margin: 4px 0; font-size: 13px; color: #666; }
-    .product-card .price { font-weight: bold; color: #e67e22; font-size: 15px; }
-    
-    .btn-group { display: flex; gap: 8px; margin-top: 10px; }
-    .wa-btn { background-color: #25D366; color: white; border: none; text-decoration: none; text-align: center; padding: 8px; border-radius: 5px; font-size: 12px; flex: 1; font-weight: bold; }
-    .delete-btn { background-color: #e74c3c; color: white; border: none; padding: 8px; border-radius: 5px; font-size: 12px; cursor: pointer; flex: 1; }
+    .product-card {
+      background: white;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+      display: flex;
+      gap: 14px;
+      padding: 14px;
+    }
+
+    .product-img {
+      width: 100px;
+      height: 100px;
+      border-radius: 12px;
+      object-fit: cover;
+      background: #f1f5f9;
+      flex-shrink: 0;
+    }
+
+    .product-info {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .product-title {
+      font-size: 16px;
+      font-weight: 600;
+      color: #0f172a;
+    }
+
+    .product-desc {
+      font-size: 13px;
+      color: #64748b;
+      margin-top: 2px;
+    }
+
+    .product-price {
+      font-size: 18px;
+      font-weight: 700;
+      color: #10b981;
+      margin-top: 6px;
+    }
+
+    .product-actions {
+      display: flex;
+      gap: 8px;
+      margin-top: 10px;
+    }
+
+    .btn-whatsapp {
+      flex: 1;
+      background: #25d366;
+      color: white;
+      border: none;
+      padding: 8px 12px;
+      border-radius: 8px;
+      font-size: 13px;
+      font-weight: 500;
+      font-family: inherit;
+      cursor: pointer;
+    }
+
+    .btn-delete {
+      background: #fee2e2;
+      color: #dc2626;
+      border: none;
+      padding: 8px 12px;
+      border-radius: 8px;
+      font-size: 13px;
+      font-weight: 500;
+      font-family: inherit;
+      cursor: pointer;
+    }
+
+    .section-title {
+      font-size: 16px;
+      font-weight: 600;
+      margin-bottom: 14px;
+      color: #334155;
+    }
   </style>
 </head>
 <body>
-
-  <div class="container">
-    <header>
-      <h1>HatBazar</h1>
-      <p>বাংলাদেশের অনলাইন ক্রয়-বিক্রয় প্ল্যাটফর্ম</p>
-    </header>
-
-    <!-- পণ্য যোগ করার ফরম -->
-    <div class="form-container">
-      <h3>নতুন পণ্য যোগ করুন</h3>
-      <form id="product-form">
-        <input type="text" id="p-name" placeholder="পণ্যের নাম" required>
-        <select id="p-category" required>
-          <option value="">ক্যাটাগরি নির্বাচন করুন</option>
-          <option value="গাড়ি">🚗 গাড়ি</option>
-          <option value="জমি ও ফ্ল্যাট">🏠 জমি ও ফ্ল্যাট</option>
-          <option value="মোবাইল">📱 মোবাইল</option>
-          <option value="কম্পিউটার">💻 কম্পিউটার</option>
-          <option value="পোশাক">👕 পোশাক</option>
-          <option value="কৃষি">🌾 কৃষি</option>
-          <option value="শিল্প ও মেশিন">🏭 শিল্প ও মেশিন</option>
-        </select>
-        <input type="number" id="p-price" placeholder="দাম (টাকা)" required>
-        <input type="text" id="p-phone" placeholder="আপনার মোবাইল/WhatsApp নম্বর" required>
-        <input type="file" id="p-image" accept="image/*" required>
-        <button type="submit" class="add-btn">পণ্য যোগ করুন</button>
-      </form>
-    </div>
-
-    <!-- যোগ করা পণ্য প্রদর্শনের জায়গা -->
-    <h2>পণ্য তালিকা</h2>
-    <div id="product-list" class="product-grid"></div>
+  <!-- Header -->
+  <div class="header">
+    <h1>HatBazar</h1>
+    <p>বাংলাদেশের অনলাইন ক্রয়-বিক্রয় প্ল্যাটফর্ম</p>
   </div>
 
-  <script>
-    const form = document.getElementById('product-form');
-    const productList = document.getElementById('product-list');
+  <div class="container">
+    <!-- Add Product Form -->
+    <div class="card">
+      <div class="card-title">
+        ➕ নতুন পণ্য যোগ করুন
+      </div>
 
-    // LocalStorage থেকে পূর্বে সেভ করা প্রোডাক্ট লোড করা
-    document.addEventListener('DOMContentLoaded', displayProducts);
+      <div class="form-group">
+        <label>পণ্যের নাম</label>
+        <div class="input-wrapper">
+          <span class="input-icon">📦</span>
+          <input type="text" placeholder="যেমন: স্যামসাং ফোন">
+        </div>
+      </div>
 
-    form.addEventListener('submit', function(e) {
-      e.preventDefault();
+      <div class="form-group">
+        <label>ক্যাটাগরি নির্বাচন করুন</label>
+        <div class="input-wrapper">
+          <span class="input-icon">📂</span>
+          <select>
+            <option>মোবাইল</option>
+            <option>ল্যাপটপ</option>
+            <option>ইলেকট্রনিক্স</option>
+            <option>ফ্যাশন</option>
+            <option>অন্যান্য</option>
+          </select>
+        </div>
+      </div>
 
-      const name = document.getElementById('p-name').value;
-      const category = document.getElementById('p-category').value;
-      const price = document.getElementById('p-price').value;
-      const phone = document.getElementById('p-phone').value;
-      const imageInput = document.getElementById('p-image');
+      <div class="form-group">
+        <label>দাম (টাকা)</label>
+        <div class="input-wrapper">
+          <span class="input-icon">৳</span>
+          <input type="number" placeholder="85000">
+        </div>
+      </div>
 
-      const reader = new FileReader();
-      reader.onload = function() {
-        const imageUrl = reader.result; // ছবিকে সেভযোগ্য ফরম্যাটে রূপান্তর
+      <div class="form-group">
+        <label>আপনার মোবাইল/WhatsApp নম্বর</label>
+        <div class="input-wrapper">
+          <span class="input-icon">📱</span>
+          <input type="tel" placeholder="01XXXXXXXXX">
+        </div>
+      </div>
 
-        const product = {
-          id: Date.now(),
-          name,
-          category,
-          price,
-          phone,
-          image: imageUrl
-        };
+      <div class="form-group">
+        <label>পণ্যের ছবি</label>
+        <label class="file-upload">
+          <input type="file" accept="image/*">
+          <div style="font-size: 24px; margin-bottom: 6px;">📷</div>
+          <div style="font-size: 14px; color: #64748b;">ছবি আপলোড করুন</div>
+        </label>
+      </div>
 
-        saveProductToStorage(product);
-        displayProducts();
-        form.reset();
-      };
+      <button class="btn-primary">পণ্য যোগ করুন</button>
+    </div>
 
-      if (imageInput.files[0]) {
-        reader.readAsDataURL(imageInput.files[0]);
-      }
-    });
+    <!-- Product List -->
+    <div class="section-title">পণ্য তালিকা</div>
 
-    // লোকাল স্টোরেজে তথ্য সেভ করা
-    function saveProductToStorage(product) {
-      let products = JSON.parse(localStorage.getItem('products')) || [];
-      products.push(product);
-      localStorage.setItem('products', JSON.stringify(products));
-    }
-
-    // স্ক্রিনে পণ্য প্রদর্শন করা
-    function displayProducts() {
-      productList.innerHTML = '';
-      let products = JSON.parse(localStorage.getItem('products')) || [];
-
-      products.forEach(product => {
-        const card = document.createElement('div');
-        card.className = 'product-card';
-        card.innerHTML = `
-          <div>
-            <img src="${product.image}" alt="${product.name}">
-            <h3>${product.name}</h3>
-            <p><strong>বিভাগ:</strong> ${product.category}</p>
-            <p class="price">দাম: ৳${product.price}</p>
-          </div>
-          <div class="btn-group">
-            <a href="https://wa.me/88${product.phone}?text=আমি%20${product.name}%20পণ্যটি%20কিনতে%20আগ্রহী" target="_blank" class="wa-btn">WhatsApp</a>
-            <button class="delete-btn" onclick="deleteProduct(${product.id})">মুছে ফেলুন</button>
-          </div>
-        `;
-        productList.appendChild(card);
-      });
-    }
-
-    // প্রোডাক্ট ডিলিট করা
-    function deleteProduct(id) {
-      let products = JSON.parse(localStorage.getItem('products')) || [];
-      products = products.filter(product => product.id !== id);
-      localStorage.setItem('products', JSON.stringify(products));
-      displayProducts();
-    }
-  </script>
-
+    <div class="product-card">
+      <img src="https://images.unsplash.com/photo-1592750475338-74b7b21085ab?w=200&h=200&fit=crop" alt="Phone" class="product-img">
+      <div class="product-info">
+        <div>
+          <div class="product-title">স্যামসাং ফোন</div>
+          <div class="product-desc">মোবাইল • চট্টগ্রাম</div>
+          <div class="product-price">৳ 85,000</div>
+        </div>
+        <div class="product-actions">
+          <button class="btn-whatsapp">WhatsApp</button>
+          <button class="btn-delete">মুছে ফেলুন</button>
+        </div>
+      </div>
+    </div>
+  </div>
 </body>
 </html>
