@@ -1,10 +1,99 @@
 <!DOCTYPE html>
-<html>
+<html lang="bn">
 <head>
-<title>HatBazar</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HatBazar</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 20px; }
+    .section { margin-bottom: 20px; }
+    form { margin-top: 15px; background: #f9f9f9; padding: 15px; border: 1px solid #ddd; }
+    input, select, button { display: block; margin-bottom: 10px; width: 100%; padding: 8px; box-sizing: border-box; }
+    button { background-color: #28a745; color: white; border: none; cursor: pointer; }
+    button:hover { background-color: #218838; }
+    .product-card { border: 1px solid #ddd; padding: 10px; margin-top: 10px; border-radius: 8px; width: 220px; }
+    .delete-btn { background-color: #dc3545; color: white; margin-top: 8px; }
+    .delete-btn:hover { background-color: #c82333; }
+  </style>
 </head>
 <body>
-<h1>HatBazar এ আপনাকে স্বাগতম</h1>
-<p>এটি আমার প্রথম ওয়েবসাইট।</p>
+
+  <h1>HatBazar</h1>
+  <p>বাংলাদেশের অনলাইন ক্রয়-বিক্রয় প্ল্যাটফর্ম</p>
+  <hr>
+
+  <h2>বিভাগ</h2>
+  <ul id="category-list">
+    <li>🚗 গাড়ি</li>
+    <li>🏠 জমি ও ফ্ল্যাট</li>
+    <li>📱 মোবাইল</li>
+    <li>💻 কম্পিউটার</li>
+    <li>👕 পোশাক</li>
+    <li>🌾 কৃষি</li>
+    <li>🏭 শিল্প ও মেশিন</li>
+  </ul>
+
+  <!-- পণ্য যোগ করার ফরম -->
+  <h3>নতুন পণ্য যোগ করুন</h3>
+  <form id="product-form">
+    <input type="text" id="p-name" placeholder="পণ্যের নাম" required>
+    <select id="p-category" required>
+      <option value="">ক্যাটাগরি নির্বাচন করুন</option>
+      <option value="গাড়ি">গাড়ি</option>
+      <option value="জমি ও ফ্ল্যাট">জমি ও ফ্ল্যাট</option>
+      <option value="মোবাইল">মোবাইল</option>
+      <option value="কম্পিউটার">কম্পিউটার</option>
+      <option value="পোশাক">পোশাক</option>
+      <option value="কৃষি">কৃষি</option>
+      <option value="শিল্প ও মেশিন">শিল্প ও মেশিন</option>
+    </select>
+    <input type="number" id="p-price" placeholder="দাম (টাকা)" required>
+    <input type="file" id="p-image" accept="image/*">
+    <button type="submit">পণ্য যোগ করুন</button>
+  </form>
+
+  <!-- যোগ করা পণ্য প্রদর্শনের জায়গা -->
+  <h2>পণ্য তালিকা</h2>
+  <div id="product-list"></div>
+
+  <script>
+    const form = document.getElementById('product-form');
+    const productList = document.getElementById('product-list');
+
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
+
+      // ১. ইনপুট নেওয়া
+      const name = document.getElementById('p-name').value;
+      const category = document.getElementById('p-category').value;
+      const price = document.getElementById('p-price').value;
+      const imageInput = document.getElementById('p-image');
+
+      // ছবির URL তৈরি
+      let imageUrl = '';
+      if (imageInput && imageInput.files && imageInput.files[0]) {
+        imageUrl = URL.createObjectURL(imageInput.files[0]);
+      }
+
+      // ২. নতুন কার্ড তৈরি
+      const card = document.createElement('div');
+      card.className = 'product-card';
+
+      card.innerHTML = `
+        ${imageUrl ? `<img src="${imageUrl}" alt="${name}" style="width: 100%; height: auto; border-radius: 6px;">` : ''}
+        <h3>${name}</h3>
+        <p><strong>বিভাগ:</strong> ${category}</p>
+        <p><strong>দাম:</strong> ৳${price}</p>
+        <button class="delete-btn" onclick="this.parentElement.remove()">মুছে ফেলুন</button>
+      `;
+
+      // তালিকায় যুক্ত করা
+      productList.appendChild(card);
+
+      // ফরম রিসেট করা
+      form.reset();
+    });
+  </script>
+
 </body>
 </html>
