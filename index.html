@@ -1,26 +1,10 @@
-// ১. ইনপুট নেওয়া (ছবিসহ)
-const name = document.getElementById('p-name').value;
-const category = document.getElementById('p-category').value;
-const price = document.getElementById('p-price').value;
-const imageInput = document.getElementById('p-image'); // আপনার ইমপুট আইডি অনুযায়ী মিলিয়ে নিন
-
-// ছবির URL তৈরি করা
-let imageUrl = '';
-if (imageInput && imageInput.files && imageInput.files[0]) {
-  imageUrl = URL.createObjectURL(imageInput.files[0]);
-}
-
-// ২. কার্ড তৈরি করা
-const card = document.createElement('div');
-card.className = 'product-card';
-
-card.innerHTML = `
-  ${imageUrl ? `<img src="${imageUrl}" alt="${name}" style="width: 100%; height: auto; border-radius: 8px;">` : ''}
-  <h3>${name}</h3>
-  <p><strong>বিভাগ:</strong> ${category}</p>
-  <p><strong>দাম:</strong> ৳${price}</p>
-  <button class="delete-btn" onclick="this.parentElement.remove()">মুছে ফেলুন</button>
-`;
-
-productList.appendChild(card);
-form.reset();
+<!DOCTYPE html>
+<html>
+<head>
+<title>HatBazar</title>
+</head>
+<body>
+<h1>HatBazar এ আপনাকে স্বাগতম</h1>
+<p>এটি আমার প্রথম ওয়েবসাইট।</p>
+</body>
+</html>
