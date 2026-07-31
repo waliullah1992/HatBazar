@@ -1,17 +1,162 @@
-<!-- Contact Section -->
-<section id="contact" style="padding: 20px; font-family: Arial, sans-serif;">
-  <h2>যোগাযোগ করুন</h2>
-  <ul style="list-style: none; padding: 0; line-height: 1.8;">
-    <li>📞 <strong>মোবাইল:</strong> <a href="tel:01947819432">01947-819432</a></li>
-    <li>📧 <strong>ইমেইল:</strong> <a href="mailto:kironmia1890@gmail.com">kironmia1890@gmail.com</a></li>
-    <li>📍 <strong>ঠিকানা:</strong> জামালপুর, বাংলাদেশ</li>
-    <li>📘 <strong>Facebook:</strong> <a href="https://www.facebook.com/share/1Q1tQgAjeM/" target="_blank">ফেসবুক প্রোফাইল</a></li>
-  </ul>
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HatBazar - হাটবাজার</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
 
-  <!-- Order Now Button (WhatsApp Link) -->
-  <a href="https://wa.me/8801947819432?text=Hello!%20I%20want%20to%20place%20an%20order." 
-     target="_blank" 
-     style="display: inline-block; padding: 12px 24px; background-color: #25D366; color: white; font-weight: bold; text-decoration: none; border-radius: 5px; margin-top: 10px;">
-     Order Now (WhatsApp)
-  </a>
-</section>
+    body {
+      background-color: #f4f6f9;
+      color: #333;
+    }
+
+    /* Header Styling */
+    header {
+      background-color: #28a745;
+      color: white;
+      padding: 15px 20px;
+      text-align: center;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+
+    header h1 {
+      font-size: 28px;
+      margin-bottom: 5px;
+    }
+
+    header p {
+      font-size: 14px;
+      opacity: 0.9;
+    }
+
+    /* Hero Banner */
+    .hero {
+      background: #e9ecef;
+      text-align: center;
+      padding: 30px 15px;
+      margin-bottom: 20px;
+    }
+
+    .hero h2 {
+      font-size: 22px;
+      color: #1a1a1a;
+      margin-bottom: 8px;
+    }
+
+    /* Container */
+    .container {
+      max-width: 600px;
+      margin: 0 auto;
+      padding: 0 15px 30px 15px;
+    }
+
+    /* Contact Card */
+    .contact-card {
+      background: #ffffff;
+      padding: 25px;
+      border-radius: 12px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+      margin-top: 20px;
+    }
+
+    .contact-card h3 {
+      color: #1a1a1a;
+      font-size: 20px;
+      margin-bottom: 15px;
+      border-bottom: 2px solid #28a745;
+      padding-bottom: 5px;
+      display: inline-block;
+    }
+
+    .contact-list {
+      list-style: none;
+      margin-bottom: 20px;
+    }
+
+    .contact-list li {
+      margin-bottom: 12px;
+      font-size: 15px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .contact-list a {
+      color: #007bff;
+      text-decoration: none;
+      word-break: break-word;
+    }
+
+    /* Order Button */
+    .order-btn {
+      display: block;
+      width: 100%;
+      padding: 14px 0;
+      background-color: #25D366;
+      color: #ffffff;
+      font-size: 18px;
+      font-weight: bold;
+      text-align: center;
+      text-decoration: none;
+      border-radius: 8px;
+      box-shadow: 0 4px 12px rgba(37, 211, 102, 0.3);
+    }
+
+    footer {
+      text-align: center;
+      padding: 15px;
+      font-size: 13px;
+      color: #666;
+      background: #e9ecef;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header Section with HatBazar Name -->
+  <header>
+    <h1>HatBazar</h1>
+    <p>আপনার বিশ্বস্ত অনলাইন হাটবাজার</p>
+  </header>
+
+  <!-- Hero Section -->
+  <div class="hero">
+    <h2>স্বাগতম HatBazar-এ!</h2>
+    <p>সেরা দামে সেরা পণ্য কিনতে সরাসরি আমাদের সাথে যোগাযোগ করুন।</p>
+  </div>
+
+  <!-- Main Content -->
+  <div class="container">
+    
+    <!-- Contact & Order Section -->
+    <div class="contact-card">
+      <h3>যোগাযোগ ও অর্ডার</h3>
+      
+      <ul class="contact-list">
+        <li>📞 <strong>মোবাইল:</strong> <a href="tel:01947819432">01947-819432</a></li>
+        <li>📧 <strong>ইমেইল:</strong> <a href="mailto:kironmia1890@gmail.com">kironmia1890@gmail.com</a></li>
+        <li>📍 <strong>ঠিকানা:</strong> জামালপুর, বাংলাদেশ</li>
+        <li>📘 <strong>Facebook:</strong> <a href="https://www.facebook.com/share/1Q1tQgAjeM/" target="_blank">ফেসবুক পেজ / প্রোফাইল</a></li>
+      </ul>
+
+      <a class="order-btn" href="https://wa.me/8801947819432?text=Hello!%20I%20want%20to%20place%20an%20order." target="_blank">
+        Order Now (WhatsApp)
+      </a>
+    </div>
+
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    &copy; 2026 HatBazar. All rights reserved.
+  </footer>
+
+</body>
+</html>
