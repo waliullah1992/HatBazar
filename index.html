@@ -1,343 +1,190 @@
 <!DOCTYPE html>
 <html lang="bn">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>হাটবাজার</title>
-  <style>
-    * { box-sizing: border-box; margin: 0; padding: 0; font-family: Arial, sans-serif; }
-    body { background-color: #f4f6f8; color: #333; }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HatBazar - হাটবাজার</title>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: Arial, sans-serif; }
+        body { background-color: #f4f6f8; color: #333; }
 
-    /* Top Hero Banner */
-    .hero-banner {
-      background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://images.unsplash.com/photo-1542838132-92c53300491e?w=1000&auto=format&fit=crop');
-      background-size: cover;
-      background-position: center;
-      color: white;
-      text-align: center;
-      padding: 40px 15px;
-    }
-    .hero-banner h1 { font-size: 24px; margin-bottom: 8px; font-weight: bold; }
-    .hero-banner p { font-size: 13px; margin-bottom: 15px; opacity: 0.9; }
-    .hero-btns { display: flex; justify-content: center; gap: 10px; }
-    .btn-orange { background: #ff9800; color: white; padding: 8px 14px; text-decoration: none; font-size: 12px; font-weight: bold; border-radius: 4px; }
-    .btn-green { background: #2e7d32; color: white; padding: 8px 14px; text-decoration: none; font-size: 12px; font-weight: bold; border-radius: 4px; }
+        /* Top Hero Banner */
+        .hero-banner {
+            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://images.unsplash.com/photo-1542838132-92c53300491e?q=80&w=1000');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            text-align: center;
+            padding: 40px 15px;
+        }
+        .hero-banner h1 { font-size: 24px; margin-bottom: 8px; font-weight: bold; }
+        .hero-banner p { font-size: 13px; margin-bottom: 15px; opacity: 0.9; }
+        .hero-btns { display: flex; justify-content: center; gap: 10px; }
+        .btn { padding: 8px 14px; text-decoration: none; border-radius: 4px; font-size: 12px; font-weight: bold; }
+        .btn-orange { background: #ff9800; color: white; }
+        .btn-green { background: #2e7d32; color: white; }
 
-    .container { max-width: 1100px; margin: 0 auto; padding: 15px; }
+        .container { max-width: 1100px; margin: 0 auto; padding: 15px; }
 
-    /* Ad Banner Box */
-    .ad-box { border: 1px dashed #4caf50; padding: 10px; text-align: center; margin: 15px 0; border-radius: 4px; font-size: 11px; color: #666; background: #fff; }
-    
-    .section-title { text-align: center; color: #2e7d32; font-size: 18px; margin: 20px 0 15px 0; font-weight: bold; }
+        /* Ad Banner Box */
+        .ad-box { border: 1px dashed #4caf50; padding: 10px; text-align: center; margin-bottom: 20px; font-size: 10px; color: #666; background: #e8f5e9; }
 
-    /* Products Grid */
-    .product-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }
-    @media (min-width: 600px) {
-      .product-grid { grid-template-columns: repeat(4, 1fr); }
-    }
+        .section-title { text-align: center; color: #2e7d32; font-size: 18px; margin-bottom: 15px; font-weight: bold; }
 
-    .product-card { background: white; border-radius: 6px; overflow: hidden; box-shadow: 0 2px 5px rgba(0,0,0,0.05); text-align: center; padding-bottom: 12px; border: 1px solid #eee; }
-    .product-card img { width: 100%; height: 130px; object-fit: cover; }
-    .product-card h3 { font-size: 13px; margin: 8px 5px 2px 5px; font-weight: bold; color: #222; }
-    .product-card .desc { font-size: 10px; color: #777; margin-bottom: 6px; }
-    .product-card .price { color: #2e7d32; font-weight: bold; font-size: 13px; margin-bottom: 8px; }
+        /* Products Grid */
+        .product-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; margin-bottom: 20px; }
+        @media (min-width: 600px) {
+            .product-grid { grid-template-columns: repeat(4, 1fr); }
+        }
 
-    /* Call to Action Sections */
-    .cta-card { background: white; padding: 15px; border-radius: 6px; text-align: center; margin-top: 12px; box-shadow: 0 2px 4px rgba(0,0,0,0.03); }
-    .cta-card h4 { font-size: 14px; color: #333; margin-bottom: 4px; }
-    .cta-card p { font-size: 11px; color: #666; margin-bottom: 10px; }
-    .wa-btn { background: #25D366; color: white; padding: 8px 15px; border-radius: 4px; text-decoration: none; font-size: 12px; font-weight: bold; display: inline-block; }
+        .product-card { background: white; border-radius: 6px; overflow: hidden; box-shadow: 0 1px 3px rgba(0,0,0,0.1); text-align: center; border: 1px solid #e0e0e0; padding-bottom: 10px; }
+        .product-card img { width: 100%; height: 130px; object-fit: cover; }
+        .product-card h3 { font-size: 13px; margin: 8px 5px 2px 5px; font-weight: bold; color: #333; }
+        .product-card .desc { font-size: 10px; color: #777; margin-bottom: 6px; padding: 0 5px; }
+        .product-card .price { color: #2e7d32; font-weight: bold; font-size: 13px; margin-bottom: 8px; }
+        .product-card .order-btn { background: #ff9800; color: white; border: none; padding: 6px 12px; border-radius: 4px; font-size: 11px; font-weight: bold; cursor: pointer; text-decoration: none; display: inline-block; }
 
-    /* Contact Footer */
-    .contact-footer { background: white; text-align: center; padding: 10px; border-radius: 4px; margin-top: 15px; font-size: 12px; font-weight: bold; color: #2e7d32; }
-  </style>
+        /* Call to Action Sections */
+        .cta-section { background: white; padding: 15px; border-radius: 6px; box-shadow: 0 1px 3px rgba(0,0,0,0.1); text-align: center; margin-bottom: 15px; border: 1px solid #e0e0e0; }
+        .cta-section h4 { font-size: 14px; color: #333; margin-bottom: 4px; font-weight: bold; }
+        .cta-section p { font-size: 11px; color: #666; margin-bottom: 10px; }
+        .form-btn { background: #ff9800; color: white; border: none; padding: 8px 16px; border-radius: 4px; font-size: 12px; font-weight: bold; cursor: pointer; text-decoration: none; display: inline-block; }
+        .seller-btn { background: #2e7d32; color: white; border: none; padding: 8px 16px; border-radius: 4px; font-size: 12px; font-weight: bold; cursor: pointer; text-decoration: none; display: inline-block; }
+
+        /* Contact Section */
+        .contact-section { background: white; padding: 15px; border-radius: 6px; box-shadow: 0 1px 3px rgba(0,0,0,0.1); text-align: center; margin-bottom: 15px; border: 1px solid #e0e0e0; }
+        .contact-section h4 { font-size: 14px; color: #333; margin-bottom: 4px; font-weight: bold; }
+        .contact-section p { font-size: 11px; color: #666; margin-bottom: 10px; }
+        .wa-btn { background: #25D366; color: white; text-decoration: none; padding: 8px 15px; border-radius: 20px; font-size: 12px; display: inline-flex; items-center: center; font-weight: bold; margin-right: 5px; }
+        .call-btn { background: #0277bd; color: white; text-decoration: none; padding: 8px 15px; border-radius: 20px; font-size: 12px; display: inline-flex; items-center: center; font-weight: bold; }
+
+        /* Contact Footer */
+        .footer { text-align: center; font-size: 11px; color: #888; padding: 10px; border-top: 1px solid #e0e0e0; margin-top: 10px; }
+
+    </style>
 </head>
 <body>
 
-  <!-- Top Hero Banner -->
-  <div class="hero-banner">
-    <h1>হাটবাজারে আপনাকে স্বাগতম!</h1>
-    <p>সতেজ, মানসম্মত ও আকর্ষণীয় পণ্য এখন হাতের মুঠোয়।</p>
-    <div class="hero-btns">
-      <a href="#products" class="btn-orange">🛒 এখনই অর্ডার করুন</a>
-      <a href="#seller" class="btn-green">💻 সেলার হিসেবে যুক্ত হন</a>
-    </div>
-  </div>
-
-  <div class="container">
-    
-    <!-- Advertisement Bar -->
-    <div class="ad-box">-- ADVERTISEMENT --</div>
-
-    <!-- Section Title -->
-    <div class="section-title" id="products">আমাদের বিশেষ পণ্যসমূহ</div>
-
-    <!-- Products Grid (26 Products) -->
-    <div class="product-grid">
-      
-      <!-- Product 1 -->
-      <div class="product-card">
-        <img src="https://picsum.photos/300/300?random=1" alt="প্রোডাক্ট ১">
-        <h3>প্রিমিয়াম জুট ব্যাগ</h3>
-        <div class="desc">পরিবেশবান্ধব ও আকর্ষণীয় ডিজাইন।</div>
-        <div class="price">৳ ৩৫০</div>
-        <a href="https://wa.me/8801947819432?text=আমি%20প্রিমিয়াম%20জুট%20ব্যাগ%20অর্ডার%20করতে%20চাই" class="btn-orange">🛒 অর্ডার করুন</a>
-      </div>
-
-      <!-- Product 2 -->
-      <div class="product-card">
-        <img src="https://picsum.photos/300/300?random=2" alt="প্রোডাক্ট ২">
-        <h3>স্টাইলিশ ঘড়ি</h3>
-        <div class="desc">স্মার্ট ও ক্যাজুয়াল পরিধানের জন্য।</div>
-        <div class="price">৳ ৭৫০</div>
-        <a href="https://wa.me/8801947819432?text=আমি%20স্টাইলিশ%20ঘড়ি%20অর্ডার%20করতে%20চাই" class="btn-orange">🛒 অর্ডার করুন</a>
-      </div>
-
-      <!-- Product 3 -->
-      <div class="product-card">
-        <img src="https://picsum.photos/300/300?random=3" alt="প্রোডাক্ট ৩">
-        <h3>ফ্যাশনেবল চশমা</h3>
-        <div class="desc">ইউভি প্রটেকশনসহ সানগ্লাস।</div>
-        <div class="price">৳ ৪৫০</div>
-        <a href="https://wa.me/8801947819432?text=আমি%20ফ্যাশনেবল%20চশমা%20অর্ডার%20করতে%20চাই" class="btn-orange">🛒 অর্ডার করুন</a>
-      </div>
-
-      <!-- Product 4 -->
-      <div class="product-card">
-        <img src="https://picsum.photos/300/300?random=4" alt="প্রোডাক্ট ৪">
-        <h3>হাতের নকশীকাঁথা</h3>
-        <div class="desc">ঐতিহ্যবাহী হাতের কাজ করা সুতি কাঁথা।</div>
-        <div class="price">৳ ১,২০০</div>
-        <a href="https://wa.me/8801947819432?text=আমি%20হাতের%20নকশীকাঁথা%20অর্ডার%20করতে%20চাই" class="btn-orange">🛒 অর্ডার করুন</a>
-      </div>
-
-      <!-- Product 5 -->
-      <div class="product-card">
-        <img src="https://picsum.photos/300/300?random=5" alt="প্রোডাক্ট ৫">
-        <h3>পুরুষদের পোলো টি-শার্ট</h3>
-        <div class="desc">১০০% কটন প্রিমিয়াম ফ্যাব্রিক।</div>
-        <div class="price">৳ ৪৮০</div>
-        <a href="https://wa.me/8801947819432?text=আমি%20পোলো%20টি-শার্ট%20অর্ডার%20করতে%20চাই" class="btn-orange">🛒 অর্ডার করুন</a>
-      </div>
-
-      <!-- Product 6 -->
-      <div class="product-card">
-        <img src="https://picsum.photos/300/300?random=6" alt="প্রোডাক্ট ৬">
-        <h3>ওয়ারলেস ব্লুটুথ হেডফোন</h3>
-        <div class="desc">স্পষ্ট সাউন্ড এবং চমৎকার বেস।</div>
-        <div class="price">৳ ৮৫০</div>
-        <a href="https://wa.me/8801947819432?text=আমি%20ব্লুটুথ%20হেডফোন%20অর্ডার%20করতে%20চাই" class="btn-orange">🛒 অর্ডার করুন</a>
-      </div>
-
-      <!-- Product 7 -->
-      <div class="product-card">
-        <img src="https://picsum.photos/300/300?random=7" alt="প্রোডাক্ট ৭">
-        <h3>লেদার ওয়ালেট (মানিব্যাগ)</h3>
-        <div class="desc">অরিজিনাল চামড়ার তৈরি মানিব্যাগ।</div>
-        <div class="price">৳ ৫৫০</div>
-        <a href="https://wa.me/8801947819432?text=আমি%20লেদার%20ওয়ালেট%20অর্ডার%20করতে%20চাই" class="btn-orange">🛒 অর্ডার করুন</a>
-      </div>
-
-      <!-- Product 8 -->
-      <div class="product-card">
-        <img src="https://picsum.photos/300/300?random=8" alt="প্রোডাক্ট ৮">
-        <h3>স্মার্ট ওয়াচ ব্যান্ড</h3>
-        <div class="desc">ফিটনেস ট্র্যাকিং ও কল নোটিফিকেশন।</div>
-        <div class="price">৳ ১,৪৫০</div>
-        <a href="https://wa.me/8801947819432?text=আমি%20স্মার্ট%20ওয়াচ%20অর্ডার%20করতে%20চাই" class="btn-orange">🛒 অর্ডার করুন</a>
-      </div>
-
-      <!-- Product 9 -->
-      <div class="product-card">
-        <img src="https://picsum.photos/300/300?random=9" alt="প্রোডাক্ট ৯">
-        <h3>লেডিজ হ্যান্ডব্যাগ</h3>
-        <div class="desc">স্টাইলিশ ও আরামদায়ক ক্যাজুয়াল ব্যাগ।</div>
-        <div class="price">৳ ৯৫০</div>
-        <a href="https://wa.me/8801947819432?text=আমি%20লেডিজ%20হ্যান্ডব্যাগ%20অর্ডার%20করতে%20চাই" class="btn-orange">🛒 অর্ডার করুন</a>
-      </div>
-
-      <!-- Product 10 -->
-      <div class="product-card">
-        <img src="https://picsum.photos/300/300?random=10" alt="প্রোডাক্ট ১০">
-        <h3>রানিং স্নিকার্স শু</h3>
-        <div class="desc">হালকা ও আরামদায়ক জুতা।</div>
-        <div class="price">৳ ১,২০০</div>
-        <a href="https://wa.me/8801947819432?text=আমি%20রানিং%20স্নিকার্স%20অর্ডার%20করতে%20চাই" class="btn-orange">🛒 অর্ডার করুন</a>
-      </div>
-
-      <!-- Product 11 -->
-      <div class="product-card">
-        <img src="https://picsum.photos/300/300?random=11" alt="প্রোডাক্ট ১১">
-        <h3>হ্যান্ডমেড জুয়েলারি সেট</h3>
-        <div class="desc">আকর্ষণীয় ডিজাইনের গহনা।</div>
-        <div class="price">৳ ৬৫০</div>
-        <a href="https://wa.me/8801947819432?text=আমি%20জুয়েলারি%20সেট%20অর্ডার%20করতে%20চাই" class="btn-orange">🛒 অর্ডার করুন</a>
-      </div>
-
-      <!-- Product 12 -->
-      <div class="product-card">
-        <img src="https://picsum.photos/300/300?random=12" alt="প্রোডাক্ট ১২">
-        <h3>অর্গানিক গ্রিন টি</h3>
-        <div class="desc">স্বাস্থ্যের জন্য উপকারী প্রাকৃতিক চা।</div>
-        <div class="price">৳ ৩২০</div>
-        <a href="https://wa.me/8801947819432?text=আমি%20গ্রিন%20টি%20অর্ডার%20করতে%20চাই" class="btn-orange">🛒 অর্ডার করুন</a>
-      </div>
-
-      <!-- Product 13 -->
-      <div class="product-card">
-        <img src="https://picsum.photos/300/300?random=13" alt="প্রোডাক্ট ১৩">
-        <h3>স্মার্ট নাইট ল্যাম্প</h3>
-        <div class="desc">বেডরুমের চমৎকার লাইটিং।</div>
-        <div class="price">৳ ৫০০</div>
-        <a href="https://wa.me/8801947819432?text=আমি%20নাইট%20ল্যাম্প%20অর্ডার%20করতে%20চাই" class="btn-orange">🛒 অর্ডার করুন</a>
-      </div>
-
-      <!-- Product 14 -->
-      <div class="product-card">
-        <img src="https://picsum.photos/300/300?random=14" alt="প্রোডাক্ট ১৪">
-        <h3>ওয়াটারপ্রুফ ব্যাকপ্যাক</h3>
-        <div class="desc">ভ্রমণ ও ল্যাপটপ বহনের জন্য সেরা।</div>
-        <div class="price">৳ ১,১০০</div>
-        <a href="https://wa.me/8801947819432?text=আমি%20ব্যাকপ্যাক%20অর্ডার%20করতে%20চাই" class="btn-orange">🛒 অর্ডার করুন</a>
-      </div>
-
-      <!-- Product 15 -->
-      <div class="product-card">
-        <img src="https://picsum.photos/300/300?random=15" alt="প্রোডাক্ট ১৫">
-        <h3>খাঁটি মধু (৫০০ গ্রাম)</h3>
-        <div class="desc">সুন্দরবনের প্রাকৃতিক প্রাকৃতিক মধু।</div>
-        <div class="price">৳ ৬০০</div>
-        <a href="https://wa.me/8801947819432?text=আমি%20মধু%20অর্ডার%20করতে%20চাই" class="btn-orange">🛒 অর্ডার করুন</a>
-      </div>
-
-      <!-- Product 16 -->
-      <div class="product-card">
-        <img src="https://picsum.photos/300/300?random=16" alt="প্রোডাক্ট ১৬">
-        <h3>কটন বেডশীট সেট</h3>
-        <div class="desc">ডাবল কিং সাইজ সুতি চাদর।</div>
-        <div class="price">৳ ৮৫০</div>
-        <a href="https://wa.me/8801947819432?text=আমি%20বেডশীট%20অর্ডার%20করতে%20চাই" class="btn-orange">🛒 অর্ডার করুন</a>
-      </div>
-
-      <!-- Product 17 -->
-      <div class="product-card">
-        <img src="https://picsum.photos/300/300?random=17" alt="প্রোডাক্ট ১৭">
-        <h3>পোর্টেবল ব্লুটুথ স্পিকার</h3>
-        <div class="desc">লাউড সাউন্ড ওয়াটারপ্রুফ স্পিকার।</div>
-        <div class="price">৳ ৯৫০</div>
-        <a href="https://wa.me/8801947819432?text=আমি%20স্পিকার%20অর্ডার%20করতে%20চাই" class="btn-orange">🛒 অর্ডার করুন</a>
-      </div>
-
-      <!-- Product 18 -->
-      <div class="product-card">
-        <img src="https://picsum.photos/300/300?random=18" alt="প্রোডাক্ট ১৮">
-        <h3>মেয়েদের থ্রি-পিস সেট</h3>
-        <div class="desc">ডিজাইনার কটন ডিসেন্ট ড্রেস।</div>
-        <div class="price">৳ ১,৩৫০০</div>
-        <a href="https://wa.me/8801947819432?text=আমি%20থ্রি-পিস%20অর্ডার%20করতে%20চাই" class="btn-orange">🛒 অর্ডার করুন</a>
-      </div>
-
-      <!-- Product 19 -->
-      <div class="product-card">
-        <img src="https://picsum.photos/300/300?random=19" alt="প্রোডাক্ট ১৯">
-        <h3>ডিজিটাল কিচেন স্কেল</h3>
-        <div class="desc">রান্নার সঠিক মাপজোখের জন্য।</div>
-        <div class="price">৳ ৪২০</div>
-        <a href="https://wa.me/8801947819432?text=আমি%20কিচেন%20স্কেল%20অর্ডার%20করতে%20চাই" class="btn-orange">🛒 অর্ডার করুন</a>
-      </div>
-
-      <!-- Product 20 -->
-      <div class="product-card">
-        <img src="https://picsum.photos/300/300?random=20" alt="প্রোডাক্ট ২০">
-        <h3>ট্র্যাভেল ট্রিমার</h3>
-        <div class="desc">রিচার্জেবল মেটাল ট্রিমার।</div>
-        <div class="price">৳ ৫৯০</div>
-        <a href="https://wa.me/8801947819432?text=আমি%20ট্রিমার%20অর্ডার%20করতে%20চাই" class="btn-orange">🛒 অর্ডার করুন</a>
-      </div>
-
-      <!-- Product 21 -->
-      <div class="product-card">
-        <img src="https://picsum.photos/300/300?random=21" alt="প্রোডাক্ট ২১">
-        <h3>লেদার বেল্ট</h3>
-        <div class="desc">১০০% আসল চামড়ার বেল্ট।</div>
-        <div class="price">৳ ৪৫০</div>
-        <a href="https://wa.me/8801947819432?text=আমি%20বেল্ট%20অর্ডার%20করতে%20চাই" class="btn-orange">🛒 অর্ডার করুন</a>
-      </div>
-
-      <!-- Product 22 -->
-      <div class="product-card">
-        <img src="https://picsum.photos/300/300?random=22" alt="প্রোডাক্ট ২২">
-        <h3>মেটাল টেবিল ক্লক</h3>
-        <div class="desc">এন্টিক ডিজাইনের অ্যালার্ম ঘড়ি।</div>
-        <div class="price">৳ ৩৯০</div>
-        <a href="https://wa.me/8801947819432?text=আমি%20টেবিল%20ক্লক%20অর্ডার%20করতে%20চাই" class="btn-orange">🛒 অর্ডার করুন</a>
-      </div>
-
-      <!-- Product 23 -->
-      <div class="product-card">
-        <img src="https://picsum.photos/300/300?random=23" alt="প্রোডাক্ট ২৩">
-        <h3>স্পোর্টস ওয়াটার বোতল</h3>
-        <div class="desc">১ লিটার ইনসুলেটেড বোতল।</div>
-        <div class="price">৳ ৩৫০</div>
-        <a href="https://wa.me/8801947819432?text=আমি%20বোতল%20অর্ডার%20করতে%20চাই" class="btn-orange">🛒 অর্ডার করুন</a>
-      </div>
-
-      <!-- Product 24 -->
-      <div class="product-card">
-        <img src="https://picsum.photos/300/300?random=24" alt="প্রোডাক্ট ২৪">
-        <h3>ক্যালোগ্রাফি ফ্রেম</h3>
-        <div class="desc">ওয়াল ডেকর আর্ট ফ্রেম।</div>
-        <div class="price">৳ ৭৫০</div>
-        <a href="https://wa.me/8801947819432?text=আমি%20ক্যালোগ্রাফি%20ফ্রেম%20অর্ডার%20করতে%20চাই" class="btn-orange">🛒 অর্ডার করুন</a>
-      </div>
-
-      <!-- Product 25 -->
-      <div class="product-card">
-        <img src="https://picsum.photos/300/300?random=25" alt="প্রোডাক্ট ২৫">
-        <h3>পাওয়ার ব্যাংক ১০০০০mAh</h3>
-        <div class="desc">ফাস্ট চার্জিং পাওয়ার ব্যাংক।</div>
-        <div class="price">৳ ১,২৫০</div>
-        <a href="https://wa.me/8801947819432?text=আমি%20পাওয়ার%20ব্যাংক%20অর্ডার%20করতে%20চাই" class="btn-orange">🛒 অর্ডার করুন</a>
-      </div>
-
-      <!-- Product 26 -->
-      <div class="product-card">
-        <img src="https://picsum.photos/300/300?random=26" alt="প্রোডাক্ট ২৬">
-        <h3>সুগন্ধি আতর সেট</h3>
-        <div class="desc">লং লাস্টিং নন-অ্যালকোহলিক আতর।</div>
-        <div class="price">৳ ৪৮০</div>
-        <a href="https://wa.me/8801947819432?text=আমি%20আতর%20সেট%20অর্ডার%20করতে%20চাই" class="btn-orange">🛒 অর্ডার করুন</a>
-      </div>
-
+    <!-- Top Hero Banner -->
+    <div class="hero-banner">
+        <h1>হাটবাজারে আপনাকে স্বাগতম!</h1>
+        <p>সতেজ, মানসম্মত ও আকর্ষণীয় পণ্য এখন হাতের মুঠোয়।</p>
+        <div class="hero-btns">
+            <a href="https://forms.gle/2a8VPJbT4DwgKWbCA" target="_blank" class="btn btn-orange">এখুনি অর্ডার করুন</a>
+            <a href="https://forms.gle/2a8VPJbT4DwgKWbCA" target="_blank" class="btn btn-green">সেলার হিসেবে যুক্ত হন</a>
+        </div>
     </div>
 
-    <!-- Direct Ad Banner -->
-    <div class="ad-box" style="margin-top: 20px;">
-      <p style="font-size: 11px; margin-bottom: 4px; font-weight: bold;">📢 আপনার ব্যবসার বিজ্ঞাপন দিন এখানে!</p>
-      <p style="font-size: 10px; margin-bottom: 8px;">প্রতিদিন হাজারো মানুষের কাছে আপনার পণ্য পৌঁছে দিন।</p>
-      <a href="https://wa.me/8801947819432" class="wa-btn">💬 যোগাযোগ করুন (WhatsApp)</a>
-    </div>
+    <div class="container">
+        <!-- Ad Banner Box -->
+        <div class="ad-box">
+            -- ADVERTISEMENT --
+        </div>
 
-    <!-- Google Form Order Section -->
-    <div class="cta-card">
-      <h4>🛒 সহজে অর্ডার করুন</h4>
-      <p>পছন্দের পণ্য অর্ডার করতে ফরমটি পূরণ করুন।</p>
-      <a href="#" class="btn-orange" style="display: inline-block;">📄 Google Form দিয়ে অর্ডার করুন</a>
-    </div>
+        <h2 class="section-title">আমাদের বিশেষ পণ্যসমূহ</h2>
 
-    <!-- Become a Seller Section -->
-    <div class="cta-card" id="seller" style="background: #e8f5e9;">
-      <h4>💻 বিক্রেতা হিসেবে যুক্ত হন</h4>
-      <p>আপনার পণ্য আমাদের হাটে বিক্রি করতে বিক্রেতা নিবন্ধন ফরমটি পূরণ করুন।</p>
-      <a href="#" class="btn-green" style="display: inline-block;">বিক্রেতা নিবন্ধন ফরম</a>
-    </div>
+        <!-- Products Grid -->
+        <div class="product-grid">
+            
+            <div class="product-card">
+                <img src="https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?q=80&w=400" alt="স্টাইলিশ ঘড়ি">
+                <h3>স্টাইলিশ ঘড়ি</h3>
+                <p class="desc">স্মার্ট ও ক্যাজুয়াল পরিধানের জন্য।</p>
+                <p class="price">৳ ৭৫০</p>
+                <a href="https://forms.gle/2a8VPJbT4DwgKWbCA" target="_blank" class="order-btn">অর্ডার করুন</a>
+            </div>
 
-    <!-- Footer Contact -->
-    <div class="contact-footer">
-      📞 যোগাযোগ করুন: 01947819432
-    </div>
+            <div class="product-card">
+                <img src="https://images.unsplash.com/photo-1577803645773-f96470509666?q=80&w=400" alt="ফ্যাশনেবল চশমা">
+                <h3>ফ্যাশনেবল চশমা</h3>
+                <p class="desc">ইউভি প্রোটেকশনসহ সানগ্লাস।</p>
+                <p class="price">৳ ৪৫০</p>
+                <a href="https://forms.gle/2a8VPJbT4DwgKWbCA" target="_blank" class="order-btn">অর্ডার করুন</a>
+            </div>
 
-  </div>
+            <div class="product-card">
+                <img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?q=80&w=400" alt="স্মার্ট ওয়াচ">
+                <h3>স্মার্ট ওয়াচ</h3>
+                <p class="desc">ফিটনেস ট্র্যাকিং ও কল নোটিফিকেশন।</p>
+                <p class="price">৳ ১,৪৫০</p>
+                <a href="https://forms.gle/2a8VPJbT4DwgKWbCA" target="_blank" class="order-btn">অর্ডার করুন</a>
+            </div>
+
+            <div class="product-card">
+                <img src="https://images.unsplash.com/photo-1543163521-1bf539c55dd2?q=80&w=400" alt="নারীদের হ্যান্ডব্যাগ">
+                <h3>নারীদের হ্যান্ডব্যাগ</h3>
+                <p class="desc">স্টাইলিশ ও আরামদায়ক ক্যাজুয়াল ব্যাগ।</p>
+                <p class="price">৳ ৯৫০</p>
+                <a href="https://forms.gle/2a8VPJbT4DwgKWbCA" target="_blank" class="order-btn">অর্ডার করুন</a>
+            </div>
+
+            <div class="product-card">
+                <img src="https://images.unsplash.com/photo-1595950653106-6c9ebd614d3a?q=80&w=400" alt="রানিং জুতো">
+                <h3>রানিং জুতো</h3>
+                <p class="desc">হালকা ও আরামদায়ক জুতো।</p>
+                <p class="price">৳ ১,২০০</p>
+                <a href="https://forms.gle/2a8VPJbT4DwgKWbCA" target="_blank" class="order-btn">অর্ডার করুন</a>
+            </div>
+
+            <div class="product-card">
+                <img src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?q=80&w=400" alt="টি-শার্ট">
+                <h3>টি-শার্ট</h3>
+                <p class="desc">১০০% কটন প্রিমিয়াম ফ্যাব্রিক।</p>
+                <p class="price">৳ ৪৮0</p>
+                <a href="https://forms.gle/2a8VPJbT4DwgKWbCA" target="_blank" class="order-btn">অর্ডার করুন</a>
+            </div>
+            
+            <div class="product-card">
+                <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?q=80&w=400" alt="হেডফোন">
+                <h3>হেডফোন</h3>
+                <p class="desc">স্পষ্ট সাউন্ড এবং চমৎকার বেস।</p>
+                <p class="price">৳ ৮৫০</p>
+                <a href="https://forms.gle/2a8VPJbT4DwgKWbCA" target="_blank" class="order-btn">অর্ডার করুন</a>
+            </div>
+
+            <div class="product-card">
+                <img src="https://images.unsplash.com/photo-1627123424574-724758594e93?q=80&w=400" alt="লেদার মানিব্যাগ">
+                <h3>লেদার মানিব্যাগ</h3>
+                <p class="desc">অরিজিনাল চামড়ার তৈরি মানিব্যাগ।</p>
+                <p class="price">৳ ৫৫০</p>
+                <a href="https://forms.gle/2a8VPJbT4DwgKWbCA" target="_blank" class="order-btn">অর্ডার করুন</a>
+            </div>
+
+        </div>
+
+        <!-- Call to Action Sections -->
+        <div class="cta-section">
+            <h4>সহজে অর্ডার করুন</h4>
+            <p>পছন্দের পণ্য অর্ডার করতে নিচের বাটনে ক্লিক করে ফরমটি পূরণ করুন।</p>
+            <a href="https://forms.gle/2a8VPJbT4DwgKWbCA" target="_blank" class="form-btn">Google Form দিয়ে অর্ডার করুন</a>
+        </div>
+
+        <div class="cta-section seller-section">
+            <h4>বিক্রেতা হিসেবে যুক্ত হন</h4>
+            <p>আপনার পণ্য সরাসরি গ্রাহকদের কাছে পৌঁছে দিতে আমাদের সাথে মার্চেন্ট হিসেবে যোগ দিন।</p>
+            <a href="https://forms.gle/2a8VPJbT4DwgKWbCA" target="_blank" class="seller-btn">বিক্রেতা নিবন্ধন করুন</a>
+        </div>
+
+        <!-- Contact Section -->
+        <div class="contact-section">
+            <h4>যোগাযোগ করুন</h4>
+            <p>যেকোনো তথ্য বা সরাসরি অর্ডারের জন্য আমাদের সাথে যোগাযোগ করুন:</p>
+            <div style="display: flex; justify-content: center; gap: 5px; flex-wrap: wrap;">
+                <a href="https://wa.me/8801947819432" target="_blank" class="wa-btn">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" style="width: 16px; height: 16px; margin-right: 5px;"> WhatsApp: 01947819432
+                </a>
+                <a href="tel:01947819432" class="call-btn">
+                    কল করুন
+                </a>
+            </div>
+        </div>
+
+        <!-- Contact Footer -->
+        <div class="footer">
+            <p>© 2026 HatBazar. সর্বস্বত্ব সংরক্ষিত।</p>
+        </div>
+
+    </div>
 
 </body>
 </html>
