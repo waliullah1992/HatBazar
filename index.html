@@ -1,16 +1,119 @@
-ul {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-  gap: 10px;
-  list-style: none;
-  padding: 0;
-}
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>হাটবাজার - সকল ক্যাটাগরি</title>
+  <style>
+    /* বেসিক পেজ স্টাইল */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f4f7f6;
+      color: #333;
+      padding: 20px;
+    }
 
-li {
-  background: #ffffff;
-  border: 1px solid #ddd;
-  padding: 12px;
-  border-radius: 8px;
-  text-align: center;
-  font-size: 14px;
-}
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    /* শিরোনাম স্টাইল */
+    .section-title {
+      font-size: 22px;
+      font-weight: bold;
+      color: #2c3e50;
+      margin-bottom: 20px;
+      padding-bottom: 8px;
+      border-bottom: 3px solid #27ae60;
+      display: inline-block;
+    }
+
+    /* গ্রিড লেআউট (সব ক্যাটাগরি একসাথে সাজাতে) */
+    .category-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+      gap: 12px;
+      list-style: none;
+    }
+
+    /* প্রতিটি ক্যাটাগরি কার্ড */
+    .category-card {
+      background: #ffffff;
+      border: 1px solid #e2e8f0;
+      border-radius: 10px;
+      padding: 15px 10px;
+      text-align: center;
+      transition: all 0.2s ease-in-out;
+      cursor: pointer;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.03);
+    }
+
+    /* হোভার ইফেক্ট (মাউস বা টাচ করলে সুন্দর দেখাবে) */
+    .category-card:hover {
+      transform: translateY(-3px);
+      border-color: #27ae60;
+      box-shadow: 0 4px 10px rgba(39, 174, 96, 0.15);
+      background-color: #f0fff4;
+    }
+
+    .category-icon {
+      font-size: 30px;
+      margin-bottom: 8px;
+    }
+
+    .category-name {
+      font-size: 13px;
+      font-weight: 600;
+      color: #333;
+      line-height: 1.3;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <h2 class="section-title">🛍️ সকল ক্যাটাগরি</h2>
+
+    <ul class="category-grid">
+      <li class="category-card"><span class="category-icon">🛒</span><span class="category-name">জুট ব্যাগ</span></li>
+      <li class="category-card"><span class="category-icon">🧵</span><span class="category-name">নকশীকাঁথা</span></li>
+      <li class="category-card"><span class="category-icon">⌚</span><span class="category-name">ঘড়ি</span></li>
+      <li class="category-card"><span class="category-icon">🕶️</span><span class="category-name">সানগ্লাস</span></li>
+      <li class="category-card"><span class="category-icon">👕</span><span class="category-name">পোশাক</span></li>
+      <li class="category-card"><span class="category-icon">👟</span><span class="category-name">জুতা ও স্যান্ডেল</span></li>
+      <li class="category-card"><span class="category-icon">🎒</span><span class="category-name">ব্যাগ</span></li>
+      <li class="category-card"><span class="category-icon">📱</span><span class="category-name">মোবাইল ফোন</span></li>
+      <li class="category-card"><span class="category-icon">💻</span><span class="category-name">ল্যাপটপ ও কম্পিউটার</span></li>
+      <li class="category-card"><span class="category-icon">📺</span><span class="category-name">টিভি ও ইলেকট্রনিক্স</span></li>
+      <li class="category-card"><span class="category-icon">🏍️</span><span class="category-name">মোটরসাইকেল</span></li>
+      <li class="category-card"><span class="category-icon">🚗</span><span class="category-name">গাড়ি</span></li>
+      <li class="category-card"><span class="category-icon">🚲</span><span class="category-name">সাইকেল</span></li>
+      <li class="category-card"><span class="category-icon">🏠</span><span class="category-name">বাসা ভাড়া</span></li>
+      <li class="category-card"><span class="category-icon">🏢</span><span class="category-name">দোকান ও অফিস ভাড়া</span></li>
+      <li class="category-card"><span class="category-icon">🌾</span><span class="category-name">জমি ক্রয়-বিক্রয়</span></li>
+      <li class="category-card"><span class="category-icon">🐄</span><span class="category-name">গরু, ছাগল ও পশুপাখি</span></li>
+      <li class="category-card"><span class="category-icon">🌱</span><span class="category-name">কৃষি পণ্য</span></li>
+      <li class="category-card"><span class="category-icon">🍎</span><span class="category-name">ফল ও সবজি</span></li>
+      <li class="category-card"><span class="category-icon">🍚</span><span class="category-name">চাল, ডাল ও মুদি পণ্য</span></li>
+      <li class="category-card"><span class="category-icon">🪑</span><span class="category-name">ফার্নিচার</span></li>
+      <li class="category-card"><span class="category-icon">🏗️</span><span class="category-name">নির্মাণ সামগ্রী</span></li>
+      <li class="category-card"><span class="category-icon">⚙️</span><span class="category-name">শিল্প কারখানার মেশিন</span></li>
+      <li class="category-card"><span class="category-icon">💼</span><span class="category-name">চাকরি</span></li>
+      <li class="category-card"><span class="category-icon">🛠️</span><span class="category-name">বিভিন্ন সেবা</span></li>
+      <li class="category-card"><span class="category-icon">📢</span><span class="category-name">বিজ্ঞাপন</span></li>
+    </ul>
+  </div>
+
+</body>
+</html>
