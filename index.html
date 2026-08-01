@@ -9,7 +9,6 @@
         * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
         body { background-color: #f4f6f9; color: #333; }
 
-        /* Top Search Header */
         header { background-color: #ffffff; padding: 10px 15px; border-bottom: 1px solid #e0e0e0; position: sticky; top: 0; z-index: 1000; }
         .header-container { max-width: 1100px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; gap: 10px; flex-wrap: wrap; }
         .logo { font-size: 22px; font-weight: bold; color: #1b5e20; text-decoration: none; }
@@ -20,19 +19,16 @@
 
         .cart-btn { background: #ff9800; color: white; border: none; padding: 8px 15px; border-radius: 4px; font-weight: bold; cursor: pointer; text-decoration: none; font-size: 13px; }
 
-        /* Navigation Menu */
         nav { background: #1b5e20; padding: 8px 15px; }
         .nav-container { max-width: 1100px; margin: 0 auto; display: flex; gap: 15px; overflow-x: auto; white-space: nowrap; }
         .nav-container a { color: white; text-decoration: none; font-size: 12px; font-weight: 500; }
         
-        /* Dropdown for 1-26 Categories */
         .dropdown { position: relative; display: inline-block; }
         .dropdown-content { display: none; position: absolute; background-color: #ffffff; min-width: 200px; box-shadow: 0px 8px 16px rgba(0,0,0,0.2); z-index: 1001; max-height: 300px; overflow-y: auto; border-radius: 4px; }
         .dropdown-content a { color: #333 !important; padding: 8px 12px; text-decoration: none; display: block; font-size: 11px; border-bottom: 1px solid #eee; }
         .dropdown-content a:hover { background-color: #e8f5e9; color: #1b5e20 !important; }
         .dropdown:hover .dropdown-content { display: block; }
 
-        /* Banner */
         .hero-banner {
             background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://images.unsplash.com/photo-1542838132-92c53300491e?q=80&w=1000');
             background-size: cover; background-position: center; color: white; text-align: center; padding: 40px 15px;
@@ -41,11 +37,9 @@
         .hero-banner p { font-size: 12px; margin-bottom: 15px; }
         .hero-banner .btn { background: #ff9800; color: white; padding: 8px 16px; border-radius: 4px; text-decoration: none; font-weight: bold; font-size: 12px; }
 
-        /* Main Content */
         .main-container { max-width: 1100px; margin: 20px auto; padding: 0 10px; }
         .section-title { font-size: 16px; color: #1b5e20; border-bottom: 2px solid #1b5e20; display: inline-block; padding-bottom: 4px; margin-bottom: 15px; font-weight: bold; }
 
-        /* Products Grid */
         .product-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 12px; margin-bottom: 25px; }
         .product-card { background: white; border: 1px solid #e0e0e0; border-radius: 6px; overflow: hidden; text-align: center; padding-bottom: 10px; }
         .product-card img { width: 100%; height: 120px; object-fit: cover; }
@@ -53,13 +47,11 @@
         .product-card .price { color: #2e7d32; font-weight: bold; font-size: 13px; margin-bottom: 8px; }
         .product-card .buy-btn { background: #ff9800; color: white; border: none; padding: 6px 12px; border-radius: 4px; font-size: 11px; font-weight: bold; cursor: pointer; width: 85%; }
 
-        /* Seller Banner */
         .seller-box { background: #e8f5e9; border: 1px dashed #2e7d32; padding: 15px; text-align: center; border-radius: 6px; margin-bottom: 25px; }
         .seller-box h3 { font-size: 14px; color: #1b5e20; margin-bottom: 5px; }
         .seller-box p { font-size: 11px; color: #555; margin-bottom: 10px; }
         .seller-box a { background: #2e7d32; color: white; padding: 6px 12px; text-decoration: none; border-radius: 4px; font-size: 11px; font-weight: bold; }
 
-        /* Checkout Form Section */
         .checkout-box { background: white; border: 1px solid #e0e0e0; border-radius: 6px; padding: 15px; max-width: 600px; margin: 0 auto; }
         .checkout-box h3 { font-size: 15px; color: #1b5e20; border-bottom: 2px solid #e8f5e9; padding-bottom: 6px; margin-bottom: 12px; }
         .form-group { margin-bottom: 10px; text-align: left; }
@@ -76,7 +68,6 @@
 </head>
 <body>
 
-    <!-- Header (Up) -->
     <header>
         <div class="header-container">
             <a href="#" class="logo">হাটবাজার</a>
@@ -88,17 +79,15 @@
         </div>
     </header>
 
-    <!-- Navigation Menu with 1-26 Categories -->
     <nav>
         <div class="nav-container">
             <a href="#">হোম</a>
             
-            <!-- Category Dropdown -->
             <div class="dropdown">
                 <a href="#" style="font-weight: bold; color: #ffeb3b;"><i class="fa-solid fa-bars"></i> সকল ক্যাটাগরি (১-২৬) ▼</a>
                 <div class="dropdown-content">
                     <a href="#">১. 🛒 জুট ব্যাগ</a>
-                    <a href="#">২. 🧵 নকশীকাঁথা</a>
+                    <a href="#">২. 🧵 হস্তশিল্প</a>
                     <a href="#">৩. ⌚ ঘড়ি</a>
                     <a href="#">৪. 🕶️ সানগ্লাস</a>
                     <a href="#">৫. 👕 পোশাক</a>
@@ -134,19 +123,15 @@
         </div>
     </nav>
 
-    <!-- Banner -->
     <div class="hero-banner">
         <h1>হাটবাজারে আপনাকে স্বাগতম!</h1>
         <p>সতেজ, মানসম্মত ও আকর্ষণীয় পণ্য এখন হাতের মুঠোয়।</p>
         <a href="#checkout" class="btn">এখনই কেনাকাটা করুন</a>
     </div>
 
-    <!-- Main Section -->
     <div class="main-container">
-        
         <h2 class="section-title">আমাদের বিশেষ পণ্যসমূহ</h2>
 
-        <!-- Products -->
         <div class="product-grid" id="productGrid">
             <div class="product-card">
                 <img src="https://images.unsplash.com/photo-1584917865442-de89df76afd3?q=80&w=400" alt="জুট ব্যাগ">
@@ -168,23 +153,14 @@
                 <p class="price">৳ ৪৫০</p>
                 <button class="buy-btn" onclick="selectProduct('ফ্যাশনেবল চশমা - ৳৪৫০')">অর্ডার করুন</button>
             </div>
-
-            <div class="product-card">
-                <img src="https://images.unsplash.com/photo-1607344645866-009c320c5ab8?q=80&w=400" alt="নকশীকাঁথা">
-                <h3>হাতের নকশীকাঁথা</h3>
-                <p class="price">৳ ১,২০০</p>
-                <button class="buy-btn" onclick="selectProduct('হাতের নকশীকাঁথা - ৳১২০০')">অর্ডার করুন</button>
-            </div>
         </div>
 
-        <!-- Seller Registration Box -->
         <div class="seller-box">
             <h3>আপনি কি নিজের পণ্য বিক্রি করতে চান?</h3>
             <p>হাটবাজারে বিক্রেতা হিসেবে যুক্ত হয়ে হাজারো কাস্টমারের কাছে আপনার পণ্য পৌঁছে দিন।</p>
             <a href="https://forms.gle/2a8VPJbT4DwgKWbCA" target="_blank">বিক্রেতা হিসেবে নিবন্ধন করুন</a>
         </div>
 
-        <!-- Checkout Section (Down) -->
         <div class="checkout-box" id="checkout">
             <h3>সহজে অর্ডার করুন (চেকআউট)</h3>
             <form onsubmit="sendToWhatsApp(event)">
@@ -223,20 +199,16 @@
 
     </div>
 
-    <!-- Footer -->
     <div class="footer">
         © 2026 HatBazar. সর্বস্বত্ব সংরক্ষিত। | যোগাযোগ: 01947819432
     </div>
 
-    <!-- JavaScript Functions -->
     <script>
-        // Select Product Function
         function selectProduct(productInfo) {
             document.getElementById('selectedProduct').value = productInfo;
             document.getElementById('checkout').scrollIntoView({ behavior: 'smooth' });
         }
 
-        // Live Search System
         function searchProducts() {
             let input = document.getElementById('searchInput').value.toLowerCase();
             let cards = document.getElementsByClassName('product-card');
@@ -251,7 +223,6 @@
             }
         }
 
-        // Send Order to WhatsApp
         function sendToWhatsApp(event) {
             event.preventDefault();
 
