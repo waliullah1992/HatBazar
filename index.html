@@ -1,97 +1,28 @@
 <!DOCTYPE html>
-<html lang="bn">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>আমার ই-কমার্স ওয়েবসাইট</title>
-  
-  <style>
-    /* Global Styles */
-    * { box-sizing: border-box; margin: 0; padding: 0; font-family: Arial, sans-serif; }
-    body { background-color: #f5f5f5; color: #333; }
-    .container { padding: 10px; max-width: 1200px; margin: 0 auto; }
-    
-    /* Header */
-    .top-header { background-color: #ffffff; padding: 12px 10px; display: flex; flex-wrap: wrap; gap: 8px; align-items: center; justify-content: space-between; box-shadow: 0 2px 5px rgba(0,0,0,0.1); position: sticky; top: 0; z-index: 100; }
-    .logo { font-size: 18px; font-weight: bold; color: #2e7d32; }
-    .search-bar { display: flex; flex: 1 1 100%; order: 3; }
-    .search-bar input { width: 100%; padding: 8px; border: 1px solid #ccc; border-radius: 4px 0 0 4px; outline: none; }
-    .search-bar button { padding: 8px 12px; background-color: #2e7d32; color: white; border: none; border-radius: 0 4px 4px 0; cursor: pointer; }
-    .header-wa-btn { background-color: #25D366; color: white; text-decoration: none; padding: 6px 10px; font-size: 13px; border-radius: 4px; font-weight: bold; }
-    
-    /* Section Heading */
-    .section { margin-top: 15px; }
-    .section-title { font-size: 16px; margin-bottom: 10px; font-weight: bold; }
-    
-    /* Category Grid */
-    .category-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
-    .category-card { background: white; padding: 10px 5px; text-align: center; border-radius: 6px; border: 1px solid #e0e0e0; }
-    .category-card .icon { font-size: 20px; display: block; margin-bottom: 4px; }
-    .category-card p { font-size: 12px; }
-    
-    /* Product Grid */
-    .product-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; }
-    .product-card { background: white; padding: 10px; border-radius: 6px; border: 1px solid #e0e0e0; text-align: center; }
-    .product-card img { width: 100%; height: auto; border-radius: 4px; }
-    .product-card h3 { font-size: 14px; margin: 6px 0 2px 0; }
-    .product-card .price { color: #e65100; font-weight: bold; font-size: 14px; margin-bottom: 8px; }
-    .wa-order-btn { display: block; background-color: #25D366; color: white; text-decoration: none; padding: 7px; font-size: 12px; font-weight: bold; border-radius: 4px; }
-
-    /* Media Query for Desktop & Tablets */
-    @media (min-width: 600px) {
-      .search-bar { flex: 1; order: 2; margin: 0 15px; }
-      .category-grid { grid-template-columns: repeat(6, 1fr); }
-      .product-grid { grid-template-columns: repeat(4, 1fr); }
-    }
-  </style>
-</head>
-<body>
-
-  <!-- Header Section -->
-  <header class="top-header">
-    <div class="logo">আমার শপ</div>
-    <a href="https://wa.me/8801700000000" class="header-wa-btn">WhatsApp</a>
-    <div class="search-bar">
-      <input type="text" placeholder="পণ্য খুঁজুন...">
-      <button>সার্চ</button>
-    </div>
-  </header>
-
-  <div class="container">
-    <!-- Category Section -->
-    <div class="section">
-      <div class="section-title">ক্যাটাগরি</div>
-      <div class="category-grid">
-        <div class="category-card"><span class="icon">📱</span><p>মোবাইল</p></div>
-        <div class="category-card"><span class="icon">👕</span><p>পোশাক</p></div>
-        <div class="category-card"><span class="icon">👟</span><p>জুতা</p></div>
-      </div>
-    </div>
-
-    <!-- Product Section -->
-    <div class="section">
-      <div class="section-title">প্রোডাক্টস</div>
-      <div class="product-grid">
-        
-        <!-- Product 1 -->
-        <div class="product-card">
-          <img src="https://via.placeholder.com/150" alt="Product Image">
-          <h3>স্মার্ট ওয়াচ</h3>
-          <div class="price">৳ ১,৫০০</div>
-          <a href="https://wa.me/8801700000000?text=I%20want%20to%20buy%20Smart%20Watch" class="wa-order-btn">অর্ডার করুন</a>
-        </div>
-
-        <!-- Product 2 -->
-        <div class="product-card">
-          <img src="https://via.placeholder.com/150" alt="Product Image">
-          <h3>ওয়ারলেস হেডফোন</h3>
-          <div class="price">৳ ১,২০০</div>
-          <a href="https://wa.me/8801700000000?text=I%20want%20to%20buy%20Wireless%20Headphone" class="wa-order-btn">অর্ডার করুন</a>
-        </div>
-
-      </div>
-    </div>
-  </div>
-
-</body>
-</html>
+<html lang="bn"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>HatBazar</title>
+<style>
+body{font-family:Arial;margin:0;background:#f5f5f5}header{background:#198754;color:#fff;padding:16px;text-align:center}
+.container{max-width:1000px;margin:auto;padding:16px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px}
+.card{background:#fff;border-radius:10px;padding:12px;text-align:center;box-shadow:0 2px 6px #ccc}
+.btn{display:inline-block;background:#198754;color:#fff;padding:10px 16px;border-radius:6px;text-decoration:none}
+footer{background:#222;color:#fff;text-align:center;padding:14px;margin-top:20px}
+</style></head><body>
+<header><h1>HatBazar</h1><p>অনলাইন মার্কেটপ্লেস</p></header>
+<div class="container">
+<h2>ক্যাটাগরি</h2>
+<div class="grid">
+<div class="card">👜 জুট ব্যাগ</div><div class="card">🧵 নকশিকাঁথা</div>
+<div class="card">⌚ ঘড়ি</div><div class="card">🕶️ সানগ্লাস</div>
+<div class="card">👕 পোশাক</div><div class="card">📱 মোবাইল</div>
+</div>
+<h2>প্রোডাক্ট</h2>
+<div class="grid">
+<div class="card"><h3>জুট ব্যাগ</h3><p>৳ 350</p><a class="btn" href="https://forms.gle/2a8VPJbT4DwgKWbCA">Order Now</a></div>
+<div class="card"><h3>নকশিকাঁথা</h3><p>৳ 1500</p><a class="btn" href="https://forms.gle/2a8VPJbT4DwgKWbCA">Order Now</a></div>
+</div>
+<h2>যোগাযোগ</h2>
+<p>📞 01947819432</p>
+</div>
+<footer>© HatBazar</footer></body></html>
