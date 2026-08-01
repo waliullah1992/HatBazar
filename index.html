@@ -1,8 +1,365 @@
-<!-- ফ্রি বিজ্ঞাপন ব্যানার স্থান -->
-<div style="background-color: #f4f4f4; border: 2px dashed #00b562; padding: 20px; text-align: center; margin: 20px 0; border-radius: 8px;">
-    <h3 style="color: #333; margin-bottom: 5px;">📢 আপনার ব্যবসার বিজ্ঞাপন দিন এখানে!</h3>
-    <p style="color: #666; font-size: 14px; margin-bottom: 10px;">প্রতিদিন হাজারো মানুষের কাছে আপনার পণ্য পৌঁছে দিন।</p>
-    <a href="https://wa.me/8801947819432" target="_blank" style="background-color: #00b562; color: white; padding: 8px 15px; text-decoration: none; border-radius: 5px; font-weight: bold; display: inline-block;">
-        যোগাযোগ করুন (WhatsApp)
-    </a>
-</div>
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HatBazar (হাটবাজার)</title>
+    <!-- FontAwesome icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #f4f6f8;
+            color: #333;
+        }
+
+        /* Navigation Bar */
+        nav {
+            background-color: #1e7e34;
+            color: white;
+            padding: 12px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .logo {
+            font-size: 20px;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+            gap: 15px;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-size: 13px;
+        }
+
+        /* Hero Banner */
+        .hero {
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://images.unsplash.com/photo-1542838132-92c53300491e?q=80&w=1000') no-repeat center center/cover;
+            height: 240px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: white;
+            padding: 15px;
+        }
+
+        .hero h1 {
+            font-size: 24px;
+            margin-bottom: 8px;
+        }
+
+        .hero p {
+            font-size: 13px;
+            margin-bottom: 15px;
+            color: #ddd;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 10px;
+        }
+
+        .btn-hero-primary {
+            background-color: #ff9800;
+            color: white;
+            padding: 8px 15px;
+            border-radius: 4px;
+            text-decoration: none;
+            font-size: 12px;
+            font-weight: bold;
+        }
+
+        .btn-hero-secondary {
+            background-color: #28a745;
+            color: white;
+            padding: 8px 15px;
+            border-radius: 4px;
+            text-decoration: none;
+            font-size: 12px;
+            font-weight: bold;
+        }
+
+        /* Main Container */
+        .container {
+            max-width: 1000px;
+            margin: 25px auto;
+            padding: 0 15px;
+        }
+
+        .section-title {
+            text-align: center;
+            color: #1e7e34;
+            font-size: 20px;
+            margin-bottom: 20px;
+        }
+
+        /* Product Grid */
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+        }
+
+        .product-card {
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+            text-align: center;
+            padding-bottom: 15px;
+        }
+
+        .product-card img {
+            width: 100%;
+            height: 140px;
+            object-fit: cover;
+        }
+
+        .product-card h3 {
+            font-size: 15px;
+            margin: 10px 0 5px;
+        }
+
+        .product-card p {
+            font-size: 11px;
+            color: #666;
+            margin-bottom: 8px;
+        }
+
+        .product-card .price {
+            color: #1e7e34;
+            font-weight: bold;
+            font-size: 14px;
+            margin-bottom: 10px;
+        }
+
+        .btn-order {
+            background-color: #ff9800;
+            color: white;
+            padding: 6px 15px;
+            border-radius: 4px;
+            text-decoration: none;
+            font-size: 12px;
+            display: inline-block;
+        }
+
+        /* Ad Slots CSS */
+        .ad-space {
+            background-color: #ffffff;
+            border: 1px dashed #28a745;
+            border-radius: 8px;
+            padding: 15px;
+            text-align: center;
+            margin: 20px 0;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.03);
+        }
+
+        .ad-space small {
+            color: #888;
+            font-size: 10px;
+            display: block;
+            margin-bottom: 6px;
+            letter-spacing: 1px;
+        }
+
+        /* Action Boxes */
+        .info-box {
+            background: white;
+            border-radius: 8px;
+            padding: 20px;
+            text-align: center;
+            margin-top: 20px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+
+        .info-box h3 {
+            color: #1e7e34;
+            font-size: 16px;
+            margin-bottom: 6px;
+        }
+
+        .info-box p {
+            font-size: 12px;
+            color: #666;
+            margin-bottom: 12px;
+        }
+
+        .btn-box-action {
+            background-color: #ff9800;
+            color: white;
+            padding: 8px 18px;
+            border-radius: 4px;
+            text-decoration: none;
+            font-size: 12px;
+            font-weight: bold;
+            display: inline-block;
+        }
+
+        .bg-green-box {
+            background-color: #e8f5e9;
+        }
+
+        .btn-green {
+            background-color: #28a745;
+        }
+
+        .contact-box {
+            background: white;
+            max-width: 400px;
+            margin: 25px auto 10px;
+            padding: 12px;
+            text-align: center;
+            border-radius: 6px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+
+        .contact-box a {
+            color: #1e7e34;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 14px;
+        }
+
+        @media (max-width: 600px) {
+            .nav-links {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- হেডার নেভিগেশন -->
+    <nav>
+        <div class="logo">
+            <i class="fa-solid fa-basket-shopping"></i> HatBazar
+        </div>
+        <ul class="nav-links">
+            <li><a href="#">হোম</a></li>
+            <li><a href="#products">পণ্যসমূহ</a></li>
+            <li><a href="#order">অর্ডার করুন</a></li>
+            <li><a href="#seller">বিক্রেতা হন</a></li>
+            <li><a href="#contact">যোগাযোগ</a></li>
+        </ul>
+    </nav>
+
+    <!-- হিরো ব্যানার -->
+    <div class="hero">
+        <h1>হাটবাজারে আপনাকে স্বাগতম!</h1>
+        <p>সতেজ, মানসম্মত ও আকর্ষণীয় পণ্য এখন হাতের মুঠোয়।</p>
+        <div class="hero-buttons">
+            <a href="#order" class="btn-hero-primary"><i class="fa-solid fa-cart-shopping"></i> এখনই অর্ডার করুন</a>
+            <a href="#seller" class="btn-hero-secondary"><i class="fa-solid fa-store"></i> সেলার হিসেবে যুক্ত হন</a>
+        </div>
+    </div>
+
+    <div class="container">
+
+        <!-- 💰 ১. গুগল অ্যাডসেন্স / অ্যাড নেটওয়ার্ক স্লট -->
+        <div class="ad-space">
+            <small>— ADVERTISEMENT —</small>
+            <!-- Google AdSense বা Adsterra এর কোড এখানে পেস্ট করবেন -->
+            <ins class="adsbygoogle"
+                 style="display:block"
+                 data-ad-client="ca-pub-XXXXXXXXXXXXXXXX"
+                 data-ad-slot="XXXXXXXXXX"
+                 data-ad-format="auto"
+                 data-full-width-responsive="true"></ins>
+            <script>
+                 (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>
+        </div>
+
+        <!-- বিশেষ পণ্যসমূহ -->
+        <h2 id="products" class="section-title">আমাদের বিশেষ পণ্যসমূহ</h2>
+        <div class="products-grid">
+            
+            <div class="product-card">
+                <img src="https://images.unsplash.com/photo-1544816155-12df9643f363?q=80&w=400" alt="প্রিমিয়াম জুট ব্যাগ">
+                <h3>প্রিমিয়াম জুট ব্যাগ</h3>
+                <p>পরিবেশবান্ধব ও আকর্ষণীয় ডিজাইন।</p>
+                <div class="price">৳ ৩৫০</div>
+                <a href="#order" class="btn-order"><i class="fa-solid fa-bag-shopping"></i> অর্ডার করুন</a>
+            </div>
+
+            <div class="product-card">
+                <img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?q=80&w=400" alt="স্টাইলিশ ঘড়ি">
+                <h3>স্টাইলিশ ঘড়ি</h3>
+                <p>স্মার্ট ও ক্যাজুয়াল পরিধানের জন্য।</p>
+                <div class="price">৳ ৭৫০</div>
+                <a href="#order" class="btn-order"><i class="fa-solid fa-bag-shopping"></i> অর্ডার করুন</a>
+            </div>
+
+            <div class="product-card">
+                <img src="https://images.unsplash.com/photo-1511499767150-a48a237f0083?q=80&w=400" alt="ফ্যাশনেবল চশমা">
+                <h3>ফ্যাশনেবল চশমা</h3>
+                <p>ইউভি প্রটেকশনসহ সানগ্লাস।</p>
+                <div class="price">৳ ৪৫০</div>
+                <a href="#order" class="btn-order"><i class="fa-solid fa-bag-shopping"></i> অর্ডার করুন</a>
+            </div>
+
+            <div class="product-card">
+                <img src="https://images.unsplash.com/photo-1584100936595-c0654b55a2e2?q=80&w=400" alt="হাতের নকশীকাঁথা">
+                <h3>হাতের নকশীকাঁথা</h3>
+                <p>ঐতিহ্যবাহী হাতের কাজ করা সুতি কাঁথা।</p>
+                <div class="price">৳ ১,২০০</div>
+                <a href="#order" class="btn-order"><i class="fa-solid fa-bag-shopping"></i> অর্ডার করুন</a>
+            </div>
+
+        </div>
+
+        <!-- 💰 ২. সরাসরি স্পনসর বিজ্ঞাপনের জায়গা (হোয়াটসঅ্যাপ লিংকসহ) -->
+        <div class="ad-space">
+            <small>— DIRECT AD BANNER —</small>
+            <p style="font-size: 13px; font-weight: bold; color: #1e7e34; margin-bottom: 5px;">📢 আপনার ব্যবসার বিজ্ঞাপন দিন এখানে!</p>
+            <p style="font-size: 11px; color: #666; margin-bottom: 10px;">প্রতিদিন হাজারো মানুষের কাছে আপনার পণ্য পৌঁছে দিন।</p>
+            <a href="https://wa.me/8801947819432" target="_blank" style="background-color: #25d366; color: white; padding: 6px 12px; border-radius: 4px; text-decoration: none; font-size: 12px; font-weight: bold; display: inline-block;">
+                <i class="fa-brands fa-whatsapp"></i> যোগাযোগ করুন (WhatsApp)
+            </a>
+        </div>
+
+        <!-- সহজে অর্ডার করার সেকশন -->
+        <div id="order" class="info-box">
+            <h3><i class="fa-solid fa-cart-flatbed"></i> সহজে অর্ডার করুন</h3>
+            <p>পছন্দের পণ্য অর্ডার করতে ফরমটি পূরণ করুন।</p>
+            <a href="https://forms.google.com" target="_blank" class="btn-box-action"><i class="fa-solid fa-file-lines"></i> Google Form দিয়ে অর্ডার করুন</a>
+        </div>
+
+        <!-- বিক্রেতা হিসেবে যুক্ত হওয়ার সেকশন -->
+        <div id="seller" class="info-box bg-green-box">
+            <h3><i class="fa-solid fa-store"></i> বিক্রেতা হিসেবে যুক্ত হন</h3>
+            <p>আপনার পণ্য মার্চেন্ট হিসেবে বিক্রি করতে বিক্রেতা নিবন্ধন ফরমটি পূরণ করুন।</p>
+            <a href="https://forms.google.com" target="_blank" class="btn-box-action btn-green">বিক্রেতা নিবন্ধন ফরম</a>
+        </div>
+
+        <!-- যোগাযোগ সেকশন -->
+        <div id="contact" class="contact-box">
+            <a href="https://wa.me/8801947819432" target="_blank"><i class="fa-brands fa-whatsapp"></i> যোগাযোগ করুন: 01947819432</a>
+        </div>
+
+    </div>
+
+</body>
+</html>
