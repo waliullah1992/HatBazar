@@ -3,85 +3,165 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fashionable Square LED Digital Sports Watch</title>
+    <title>হাটবাজার - অনলাইন শপিং</title>
     <style>
-      body {
-        font-family: Arial, sans-serif;
-        background-color: #f4f4f9;
-        margin: 0;
-        padding: 20px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        min-height: 90vh;
-      }
-      .product-card {
-        background: #ffffff;
-        padding: 25px;
-        border-radius: 12px;
-        box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-        max-width: 350px;
-        width: 100%;
-        text-align: center;
-      }
-      .product-card img {
-        width: 100%;
-        height: auto;
-        border-radius: 8px;
-        object-fit: cover;
-      }
-      h3 {
-        color: #333;
-        margin-top: 15px;
-        font-size: 18px;
-      }
-      .price {
-        font-size: 22px;
-        color: #d90429;
-        font-weight: bold;
-        margin: 10px 0;
-      }
-      ul {
-        text-align: left;
-        line-height: 1.8;
-        padding-left: 20px;
-        color: #555;
-        font-size: 14px;
-      }
-      .btn-order {
-        display: block;
-        background-color: #007bff;
-        color: white;
-        padding: 12px 0;
-        text-decoration: none;
-        border-radius: 6px;
-        font-weight: bold;
-        margin-top: 20px;
-        transition: 0.3s;
-      }
-      .btn-order:hover {
-        background-color: #0056b3;
-      }
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: Arial, sans-serif; }
+        body { background-color: #f4f4f9; color: #333; }
+        
+        /* Header & Search */
+        header { background: #fff; padding: 10px 15px; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #ddd; flex-wrap: wrap; gap: 10px; }
+        .logo { font-size: 22px; font-weight: bold; color: #1e7e34; }
+        .search-box { flex: 1; max-width: 400px; display: flex; margin: 0 10px; }
+        .search-box input { width: 100%; padding: 8px 12px; border: 1px solid #1e7e34; border-radius: 4px 0 0 4px; outline: none; }
+        .search-box button { background: #1e7e34; color: #fff; border: none; padding: 8px 15px; border-radius: 0 4px 4px 0; cursor: pointer; }
+        .cart-btn { background: #ff9800; color: #fff; padding: 8px 12px; border-radius: 4px; font-weight: bold; text-decoration: none; font-size: 14px; }
+        
+        /* Nav Menu */
+        nav { background: #1b5e20; overflow-x: auto; white-space: nowrap; padding: 8px 15px; }
+        nav a { color: #fff; text-decoration: none; font-size: 13px; margin-right: 15px; display: inline-block; }
+        
+        /* Banner */
+        .banner { background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://picsum.photos/800/300?grocery'); background-size: cover; background-position: center; color: #fff; text-align: center; padding: 30px 15px; margin-bottom: 20px; }
+        .banner h2 { font-size: 20px; margin-bottom: 8px; }
+        .banner p { font-size: 13px; margin-bottom: 12px; }
+        .banner-btn { background: #ff9800; color: #fff; padding: 8px 16px; text-decoration: none; border-radius: 4px; font-weight: bold; font-size: 13px; }
+
+        /* Container */
+        .container { max-width: 900px; margin: 0 auto; padding: 0 10px; }
+        .section-title { font-size: 16px; font-weight: bold; color: #1b5e20; margin-bottom: 15px; border-bottom: 2px solid #1b5e20; display: inline-block; padding-bottom: 3px; }
+
+        /* Products Grid */
+        .products-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 12px; margin-bottom: 25px; }
+        .product-card { background: #fff; border: 1px solid #e0e0e0; border-radius: 8px; padding: 10px; text-align: center; }
+        .product-card img { width: 100%; height: 120px; object-fit: contain; border-radius: 4px; background: #fafafa; }
+        .product-card h4 { font-size: 13px; margin: 8px 0 4px; color: #333; height: 32px; overflow: hidden; }
+        .product-card .price { font-size: 14px; font-weight: bold; color: #d90429; margin-bottom: 8px; }
+        .buy-btn { display: block; background: #ff9800; color: #fff; text-decoration: none; padding: 6px 0; border-radius: 4px; font-size: 12px; font-weight: bold; }
+
+        /* Seller Box */
+        .seller-box { background: #e8f5e9; border: 1px dashed #2e7d32; border-radius: 8px; padding: 15px; text-align: center; margin-bottom: 25px; }
+        .seller-box h4 { color: #1b5e20; margin-bottom: 5px; font-size: 14px; }
+        .seller-box p { font-size: 12px; color: #555; margin-bottom: 10px; }
+        .seller-btn { background: #2e7d32; color: #fff; padding: 6px 14px; border-radius: 4px; text-decoration: none; font-size: 12px; font-weight: bold; }
+
+        /* Checkout Form */
+        .checkout-card { background: #fff; border: 1px solid #e0e0e0; border-radius: 8px; padding: 15px; margin-bottom: 30px; }
+        .checkout-card h3 { font-size: 15px; color: #1b5e20; margin-bottom: 15px; border-bottom: 1px solid #eee; padding-bottom: 8px; }
+        .form-group { margin-bottom: 12px; text-align: left; }
+        .form-group label { display: block; font-size: 12px; font-weight: bold; margin-bottom: 4px; color: #444; }
+        .form-group input { width: 100%; padding: 8px; border: 1px solid #ccc; border-radius: 4px; font-size: 13px; }
+        .payment-methods { display: flex; gap: 15px; font-size: 12px; margin-top: 5px; }
+        .whatsapp-btn { display: block; width: 100%; background: #25d366; color: #fff; border: none; padding: 10px; border-radius: 4px; font-weight: bold; font-size: 14px; cursor: pointer; text-align: center; margin-top: 15px; text-decoration: none; }
+
+        /* Footer */
+        footer { text-align: center; padding: 15px; font-size: 11px; color: #777; background: #fff; border-top: 1px solid #e0e0e0; margin-top: 20px; }
     </style>
 </head>
 <body>
 
-<div class="product-card">
-    <img src="Screenshot_20260802-223435.png" alt="Fashionable Square LED Digital Sports Watch">
-    
-    <h3>⌚ Fashionable Square LED Digital Sports Watch</h3>
-    <p class="price">মূল্য: ৳১৫০</p>
-    
-    <ul>
-        <li>✔️ আধুনিক Square LED ডিজাইন</li>
-        <li>✔️ ডিজিটাল টাইম ডিসপ্লে</li>
-        <li>✔️ নরম সিলিকন স্ট্র্যাপ</li>
-        <li>✔️ দৈনন্দিন ব্যবহার ও স্পোর্টসের জন্য উপযোগী</li>
-    </ul>
+    <!-- Header -->
+    <header>
+        <div class="logo">হাটবাজার</div>
+        <div class="search-box">
+            <input type="text" placeholder="পণ্য খুঁজুন (যেমন: ঘড়ি, ব্যাগ, চশমা)...">
+            <button>খুঁজুন</button>
+        </div>
+        <a href="#" class="cart-btn">🛒 কার্ট</a>
+    </header>
 
-    <!-- আপনার দারাজ লিংকটি এখানে বসানো হয়েছে -->
-    <a href="https://s.daraz.com.bd/s.bIXpQ" class="btn-order" target="_blank">🛒 Order Now</a>
-</div>
+    <!-- Navigation Bar -->
+    <nav>
+        <a href="#">হোম</a>
+        <a href="#">≡ সকল ক্যাটাগরি (১-২৮) ▼</a>
+        <a href="#">গ্রোসারিজ</a>
+        <a href="#">ফ্যাশন ও ঘড়ি</a>
+        <a href="#">ইলেকট্রনিক্স</a>
+        <a href="#">হস্তশিল্প</a>
+        <a href="#">অফারসমূহ</a>
+    </nav>
+
+    <!-- Main Banner -->
+    <div class="banner">
+        <h2>হাটবাজারে আপনাকে স্বাগতম!</h2>
+        <p>সতেজ, মানসম্মত ও আকর্ষণীয় পণ্য এখন হাতের মুঠোয়।</p>
+        <a href="#" class="banner-btn">এখনই কেনাকাটা করুন</a>
+    </div>
+
+    <div class="container">
+        <!-- Products Section -->
+        <div class="section-title">আমাদের বিশেষ পণ্যসমূহ</div>
+        <div class="products-grid">
+            
+            <!-- Product 1 (Your Watch) -->
+            <div class="product-card">
+                <img src="Screenshot_20260802-223435.png" alt="Digital Sports Watch">
+                <h4>Fashionable Square LED Watch</h4>
+                <div class="price">৳ ১৫০</div>
+                <a href="https://s.daraz.com.bd/s.bIXpQ" target="_blank" class="buy-btn">অর্ডার করুন</a>
+            </div>
+
+            <!-- Product 2 -->
+            <div class="product-card">
+                <img src="https://picsum.photos/200/200?bag" alt="Jute Bag">
+                <h4>প্রিমিয়াম জুট ব্যাগ</h4>
+                <div class="price">৳ ৩৫০</div>
+                <a href="#" class="buy-btn">অর্ডার করুন</a>
+            </div>
+
+            <!-- Product 3 -->
+            <div class="product-card">
+                <img src="https://picsum.photos/200/200?glasses" alt="Sunglasses">
+                <h4>ফ্যাশনেবল চশমা</h4>
+                <div class="price">৳ ৪৫০</div>
+                <a href="#" class="buy-btn">অর্ডার করুন</a>
+            </div>
+
+        </div>
+
+        <!-- Seller Registration Box -->
+        <div class="seller-box">
+            <h4>আপনি কি নিজের পণ্য বিক্রি করতে চান?</h4>
+            <p>হাটবাজারে বিক্রেতা হিসেবে যুক্ত হয়ে হাজারো কাস্টমারের কাছে আপনার পণ্য পৌঁছে দিন।</p>
+            <a href="#" class="seller-btn">বিক্রেতা হিসেবে নিবন্ধন করুন</a>
+        </div>
+
+        <!-- Easy Order Form -->
+        <div class="checkout-card">
+            <h3>সহজে অর্ডার করুন (চেকআউট)</h3>
+            <form>
+                <div class="form-group">
+                    <label>পছন্দকৃত পণ্য:</label>
+                    <input type="text" value="Fashionable Square LED Watch (৳ ১৫০)" readonly>
+                </div>
+                <div class="form-group">
+                    <label>আপনার নাম:</label>
+                    <input type="text" placeholder="পুরো নাম লিখুন">
+                </div>
+                <div class="form-group">
+                    <label>মোবাইল নম্বর:</label>
+                    <input type="tel" placeholder="017XXXXXXXX">
+                </div>
+                <div class="form-group">
+                    <label>ডেলিভারি ঠিকানা:</label>
+                    <input type="text" placeholder="বাসা/রোড নম্বর, এলাকা, জেলা">
+                </div>
+                <div class="form-group">
+                    <label>পেমেন্ট মাধ্যম:</label>
+                    <div class="payment-methods">
+                        <label><input type="radio" name="pay" checked> ক্যাশ অন ডেলিভারি</label>
+                        <label><input type="radio" name="pay"> বিকাশ</label>
+                        <label><input type="radio" name="pay"> নগদ</label>
+                    </div>
+                </div>
+                <a href="https://wa.me/?text=আমি%20অর্ডার%20করতে%20চাই" target="_blank" class="whatsapp-btn">💬 অর্ডার নিশ্চিত করুন (WhatsApp)</a>
+            </form>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        © 2026 HatBazar. সর্বস্বত্ব সংরক্ষিত। | যোগাযোগ: 01947819432
+    </footer>
 
 </body>
 </html>
