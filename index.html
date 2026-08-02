@@ -1,133 +1,160 @@
-<!DOCTYPE html>
-<html lang="bn">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HatBazar - অনলাইন শপিং</title>
-    <!-- Tailwind CSS CDN -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Font Awesome for Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-</head>
-<body class="bg-gray-100 font-sans">
+    <!-- ================= Part 2 Starts Here ================= -->
 
-    <!-- Top Announcement Bar -->
-    <div class="bg-gray-800 text-white text-xs py-1 px-4">
-        <div class="container mx-mx-auto flex justify-between items-center max-w-7xl mx-auto">
-            <div>
-                <span>স্বাগতম HatBazar-এ! সেরা দামে কেনাকাটা করুন।</span>
-            </div>
-            <div class="flex gap-4">
-                <a href="#" class="hover:underline">সাহায্য</a>
-                <a href="#" class="hover:underline">ট্র্যাক অর্ডার</a>
-                <a href="#" class="hover:underline">ভাষা: বাংলা</a>
-            </div>
-        </div>
-    </div>
-
-    <!-- Main Header -->
-    <header class="bg-orange-600 text-white sticky top-0 z-50 shadow-md">
-        <div class="container max-w-7xl mx-auto px-4 py-3 flex items-center justify-between gap-4">
-            
-            <!-- Logo -->
-            <a href="#" class="text-2xl font-bold tracking-wide flex items-center gap-1">
-                <span class="text-white">Hat</span><span class="text-yellow-300">Bazar</span>
-            </a>
-
-            <!-- Search Bar -->
-            <div class="flex-1 max-w-2xl mx-4">
-                <form class="flex">
-                    <input type="text" placeholder="HatBazar-এ পণ্য খুঁজুন..." class="w-full px-4 py-2 text-gray-800 rounded-l-md focus:outline-none">
-                    <button type="submit" class="bg-yellow-500 text-gray-900 px-6 py-2 rounded-r-md font-semibold hover:bg-yellow-400 transition">
-                        <i class="fa-solid fa-magnifying-glass"></i>
-                    </button>
-                </form>
-            </div>
-
-            <!-- Header Actions (Cart, Wishlist, Account) -->
-            <div class="flex items-center gap-6">
-                <!-- User Account -->
-                <a href="#" class="flex items-center gap-2 hover:text-yellow-200">
-                    <i class="fa-regular fa-user text-xl"></i>
-                    <span class="hidden md:inline text-sm font-medium">অ্যাকাউন্ট</span>
-                </a>
-
-                <!-- Wishlist -->
-                <a href="#" class="flex items-center gap-1 hover:text-yellow-200 relative">
-                    <i class="fa-regular fa-heart text-xl"></i>
-                    <span class="bg-yellow-400 text-gray-900 text-xs rounded-full h-4 w-4 flex items-center justify-center absolute -top-2 -right-2 font-bold">0</span>
-                </a>
-
-                <!-- Cart -->
-                <a href="#" class="flex items-center gap-2 hover:text-yellow-200 relative">
-                    <i class="fa-solid fa-cart-shopping text-xl"></i>
-                    <span class="bg-yellow-400 text-gray-900 text-xs rounded-full h-4 w-4 flex items-center justify-center absolute -top-2 -right-2 font-bold">0</span>
-                    <span class="hidden md:inline text-sm font-medium">কার্ট</span>
-                </a>
-            </div>
-        </div>
-    </header>
-
-    <!-- Navigation Menu (Categories Bar) -->
-    <nav class="bg-white border-b shadow-sm">
-        <div class="container max-w-7xl mx-auto px-4">
-            <ul class="flex items-center gap-6 text-sm font-medium text-gray-700 py-2.5 overflow-x-auto whitespace-nowrap">
-                <li class="text-orange-600 font-bold flex items-center gap-2 cursor-pointer">
-                    <i class="fa-solid fa-bars"></i> সব ক্যাটাগরি
-                </li>
-                <li class="hover:text-orange-600 cursor-pointer"><a href="#">ইলেক্ট্রনিক্স</a></li>
-                <li class="hover:text-orange-600 cursor-pointer"><a href="#">ফ্যাশন ও লাইফস্টাইল</a></li>
-                <li class="hover:text-orange-600 cursor-pointer"><a href="#">হোম ও কিচেন</a></li>
-                <li class="hover:text-orange-600 cursor-pointer"><a href="#">গ্রোসারি ও বাজার</a></li>
-                <li class="hover:text-orange-600 cursor-pointer"><a href="#">মোবাইল ও গ্যাজেট</a></li>
-                <li class="hover:text-orange-600 cursor-pointer text-red-500 font-bold"><a href="#">অফার / ডিল</a></li>
-            </ul>
-        </div>
-    </nav>
-
-    <!-- Hero Banner Section -->
-    <section class="max-w-7xl mx-auto px-4 py-4">
-        <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
-            
-            <!-- Category Sidebar (Daraz Style) -->
-            <div class="hidden md:block bg-white rounded-md p-3 shadow-sm border border-gray-100">
-                <ul class="space-y-2 text-sm text-gray-600">
-                    <li class="hover:text-orange-600 cursor-pointer flex justify-between items-center py-1 border-b">
-                        <span>স্মার্টফোন ও ট্যাব</span> <i class="fa-solid fa-angle-right text-xs"></i>
-                    </li>
-                    <li class="hover:text-orange-600 cursor-pointer flex justify-between items-center py-1 border-b">
-                        <span>পুরুষদের ফ্যাশন</span> <i class="fa-solid fa-angle-right text-xs"></i>
-                    </li>
-                    <li class="hover:text-orange-600 cursor-pointer flex justify-between items-center py-1 border-b">
-                        <span>নারীদের ফ্যাশন</span> <i class="fa-solid fa-angle-right text-xs"></i>
-                    </li>
-                    <li class="hover:text-orange-600 cursor-pointer flex justify-between items-center py-1 border-b">
-                        <span>কম্পিউটার аксессуারিজ</span> <i class="fa-solid fa-angle-right text-xs"></i>
-                    </li>
-                    <li class="hover:text-orange-600 cursor-pointer flex justify-between items-center py-1 border-b">
-                        <span>সৌন্দর্য ও যত্ন</span> <i class="fa-solid fa-angle-right text-xs"></i>
-                    </li>
-                    <li class="hover:text-orange-600 cursor-pointer flex justify-between items-center py-1">
-                        <span>ঘড়ি ও চশমা</span> <i class="fa-solid fa-angle-right text-xs"></i>
-                    </li>
-                </ul>
-            </div>
-
-            <!-- Hero Slider / Main Banner -->
-            <div class="md:col-span-3">
-                <div class="bg-gradient-to-r from-orange-500 to-amber-500 rounded-lg h-64 md:h-80 flex flex-col justify-center px-8 text-white shadow-md relative overflow-hidden">
-                    <div class="max-w-md z-10">
-                        <span class="bg-yellow-400 text-gray-900 text-xs font-bold px-2.5 py-1 rounded-full uppercase">ধামাকা অফার</span>
-                        <h1 class="text-3xl md:text-5xl font-extrabold my-3">HatBazar মেগা সেল!</h1>
-                        <p class="text-sm md:text-base mb-5">সকল পণ্যে পাচ্ছেন ৫০% পর্যন্ত ছাড়। সীমিত সময়ের জন্য!</p>
-                        <a href="#" class="inline-block bg-white text-orange-600 font-bold px-6 py-2.5 rounded-md hover:bg-gray-100 transition shadow">এখনই কিনুন</a>
+    <!-- Flash Sale Section -->
+    <section class="max-w-7xl mx-auto px-4 py-6">
+        <div class="bg-white rounded-lg p-4 shadow-sm">
+            <!-- Flash Sale Header -->
+            <div class="flex flex-wrap justify-between items-center border-b pb-3 mb-4 gap-2">
+                <div class="flex items-center gap-4">
+                    <h2 class="text-xl font-bold text-gray-800 flex items-center gap-2">
+                        <i class="fa-solid fa-bolt text-yellow-500 text-2xl"></i> ফ্ল্যাশ সেল (Flash Sale)
+                    </h2>
+                    <!-- Timer -->
+                    <div class="flex items-center gap-1 text-xs font-semibold text-white">
+                        <span class="bg-orange-600 px-2 py-1 rounded">০২</span> :
+                        <span class="bg-orange-600 px-2 py-1 rounded">৪৫</span> :
+                        <span class="bg-orange-600 px-2 py-1 rounded">১২</span>
                     </div>
-                    <!-- Decorative Circle Icon in background -->
-                    <i class="fa-solid fa-bag-shopping text-white/10 text-9xl absolute -right-6 -bottom-6"></i>
                 </div>
+                <a href="#" class="text-orange-600 text-sm font-semibold hover:underline">সবগুলো দেখুন &rarr;</a>
             </div>
 
+            <!-- Flash Sale Products Grid -->
+            <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4">
+                
+                <!-- Product Card 1 -->
+                <div class="bg-white border rounded-md p-2 hover:shadow-lg transition group">
+                    <div class="relative overflow-hidden rounded">
+                        <img src="https://via.placeholder.com/150" alt="Product" class="w-full h-36 object-cover group-hover:scale-105 transition duration-300">
+                        <span class="absolute top-1 left-1 bg-red-500 text-white text-[10px] font-bold px-1.5 py-0.5 rounded">-৩০%</span>
+                    </div>
+                    <div class="mt-2">
+                        <h3 class="text-xs font-medium text-gray-800 line-clamp-2 hover:text-orange-600 cursor-pointer">ওয়্যারলেস ব্লুটুথ হেডফোন ৩ডি সাউন্ড</h3>
+                        <div class="mt-1">
+                            <span class="text-sm font-bold text-orange-600">৳৪৫০</span>
+                            <span class="text-xs text-gray-400 line-through ml-1">৳৬৫০</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product Card 2 -->
+                <div class="bg-white border rounded-md p-2 hover:shadow-lg transition group">
+                    <div class="relative overflow-hidden rounded">
+                        <img src="https://via.placeholder.com/150" alt="Product" class="w-full h-36 object-cover group-hover:scale-105 transition duration-300">
+                        <span class="absolute top-1 left-1 bg-red-500 text-white text-[10px] font-bold px-1.5 py-0.5 rounded">-২৫%</span>
+                    </div>
+                    <div class="mt-2">
+                        <h3 class="text-xs font-medium text-gray-800 line-clamp-2 hover:text-orange-600 cursor-pointer">স্মার্ট ওয়াচ ওয়াটারপ্রুফ ফিটনেস ট্র্যাকার</h3>
+                        <div class="mt-1">
+                            <span class="text-sm font-bold text-orange-600">৳১,২০০</span>
+                            <span class="text-xs text-gray-400 line-through ml-1">৳১,৬০০</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product Card 3 -->
+                <div class="bg-white border rounded-md p-2 hover:shadow-lg transition group">
+                    <div class="relative overflow-hidden rounded">
+                        <img src="https://via.placeholder.com/150" alt="Product" class="w-full h-36 object-cover group-hover:scale-105 transition duration-300">
+                        <span class="absolute top-1 left-1 bg-red-500 text-white text-[10px] font-bold px-1.5 py-0.5 rounded">-৫০%</span>
+                    </div>
+                    <div class="mt-2">
+                        <h3 class="text-xs font-medium text-gray-800 line-clamp-2 hover:text-orange-600 cursor-pointer">পুরুষদের ক্যাজুয়াল স্নিকার্স জুতো</h3>
+                        <div class="mt-1">
+                            <span class="text-sm font-bold text-orange-600">৳৭৫০</span>
+                            <span class="text-xs text-gray-400 line-through ml-1">৳১,৫০০</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product Card 4 -->
+                <div class="bg-white border rounded-md p-2 hover:shadow-lg transition group">
+                    <div class="relative overflow-hidden rounded">
+                        <img src="https://via.placeholder.com/150" alt="Product" class="w-full h-36 object-cover group-hover:scale-105 transition duration-300">
+                        <span class="absolute top-1 left-1 bg-red-500 text-white text-[10px] font-bold px-1.5 py-0.5 rounded">-১৫%</span>
+                    </div>
+                    <div class="mt-2">
+                        <h3 class="text-xs font-medium text-gray-800 line-clamp-2 hover:text-orange-600 cursor-pointer">পাওয়ার ব্যাংক ১০,০০০mAh দ্রুত চার্জিং</h3>
+                        <div class="mt-1">
+                            <span class="text-sm font-bold text-orange-600">৳৮৫০</span>
+                            <span class="text-xs text-gray-400 line-through ml-1">৳১,০০০</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product Card 5 -->
+                <div class="bg-white border rounded-md p-2 hover:shadow-lg transition group">
+                    <div class="relative overflow-hidden rounded">
+                        <img src="https://via.placeholder.com/150" alt="Product" class="w-full h-36 object-cover group-hover:scale-105 transition duration-300">
+                        <span class="absolute top-1 left-1 bg-red-500 text-white text-[10px] font-bold px-1.5 py-0.5 rounded">-৪০%</span>
+                    </div>
+                    <div class="mt-2">
+                        <h3 class="text-xs font-medium text-gray-800 line-clamp-2 hover:text-orange-600 cursor-pointer">মেয়েদের স্টাইলিশ হ্যান্ডব্যাগ সেট</h3>
+                        <div class="mt-1">
+                            <span class="text-sm font-bold text-orange-600">৳৯৯০</span>
+                            <span class="text-xs text-gray-400 line-through ml-1">৳১,৬৫০</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product Card 6 -->
+                <div class="bg-white border rounded-md p-2 hover:shadow-lg transition group">
+                    <div class="relative overflow-hidden rounded">
+                        <img src="https://via.placeholder.com/150" alt="Product" class="w-full h-36 object-cover group-hover:scale-105 transition duration-300">
+                        <span class="absolute top-1 left-1 bg-red-500 text-white text-[10px] font-bold px-1.5 py-0.5 rounded">-২০%</span>
+                    </div>
+                    <div class="mt-2">
+                        <h3 class="text-xs font-medium text-gray-800 line-clamp-2 hover:text-orange-600 cursor-pointer">ইলেকট্রিক কেটলি ২ লিটার স্টেইনলেস স্টিল</h3>
+                        <div class="mt-1">
+                            <span class="text-sm font-bold text-orange-600">৳৬৯০</span>
+                            <span class="text-xs text-gray-400 line-through ml-1">৳৮৫০</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
         </div>
     </section>
 
-    <!-- Part 1 Ends Here -->
+    <!-- Popular Categories Section -->
+    <section class="max-w-7xl mx-auto px-4 py-4">
+        <div class="bg-white rounded-lg p-4 shadow-sm">
+            <h2 class="text-xl font-bold text-gray-800 mb-4">জনপ্রিয় ক্যাটাগরি</h2>
+            
+            <div class="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 gap-3">
+                
+                <a href="#" class="flex flex-col items-center p-3 border rounded-lg hover:shadow-md transition text-center hover:text-orange-600">
+                    <i class="fa-solid fa-mobile-screen text-3xl text-orange-500 mb-2"></i>
+                    <span class="text-xs font-medium">মোবাইল</span>
+                </a>
+
+                <a href="#" class="flex flex-col items-center p-3 border rounded-lg hover:shadow-md transition text-center hover:text-orange-600">
+                    <i class="fa-solid fa-laptop text-3xl text-blue-500 mb-2"></i>
+                    <span class="text-xs font-medium">ল্যাপটপ</span>
+                </a>
+
+                <a href="#" class="flex flex-col items-center p-3 border rounded-lg hover:shadow-md transition text-center hover:text-orange-600">
+                    <i class="fa-solid fa-shirt text-3xl text-green-500 mb-2"></i>
+                    <span class="text-xs font-medium">ফ্যাশন</span>
+                </a>
+
+                <a href="#" class="flex flex-col items-center p-3 border rounded-lg hover:shadow-md transition text-center hover:text-orange-600">
+                    <i class="fa-solid fa-house-laptop text-3xl text-purple-500 mb-2"></i>
+                    <span class="text-xs font-medium">হোম অ্যাপ্লায়েন্স</span>
+                </a>
+
+                <a href="#" class="flex flex-col items-center p-3 border rounded-lg hover:shadow-md transition text-center hover:text-orange-600">
+                    <i class="fa-solid fa-pump-soap text-3xl text-pink-500 mb-2"></i>
+                    <span class="text-xs font-medium">বিউটি</span>
+                </a>
+
+                <a href="#" class="flex flex-col items-center p-3 border rounded-lg hover:shadow-md transition text-center hover:text-orange-600">
+                    <i class="fa-solid fa-basket-shopping text-3xl text-yellow-500 mb-2"></i>
+                    <span class="text-xs font-medium">গ্রোসারি</span>
+                </a>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Part 2 Ends Here -->
