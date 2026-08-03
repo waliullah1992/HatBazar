@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>HatBazar - অনলাইন মার্কেট</title>
   
-  <!-- Font Awesome & Google Fonts -->
+  <!-- Font Awesome Icons & Google Fonts -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&display=swap" rel="stylesheet">
 
@@ -39,7 +39,7 @@
     }
     .logo { color: #fff; font-size: 20px; font-weight: 700; text-decoration: none; white-space: nowrap; }
     
-    /* Search Box Fix */
+    /* Search Box */
     .search-box {
       display: flex;
       flex: 1;
@@ -63,7 +63,7 @@
       cursor: pointer;
     }
 
-    /* Nav Icons Fix */
+    /* Nav Icons */
     .nav-icons { display: flex; gap: 12px; color: white; align-items: center; }
     .nav-icon-item {
       display: flex;
@@ -115,7 +115,7 @@
       font-size: 13px;
     }
 
-    /* Section Title Layout Fix */
+    /* Section Header */
     .section-header {
       display: flex;
       justify-content: space-between;
@@ -129,7 +129,7 @@
     .timer span { background: #f85606; color: #fff; padding: 2px 5px; border-radius: 3px; font-weight: bold; }
     .see-more { color: #f85606; text-decoration: none; font-size: 13px; font-weight: 600; margin-left: auto; }
 
-    /* Product Grid */
+    /* Product Grid & Cards */
     .product-grid {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
@@ -144,14 +144,15 @@
     }
     .discount {
       position: absolute;
-      top: 8px;
-      left: 8px;
+      top: 12px;
+      left: 12px;
       background: #f85606;
       color: #fff;
       font-size: 10px;
-      padding: 2px 4px;
-      border-radius: 2px;
-      z-index: 2;
+      font-weight: bold;
+      padding: 2px 6px;
+      border-radius: 3px;
+      z-index: 10;
     }
     .product-card img {
       width: 100%;
@@ -215,18 +216,18 @@
       <a href="#" class="see-more">সবগুলো দেখুন →</a>
     </div>
 
-    <!-- Products Grid with Placeholder Images -->
+    <!-- Products Grid with Working Images -->
     <div class="product-grid">
       <div class="product-card">
         <span class="discount">-৩০%</span>
-        <img src="https://via.placeholder.com/150" alt="Headphone">
+        <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=300&q=80" alt="Headphone">
         <div class="p-title">ওয়্যারলেস ব্লুটুথ হেডফোন ৩ডি সাউন্ড</div>
         <div class="price">৳৪৫০ <span class="old-price">৳৬৫০</span></div>
       </div>
 
       <div class="product-card">
         <span class="discount">-২৫%</span>
-        <img src="https://via.placeholder.com/150" alt="Smart Watch">
+        <img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=300&q=80" alt="Smart Watch">
         <div class="p-title">স্মার্ট ওয়াচ ওয়াটারপ্রুফ ফিটনেস ট্র্যাকার</div>
         <div class="price">৳১,২০০ <span class="old-price">৳১,৬০০</span></div>
       </div>
