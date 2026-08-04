@@ -1,51 +1,46 @@
-body{
-    margin:0;
-    font-family:Arial,sans-serif;
-    background:#f5f5f5;
+// HatBazar Script
+
+let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+updateCartCount();
+
+// কার্টে পণ্য যোগ করুন
+function addToCart(productName) {
+    cart.push(productName);
+    localStorage.setItem("cart", JSON.stringify(cart));
+
+    updateCartCount();
+
+    alert(productName + " কার্টে যোগ করা হয়েছে!");
 }
 
-.header{
-    background:#008060;
-    color:white;
-    padding:15px;
+// কার্ট সংখ্যা আপডেট
+function updateCartCount() {
+    const cartButton = document.querySelector(".cart-btn");
+
+    if (cartButton) {
+        cartButton.innerHTML =
+            '<i class="fas fa-shopping-cart"></i> কার্ট (' + cart.length + ')';
+    }
 }
 
-.container{
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    flex-wrap:wrap;
-}
+// সার্চ
+function searchProduct() {
+    const input = document.querySelector('input[type="text"]');
 
-.logo a{
-    color:white;
-    text-decoration:none;
-    font-size:28px;
-    font-weight:bold;
-}
+    if (!input) return;
 
-.search-box input{
-    padding:10px;
-    width:220px;
-}
+    const keyword = input.value.trim().toLowerCase();
 
-.search-box button{
-    padding:10px;
-    background:#ff9800;
-    color:white;
-    border:none;
-    cursor:pointer;
-}
+    const products = document.querySelectorAll(".product-card");
 
-nav ul{
-    display:flex;
-    list-style:none;
-    gap:15px;
-    padding:0;
-}
+    products.forEach(product => {
+        const name = product.querySelector("h3").textContent.toLowerCase();
 
-nav ul li a{
-    color:white;
-    text-decoration:none;
-    font-weight:bold;
+        if (name.includes(keyword)) {
+            product.style.display = "block";
+        } else {
+            product.style.display = "none";
+        }
+    });
 }
