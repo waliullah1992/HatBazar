@@ -1,22 +1,51 @@
-<header class="header">
-  <div class="container">
-    <div class="logo">
-      <a href="index.html">🛒 HatBazar</a>
-    </div>
+body{
+    margin:0;
+    font-family:Arial,sans-serif;
+    background:#f5f5f5;
+}
 
-    <div class="search-box">
-      <input type="text" id="searchInput" placeholder="পণ্য খুঁজুন...">
-      <button onclick="searchProduct()">🔍</button>
-    </div>
+.header{
+    background:#008060;
+    color:white;
+    padding:15px;
+}
 
-    <nav>
-      <ul>
-        <li><a href="index.html">হোম</a></li>
-        <li><a href="products.html">পণ্য</a></li>
-        <li><a href="seller.html">বিক্রেতা</a></li>
-        <li><a href="login.html">লগইন</a></li>
-        <li><a href="cart.html">🛒 কার্ট (<span id="cart-count">0</span>)</a></li>
-      </ul>
-    </nav>
-  </div>
-</header>
+.container{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    flex-wrap:wrap;
+}
+
+.logo a{
+    color:white;
+    text-decoration:none;
+    font-size:28px;
+    font-weight:bold;
+}
+
+.search-box input{
+    padding:10px;
+    width:220px;
+}
+
+.search-box button{
+    padding:10px;
+    background:#ff9800;
+    color:white;
+    border:none;
+    cursor:pointer;
+}
+
+nav ul{
+    display:flex;
+    list-style:none;
+    gap:15px;
+    padding:0;
+}
+
+nav ul li a{
+    color:white;
+    text-decoration:none;
+    font-weight:bold;
+}
