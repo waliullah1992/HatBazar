@@ -1,20 +1,22 @@
-<!DOCTYPE html>
-<html lang="bn">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HatBazar</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
-    <header>
-        <h1>Welcome to HatBazar</h1>
-    </header>
+<header class="header">
+  <div class="container">
+    <div class="logo">
+      <a href="index.html">🛒 HatBazar</a>
+    </div>
 
-    <main>
-        <!-- আপনার ওয়েবসাইটের কনটেন্ট ও বোতাম এখানে থাকবে -->
-    </main>
+    <div class="search-box">
+      <input type="text" id="searchInput" placeholder="পণ্য খুঁজুন...">
+      <button onclick="searchProduct()">🔍</button>
+    </div>
 
-    <script src="script.js"></script>
-</body>
-</html>
+    <nav>
+      <ul>
+        <li><a href="index.html">হোম</a></li>
+        <li><a href="products.html">পণ্য</a></li>
+        <li><a href="seller.html">বিক্রেতা</a></li>
+        <li><a href="login.html">লগইন</a></li>
+        <li><a href="cart.html">🛒 কার্ট (<span id="cart-count">0</span>)</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
