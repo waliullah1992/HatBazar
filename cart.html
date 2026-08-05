@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HatBazar - Shopping Cart</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="header">
+    <h1>🛒 HatBazar</h1>
+    <nav>
+        <a href="index.html">হোম</a> |
+        <a href="cart.html">কার্ট</a>
+    </nav>
+</header>
+
+<div class="container">
+    <h2>আপনার কার্ট</h2>
+
+    <ul id="cartList"></ul>
+
+    <button onclick="clearCart()">কার্ট খালি করুন</button>
+</div>
+
+<script>
+let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+const cartList = document.getElementById("cartList");
+
+function showCart() {
+    cartList.innerHTML = "";
+
+    if (cart.length === 0) {
+        cartList.innerHTML = "<li>আপনার কার্ট খালি।</li>";
+        return;
+    }
+
+    cart.forEach(item => {
+        const li = document.createElement("li");
+        li.textContent = item;
+        cartList.appendChild(li);
+    });
+}
+
+function clearCart() {
+    localStorage.removeItem("cart");
+    cart = [];
+    showCart();
+}
+
+showCart();
+</script>
+
+</body>
+</html>
