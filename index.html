@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>HatBazar - হাটবাজার অনলাইন শপ</title>
+
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
@@ -13,9 +14,12 @@
         <div class="logo">
             <h1>হাটবাজার (HatBazar)</h1>
         </div>
+
         <nav>
             <input type="text" placeholder="পণ্য খুঁজুন...">
-            <button class="cart-btn"><i class="fas fa-shopping-cart"></i> কার্ট (0)</button>
+            <button class="cart-btn">
+                <i class="fas fa-shopping-cart"></i> কার্ট (0)
+            </button>
         </nav>
     </header>
 
@@ -26,6 +30,7 @@
 
     <main>
         <h3>সর্বশেষ পণ্যসমূহ</h3>
+
         <div class="product-grid">
 
             <div class="product-card">
@@ -49,24 +54,29 @@
         <p>&copy; 2026 HatBazar. সর্বস্বত্ব সংরক্ষিত।</p>
     </footer>
 
-    <script src="script.js"><script type="module">
-import { initializeApp } from "https://www.gstatic.com/firebasejs/12.1.0/firebase-app.js";
-import { getAnalytics } from "https://www.gstatic.com/firebasejs/12.1.0/firebase-analytics.js";
+    <!-- আপনার JavaScript -->
+    <script src="script.js"></script>
 
-const firebaseConfig = {
-  apiKey: "AIzaSyDy3huu8PKT4vbwFtegGRFQC78rzVsF0zE",
-  authDomain: "hatbazar-85237.firebaseapp.com",
-  projectId: "hatbazar-85237",
-  storageBucket: "hatbazar-85237.firebasestorage.app",
-  messagingSenderId: "562290198433",
-  appId: "1:562290198433:web:b3c7c3430e59ec1fe0ade0",
-  measurementId: "G-V6KWK9WL5C"
-};
+    <!-- Firebase -->
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/12.1.0/firebase-app.js";
+        import { getAnalytics } from "https://www.gstatic.com/firebasejs/12.1.0/firebase-analytics.js";
 
-const app = initializeApp(firebaseConfig);
-const analytics = getAnalytics(app);
+        const firebaseConfig = {
+            apiKey: "AIzaSyDy3huu8PKT4vbwFtegGRFQC78rzVsF0zE",
+            authDomain: "hatbazar-85237.firebaseapp.com",
+            projectId: "hatbazar-85237",
+            storageBucket: "hatbazar-85237.firebasestorage.app",
+            messagingSenderId: "562290198433",
+            appId: "1:562290198433:web:b3c7c3430e59ec1fe0ade0",
+            measurementId: "G-V6KWK9WL5C"
+        };
 
-console.log("HatBazar Firebase Connected Successfully!");
-</script>
+        const app = initializeApp(firebaseConfig);
+        const analytics = getAnalytics(app);
+
+        console.log("HatBazar Firebase Connected Successfully!");
+    </script>
+
 </body>
 </html>
