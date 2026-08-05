@@ -49,6 +49,24 @@
         <p>&copy; 2026 HatBazar. সর্বস্বত্ব সংরক্ষিত।</p>
     </footer>
 
-    <script src="script.js"></script>
+    <script src="script.js"><script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/12.1.0/firebase-app.js";
+import { getAnalytics } from "https://www.gstatic.com/firebasejs/12.1.0/firebase-analytics.js";
+
+const firebaseConfig = {
+  apiKey: "AIzaSyDy3huu8PKT4vbwFtegGRFQC78rzVsF0zE",
+  authDomain: "hatbazar-85237.firebaseapp.com",
+  projectId: "hatbazar-85237",
+  storageBucket: "hatbazar-85237.firebasestorage.app",
+  messagingSenderId: "562290198433",
+  appId: "1:562290198433:web:b3c7c3430e59ec1fe0ade0",
+  measurementId: "G-V6KWK9WL5C"
+};
+
+const app = initializeApp(firebaseConfig);
+const analytics = getAnalytics(app);
+
+console.log("HatBazar Firebase Connected Successfully!");
+</script>
 </body>
 </html>
