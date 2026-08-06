@@ -5,15 +5,17 @@ import {
   addDoc
 } from "https://www.gstatic.com/firebasejs/12.1.0/firebase-firestore.js";
 
-const firebaseConfig = {
-  apiKey: "আপনার apiKey",
-  authDomain: "আপনার authDomain",
-  projectId: "আপনার projectId",
-  storageBucket: "আপনার storageBucket",
-  messagingSenderId: "আপনার messagingSenderId",
-  appId: "আপনার appId"
-};
 
+
+const firebaseConfig = {
+    apiKey: "AIzaSyDy3huu8PKT4vbwFtegGRFQC78rzVsF0zE",
+    authDomain: "hatbazar-85237.firebaseapp.com",
+    projectId: "hatbazar-85237",
+    storageBucket: "hatbazar-85237.firebasestorage.app",
+    messagingSenderId: "562290198433",
+    appId: "1:562290198433:web:b3c7c3430e59ec1fe0ade0",
+    measurementId: "G-V6KWK9WL5C"
+};
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 
