@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HatBazar Admin Panel</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<h2>HatBazar Admin Panel</h2>
+
+<form id="productForm">
+<input type="text" id="name" placeholder="পণ্যের নাম" required>
+
+<input type="number" id="price" placeholder="দাম" required>
+
+<input type="text" id="image" placeholder="ছবির URL" required>
+
+<textarea id="description" placeholder="বিবরণ"></textarea>
+
+<button type="submit">পণ্য যোগ করুন</button>
+</form>
+
+<div id="message"></div>
+
+<script type="module" src="admin.js"></script>
+
+</body>
+</html>
