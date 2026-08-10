@@ -1,62 +1,69 @@
 <!DOCTYPE html>
 <html lang="bn">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>হাটবাজার (HatBazar)</title>
-  <!-- CSS ফাইল লিঙ্ক -->
-  <link rel="stylesheet" href="style.css">
-  <!-- Font Awesome (কার্ট আইকনের জন্য) -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>হাটবাজার (HatBazar)</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 0; padding: 0; background-color: #f4f4f4; }
+        header { background: #1a3038; color: white; padding: 10px 20px; display: flex; justify-content: space-between; align-items: center; }
+        .banner { background: #eef2f3; text-align: center; padding: 20px; }
+        .btn-sell { background: #e67e22; color: white; border: none; padding: 8px 15px; cursor: pointer; border-radius: 4px; text-decoration: none; }
+        .products { display: flex; gap: 20px; padding: 20px; justify-content: center; }
+        .card { background: white; padding: 15px; border-radius: 5px; text-align: center; width: 200px; box-shadow: 0 0 5px rgba(0,0,0,0.1); }
+        .card img { width: 100%; height: 150px; object-fit: cover; border-radius: 4px; }
+        .btn-buy { background: #27ae60; color: white; border: none; padding: 6px 12px; cursor: pointer; border-radius: 3px; }
+        footer { background: #1a3038; color: white; text-align: center; padding: 10px; margin-top: 20px; }
+    </style>
 </head>
 <body>
 
-  <!-- হেডার সেকশন -->
-  <header>
-    <div class="logo">
-      <h1>হাটবাজার (HatBazar)</h1>
+    <header>
+        <h2>হাটবাজার (HatBazar)</h2>
+        <div>
+            <input type="text" placeholder="পণ্য খুঁজুন...">
+            <button id="cart-btn">কার্ট (0)</button>
+        </div>
+    </header>
+
+    <div class="banner">
+        <h3>সবচেয়ে কম দামে সেরা পণ্য কিনুন ও বিক্রি করুন</h3>
+        <a href="#" class="btn-sell" onclick="sellProduct()">+ আপনার পণ্য বিক্রি করুন</a>
     </div>
-    <div class="search-box">
-      <input type="text" placeholder="পণ্য খুঁজুন..." onkeyup="searchProduct()">
-      <button class="cart-btn"><i class="fas fa-shopping-cart"></i> কার্ট (0)</button>
+
+    <h4 style="margin-left: 20px;">সর্বশেষ পণ্যসমূহ</h4>
+    <div class="products">
+        <div class="card">
+            <img src="https://via.placeholder.com/150" alt="স্মার্টফোন">
+            <h5>স্মার্টফোন</h5>
+            <p>৳ ১২,০০০</p>
+            <button class="btn-buy" onclick="addToCart('স্মার্টফোন')">কিনুন</button>
+        </div>
+
+        <div class="card">
+            <img src="https://via.placeholder.com/150" alt="মেয়েদের থ্রি-পিস">
+            <h5>মেয়েদের থ্রি-পিস</h5>
+            <p>৳ ১,৫০০</p>
+            <button class="btn-buy" onclick="addToCart('মেয়েদের থ্রি-পিস')">কিনুন</button>
+        </div>
     </div>
-  </header>
 
-  <!-- ব্যানার সেকশন -->
-  <section class="banner">
-    <h2>সবচেয়ে কম দামে সেরা পণ্য কিনুন ও বিক্রি করুন</h2>
-    <button class="sell-btn">+ আপনার পণ্য বিক্রি করুন</button>
-  </section>
+    <footer>
+        <p>© 2026 HatBazar. সর্বস্বত্ব সংরক্ষিত।</p>
+    </footer>
 
-  <!-- প্রোডাক্ট সেকশন -->
-  <main class="container">
-    <h3>সর্বশেষ পণ্যসমূহ</h3>
-    <div class="product-grid">
+    <script>
+        let count = 0;
+        
+        function addToCart(productName) {
+            count++;
+            document.getElementById('cart-btn').innerText = `কার্ট (${count})`;
+            alert(productName + " সফলভাবে কার্টে যোগ হয়েছে!");
+        }
 
-      <!-- প্রোডাক্ট কার্ড ১ -->
-      <div class="product-card">
-        <img src="https://via.placeholder.com/200" alt="স্মার্টফোন">
-        <h3>স্মার্টফোন</h3>
-        <p class="price">৳ ১২,০০০</p>
-        <button onclick="addToCart('স্মার্টফোন')">কিনুন</button>
-      </div>
-
-      <!-- প্রোডাক্ট কার্ড ২ -->
-      <div class="product-card">
-        <img src="https://via.placeholder.com/200" alt="মেয়েদের থ্রি-পিস">
-        <h3>মেয়েদের থ্রি-পিস</h3>
-        <p class="price">৳ ১,৫০০</p>
-        <button onclick="addToCart('মেয়েদের থ্রি-পিস')">কিনুন</button>
-      </div>
-
-    </div>
-  </main>
-
-  <!-- ফুটার -->
-  <footer>
-    <p>&copy; 2026 HatBazar. সর্বস্বত্ব সংরক্ষিত।</p>
-  </footer>
-
-  <script src="script.js"></script>
+        function sellProduct() {
+            alert("পণ্য বিক্রির ফর্মটি শীঘ্রই আসছে!");
+        }
+    </script>
 </body>
 </html>
