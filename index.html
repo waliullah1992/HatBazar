@@ -1,82 +1,62 @@
 <!DOCTYPE html>
 <html lang="bn">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HatBazar - হাটবাজার অনলাইন শপ</title>
-
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>হাটবাজার (HatBazar)</title>
+  <!-- CSS ফাইল লিঙ্ক -->
+  <link rel="stylesheet" href="style.css">
+  <!-- Font Awesome (কার্ট আইকনের জন্য) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
 
-    <header>
-        <div class="logo">
-            <h1>হাটবাজার (HatBazar)</h1>
-        </div>
+  <!-- হেডার সেকশন -->
+  <header>
+    <div class="logo">
+      <h1>হাটবাজার (HatBazar)</h1>
+    </div>
+    <div class="search-box">
+      <input type="text" placeholder="পণ্য খুঁজুন..." onkeyup="searchProduct()">
+      <button class="cart-btn"><i class="fas fa-shopping-cart"></i> কার্ট (0)</button>
+    </div>
+  </header>
 
-        <nav>
-            <input type="text" placeholder="পণ্য খুঁজুন...">
-            <button class="cart-btn">
-                <i class="fas fa-shopping-cart"></i> কার্ট (0)
-            </button>
-        </nav>
-    </header>
+  <!-- ব্যানার সেকশন -->
+  <section class="banner">
+    <h2>সবচেয়ে কম দামে সেরা পণ্য কিনুন ও বিক্রি করুন</h2>
+    <button class="sell-btn">+ আপনার পণ্য বিক্রি করুন</button>
+  </section>
 
-    <section class="hero">
-        <h2>সবচেয়ে কম দামে সেরা পণ্য কিনুন ও বিক্রি করুন</h2>
-        <button class="btn-sell">+ আপনার পণ্য বিক্রি করুন</button>
-    </section>
+  <!-- প্রোডাক্ট সেকশন -->
+  <main class="container">
+    <h3>সর্বশেষ পণ্যসমূহ</h3>
+    <div class="product-grid">
 
-    <main>
-        <h3>সর্বশেষ পণ্যসমূহ</h3>
+      <!-- প্রোডাক্ট কার্ড ১ -->
+      <div class="product-card">
+        <img src="https://via.placeholder.com/200" alt="স্মার্টফোন">
+        <h3>স্মার্টফোন</h3>
+        <p class="price">৳ ১২,০০০</p>
+        <button onclick="addToCart('স্মার্টফোন')">কিনুন</button>
+      </div>
 
-        <div class="product-grid">
+      <!-- প্রোডাক্ট কার্ড ২ -->
+      <div class="product-card">
+        <img src="https://via.placeholder.com/200" alt="মেয়েদের থ্রি-পিস">
+        <h3>মেয়েদের থ্রি-পিস</h3>
+        <p class="price">৳ ১,৫০০</p>
+        <button onclick="addToCart('মেয়েদের থ্রি-পিস')">কিনুন</button>
+      </div>
 
-            <div class="product-card">
-                <img src="https://placehold.co/150" alt="Product">
-                <h4>স্মার্টফোন</h4>
-                <p class="price">৳ ১২,০০০</p>
-                <button onclick="addToCart('স্মার্টফোন')">কিনুন</button>
-            </div>
+    </div>
+  </main>
 
-            <div class="product-card">
-                <img src="https://placehold.co/150" alt="Product">
-                <h4>মেয়েদের থ্রি-পিস</h4>
-                <p class="price">৳ ১,৫০০</p>
-                <button onclick="addToCart('মেয়েদের থ্রি-পিস')">কিনুন</button>
-            </div>
+  <!-- ফুটার -->
+  <footer>
+    <p>&copy; 2026 HatBazar. সর্বস্বত্ব সংরক্ষিত।</p>
+  </footer>
 
-        </div>
-    </main>
-
-    <footer>
-        <p>&copy; 2026 HatBazar. সর্বস্বত্ব সংরক্ষিত।</p>
-    </footer>
-
-    <!-- আপনার JavaScript -->
-    <script src="script.js"></script>
-
-    <!-- Firebase -->
-    <script type="module">
-        import { initializeApp } from "https://www.gstatic.com/firebasejs/12.1.0/firebase-app.js";
-        import { getAnalytics } from "https://www.gstatic.com/firebasejs/12.1.0/firebase-analytics.js";
-
-        const firebaseConfig = {
-            apiKey: "AIzaSyDy3huu8PKT4vbwFtegGRFQC78rzVsF0zE",
-            authDomain: "hatbazar-85237.firebaseapp.com",
-            projectId: "hatbazar-85237",
-            storageBucket: "hatbazar-85237.firebasestorage.app",
-            messagingSenderId: "562290198433",
-            appId: "1:562290198433:web:b3c7c3430e59ec1fe0ade0",
-            measurementId: "G-V6KWK9WL5C"
-        };
-
-        const app = initializeApp(firebaseConfig);
-        const analytics = getAnalytics(app);
-
-        console.log("HatBazar Firebase Connected Successfully!");
-    </script>
-
+  <script src="script.js"></script>
 </body>
 </html>
