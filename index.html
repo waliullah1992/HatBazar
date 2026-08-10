@@ -41,7 +41,7 @@
         <h2 style="margin: 0;">হাটবাজার (HatBazar)</h2>
         <div>
             <input type="text" id="searchInput" onkeyup="filterProducts()" placeholder="পণ্য খুঁজুন...">
-            <button id="cart-btn" onclick="openCheckout()">কার্ট (0)</button>
+            <button id="cart-btn" onclick="alert('অর্ডার করতে যেকোনো পণ্যের কিনুন বাটনে ক্লিক করুন।')">কার্ট (0)</button>
         </div>
     </header>
 
@@ -76,13 +76,13 @@
                 </select>
                 <input type="number" id="pPrice" placeholder="মূল্য (টাকা)" required>
                 <input type="tel" id="pPhone" placeholder="বিক্রেতার মোবাইল নম্বর" required>
-                <input type="url" id="pImg" placeholder="আসল ছবির লিংক (URL)" required>
+                <input type="url" id="pImg" placeholder="ছবির ডিরেক্ট লিংক (Image URL)" required>
                 <button type="submit" class="btn-sell" style="width: 100%; margin-top: 10px;">পণ্য যোগ করুন</button>
             </form>
         </div>
     </div>
 
-    <!-- Buy Form Modal (Direct Purchase) -->
+    <!-- Buy Form Modal -->
     <div class="modal" id="buyModal">
         <div class="modal-content">
             <span class="close-btn" onclick="closeModal('buyModal')">&times;</span>
@@ -102,20 +102,19 @@
     </footer>
 
     <script>
+        const defaultImage = "https://images.unsplash.com/photo-1526170375885-4d8ecf77b99f?w=300";
+
         const initialProducts = [
-            { name: "স্মার্টফোন", category: "ইলেক্ট্রনিক্স", price: 12000, phone: "01700000000", img: "https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=300" },
-            { name: "মেয়েদের থ্রি-পিস", category: "পোশাক", price: 1500, phone: "01800000000", img: "https://images.unsplash.com/photo-1583391733956-3750e0ff4e8b?w=300" }
+            { name: "Samsung Galaxy S23", category: "ইলেক্ট্রনিক্স", price: 85000, phone: "01712345678", img: "https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=300" },
+            { name: "মেয়েদের থ্রি-পিস", category: "পোশাক", price: 1500, phone: "01812345678", img: "https://images.unsplash.com/photo-1583391733956-3750e0ff4e8b?w=300" }
         ];
 
-        let products = JSON.parse(localStorage.getItem('hatbazar_products')) || initialProducts;
-        let cart = JSON.parse(localStorage.getItem('hatbazar_cart')) || [];
+        let products = JSON.parse(localStorage.getItem('hatbazar_v2_products')) || initialProducts;
         let currentCategory = 'সব';
         let selectedProduct = null;
 
         function saveAndRender() {
-            localStorage.setItem('hatbazar_products', JSON.stringify(products));
-            localStorage.setItem('hatbazar_cart', JSON.stringify(cart));
-            document.getElementById('cart-btn').innerText = `কার্ট (${cart.length})`;
+            localStorage.setItem('hatbazar_v2_products', JSON.stringify(products));
             renderProducts();
         }
 
@@ -127,11 +126,14 @@
             filtered.forEach(p => {
                 const card = document.createElement('div');
                 card.className = 'card';
+                const imgSrc = (p.img && p.img.startsWith('http')) ? p.img : defaultImage;
+                const phoneNum = p.phone || "01700000000";
+
                 card.innerHTML = `
-                    <img src="${p.img}" alt="${p.name}">
+                    <img src="${imgSrc}" alt="${p.name}" onerror="this.src='${defaultImage}'">
                     <h5>${p.name}</h5>
                     <p>৳ ${p.price}</p>
-                    <div class="seller-phone">📞 ${p.phone}</div>
+                    <div class="seller-phone">📞 ${phoneNum}</div>
                     <button class="btn-buy" onclick="openBuyModal('${p.name}', ${p.price})">কিনুন</button>
                 `;
                 productList.appendChild(card);
@@ -146,7 +148,7 @@
 
         function placeDirectOrder(event) {
             event.preventDefault();
-            alert(`ধন্যবাদ! "${selectedProduct.name}" পণ্যের অর্ডারটি গ্রহণ করা হয়েছে। আমরা শীঘ্রই আপনার নাম্বারে যোগাযোগ করব।`);
+            alert(`ধন্যবাদ! "${selectedProduct.name}" পণ্যের অর্ডারটি গ্রহণ করা হয়েছে। আমরা শীঘ্রই আপনার সাথে যোগাযোগ করব।`);
             closeModal('buyModal');
             event.target.reset();
         }
@@ -160,7 +162,7 @@
                 phone: document.getElementById('pPhone').value,
                 img: document.getElementById('pImg').value
             };
-            products.push(newProd);
+            products.unshift(newProd);
             saveAndRender();
             closeModal('sellModal');
             alert("আপনার পণ্যটি সফলভাবে সাইটে যুক্ত করা হয়েছে!");
