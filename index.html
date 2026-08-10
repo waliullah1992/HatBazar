@@ -19,7 +19,8 @@
         .card { background: white; padding: 15px; border-radius: 8px; text-align: center; width: 220px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
         .card img { width: 100%; height: 160px; object-fit: cover; border-radius: 5px; }
         .card h5 { margin: 10px 0 5px; font-size: 16px; }
-        .card p { color: #e74c3c; font-weight: bold; margin: 5px 0 10px; }
+        .card p { color: #e74c3c; font-weight: bold; margin: 5px 0 5px; }
+        .seller-phone { font-size: 12px; color: #555; margin-bottom: 10px; }
         .btn-buy { background: #27ae60; color: white; border: none; padding: 8px 15px; cursor: pointer; border-radius: 4px; width: 100%; }
         
         /* Modal Popup Design */
@@ -55,6 +56,7 @@
                 <img src="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=300" alt="স্মার্টফোন">
                 <h5>স্মার্টফোন</h5>
                 <p>৳ ১২,০০০</p>
+                <div class="seller-phone">📞 01700000000</div>
                 <button class="btn-buy" onclick="addToCart('স্মার্টফোন', 12000)">কিনুন</button>
             </div>
 
@@ -63,6 +65,7 @@
                 <img src="https://images.unsplash.com/photo-1583391733956-3750e0ff4e8b?w=300" alt="মেয়েদের থ্রি-পিস">
                 <h5>মেয়েদের থ্রি-পিস</h5>
                 <p>৳ ১,৫০০</p>
+                <div class="seller-phone">📞 01800000000</div>
                 <button class="btn-buy" onclick="addToCart('মেয়েদের থ্রি-পিস', 1500)">কিনুন</button>
             </div>
         </div>
@@ -76,6 +79,7 @@
             <form onsubmit="addNewProduct(event)">
                 <input type="text" id="pName" placeholder="পণ্যের নাম" required>
                 <input type="number" id="pPrice" placeholder="মূল্য (টাকা)" required>
+                <input type="tel" id="pPhone" placeholder="বিক্রেতার মোবাইল নম্বর" required>
                 <input type="url" id="pImg" placeholder="ছবির লিংক (URL)" required>
                 <button type="submit" class="btn-sell" style="width: 100%; margin-top: 10px;">পণ্য যোগ করুন</button>
             </form>
@@ -90,7 +94,7 @@
             <p id="cartDetails">আপনার কার্ট খালি!</p>
             <form onsubmit="placeOrder(event)">
                 <input type="text" placeholder="আপনার নাম" required>
-                <input type="tel" placeholder="মোবাইল নম্বর" required>
+                <input type="tel" placeholder="আপনার মোবাইল নম্বর" required>
                 <input type="text" placeholder="ডেলিভারি ঠিকানা" required>
                 <button type="submit" class="btn-buy" style="width: 100%; margin-top: 10px;">অর্ডার সম্পন্ন করুন</button>
             </form>
@@ -104,22 +108,20 @@
     <script>
         let cart = [];
 
-        // Add to Cart Logic
         function addToCart(name, price) {
             cart.push({ name, price });
             document.getElementById('cart-btn').innerText = `কার্ট (${cart.length})`;
             alert(name + " সফলভাবে কার্টে যোগ করা হয়েছে!");
         }
 
-        // Open & Close Modals
         function openModal(id) { document.getElementById(id).style.display = 'flex'; }
         function closeModal(id) { document.getElementById(id).style.display = 'none'; }
 
-        // Dynamic Product Add
         function addNewProduct(event) {
             event.preventDefault();
             const name = document.getElementById('pName').value;
             const price = document.getElementById('pPrice').value;
+            const phone = document.getElementById('pPhone').value;
             const img = document.getElementById('pImg').value;
 
             const productList = document.getElementById('productList');
@@ -129,6 +131,7 @@
                 <img src="${img}" alt="${name}">
                 <h5>${name}</h5>
                 <p>৳ ${price}</p>
+                <div class="seller-phone">📞 ${phone}</div>
                 <button class="btn-buy" onclick="addToCart('${name}', ${price})">কিনুন</button>
             `;
             productList.appendChild(newCard);
@@ -138,7 +141,6 @@
             event.target.reset();
         }
 
-        // Search Filter
         function filterProducts() {
             const query = document.getElementById('searchInput').value.toLowerCase();
             const cards = document.querySelectorAll('.card');
@@ -148,7 +150,6 @@
             });
         }
 
-        // Open Checkout Page
         function openCheckout() {
             if(cart.length === 0) {
                 alert("আপনার কার্ট খালি!");
@@ -159,7 +160,6 @@
             openModal('checkoutModal');
         }
 
-        // Place Order Logic
         function placeOrder(event) {
             event.preventDefault();
             alert("ধন্যবাদ! আপনার অর্ডারটি গ্রহণ করা হয়েছে। আমরা শীঘ্রই যোগাযোগ করব।");
