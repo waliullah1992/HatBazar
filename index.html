@@ -3,7 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HatBazar</title>
+    <!-- Google Search SEO -->
+    <title>HatBazar - সেরা দামে সেরা পণ্য</title>
+    <meta name="description" content="HatBazar-এ পাবেন আকর্ষণীয় মূল্যে মানসম্মত পণ্য। অনলাইন অর্ডার করুন সহজেই।">
+    <meta name="keywords" content="HatBazar, অনলাইন শপ, কেনাকাটা, মোবাইল, থ্রি-পিস">
+
     <style>
         * {
             box-sizing: border-box;
@@ -74,15 +78,47 @@
             margin-bottom: 8px;
         }
 
-        .buy-btn {
+        /* বাটন ও লিংক স্টাইল */
+        .btn-group {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+        }
+
+        .buy-btn, .wa-btn {
             width: 100%;
-            background-color: #007bff;
-            color: white;
-            border: none;
             padding: 6px;
             border-radius: 4px;
             font-size: 12px;
+            border: none;
             cursor: pointer;
+            text-align: center;
+            text-decoration: none;
+            font-weight: bold;
+            display: block;
+        }
+
+        .buy-btn {
+            background-color: #007bff;
+            color: white;
+        }
+
+        .wa-btn {
+            background-color: #25d366;
+            color: white;
+        }
+
+        /* পেমেন্ট ও ইনফো সেকশন */
+        .info-box {
+            max-width: 600px;
+            margin: 20px auto;
+            background: #fff;
+            padding: 12px;
+            border-radius: 8px;
+            border: 1px solid #ddd;
+            font-size: 12px;
+            text-align: center;
+            color: #444;
         }
 
         footer {
@@ -90,6 +126,12 @@
             margin-top: 20px;
             font-size: 11px;
             color: #666;
+        }
+
+        footer a {
+            color: #007bff;
+            text-decoration: none;
+            margin: 0 5px;
         }
     </style>
 </head>
@@ -102,8 +144,11 @@
             <img src="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=400" alt="Samsung Galaxy S23">
             <div class="product-title">Samsung Galaxy S23</div>
             <div class="product-price">৳ 85000</div>
-            <div class="product-phone">📞 01627340645</div>
-            <button class="buy-btn">কিনুন</button>
+            <div class="product-phone">📞 <a href="tel:01627340645" style="color: inherit; text-decoration: none;">01627340645</a></div>
+            <div class="btn-group">
+                <a href="tel:01627340645" class="buy-btn">কল দিয়ে কিনুন</a>
+                <a href="https://wa.me/8801627340645?text=আমি%20Samsung%20Galaxy%20S23%20অর্ডার%20করতে%20চাই" class="wa-btn" target="_blank">WhatsApp অর্ডার</a>
+            </div>
         </div>
 
         <!-- প্রোডাক্ট ২ -->
@@ -111,13 +156,26 @@
             <img src="https://images.unsplash.com/photo-1583391733956-3750e0ff4e8b?w=400" alt="মেয়েদের থ্রি-পিস">
             <div class="product-title">মেয়েদের থ্রি-পিস</div>
             <div class="product-price">৳ 1500</div>
-            <div class="product-phone">📞 01627340645</div>
-            <button class="buy-btn">কিনুন</button>
+            <div class="product-phone">📞 <a href="tel:01627340645" style="color: inherit; text-decoration: none;">01627340645</a></div>
+            <div class="btn-group">
+                <a href="tel:01627340645" class="buy-btn">কল দিয়ে কিনুন</a>
+                <a href="https://wa.me/8801627340645?text=আমি%20মেয়েদের%20থ্রি-পিস%20অর্ডার%20করতে%20চাই" class="wa-btn" target="_blank">WhatsApp অর্ডার</a>
+            </div>
         </div>
     </div>
 
+    <!-- পেমেন্ট ও ডেলিভারি তথ্য -->
+    <div class="info-box">
+        <p>💳 <strong>পেমেন্ট:</strong> ক্যাশ অন ডেলিভারি / বিকাশ / নগদ</p>
+        <p>🚚 <strong>ডেলিভারি:</strong> সারা বাংলাদেশে হোম ডেলিভারি সুব্যবস্থা রয়েছে</p>
+    </div>
+
     <footer>
-        © 2026 HatBazar. সর্বস্বত্ব সংরক্ষিত
+        <p>© 2026 HatBazar. সর্বস্বত্ব সংরক্ষিত</p>
+        <p style="margin-top: 5px;">
+            <a href="https://facebook.com" target="_blank">Facebook Page</a> | 
+            <a href="https://api.whatsapp.com/send?text=HatBazar%20থেকে%20কেনাকাটা%20করুন!" target="_blank">Share on WhatsApp</a>
+        </p>
     </footer>
 
 </body>
