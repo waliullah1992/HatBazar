@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>HatBazar</title>
   <style>
-    /* প্রয়োজনীয় মৌলিক স্টাইল */
     .modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); }
     .modal-content { background: #fff; margin: 10% auto; padding: 20px; width: 90%; max-width: 400px; position: relative; border-radius: 8px; }
     .close-btn { position: absolute; right: 15px; top: 10px; cursor: pointer; font-size: 24px; }
@@ -86,26 +85,22 @@
       });
     }
 
-    // মোডাল ওপেন করার ফাংশন
     function openBuyModal(productName, price) {
       selectedProduct = { name: productName, price: price };
       document.getElementById('buyProductInfo').innerText = `${productName} - ৳${price}`;
       document.getElementById('buyModal').style.display = 'block';
     }
 
-    // মোডাল বন্ধ করার ফাংশন
     function closeModal(modalId) {
       document.getElementById(modalId).style.display = 'none';
     }
 
-    // অর্ডার প্লেস করার ফাংশন
     function placeDirectOrder(event) {
       event.preventDefault();
       alert('আপনার অর্ডারটি সফলভাবে গ্রহণ করা হয়েছে!');
       closeModal('buyModal');
     }
 
-    // পেজ লোড হলে প্রোডাক্ট দেখাবে
     renderProducts();
   </script>
 
