@@ -1,182 +1,268 @@
 <!DOCTYPE html>
 <html lang="bn">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- Google Search SEO -->
-    <title>HatBazar - সেরা দামে সেরা পণ্য</title>
-    <meta name="description" content="HatBazar-এ পাবেন আকর্ষণীয় মূল্যে মানসম্মত পণ্য। অনলাইন অর্ডার করুন সহজেই।">
-    <meta name="keywords" content="HatBazar, অনলাইন শপ, কেনাকাটা, মোবাইল, থ্রি-পিস">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HatBazar - সেরা দামে সেরা পণ্য</title>
+  <meta name="description" content="HatBazar-এ পাবেন আকর্ষনীয় মূল্যে মানসম্মত পণ্য। অনলাইনে অর্ডার করুন সহজেই!">
+  <meta name="keywords" content="HatBazar, অনলাইন শপ, কেনাকাটা, মোবাইল, থ্রি-পিস">
 
-    <style>
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-            font-family: Arial, sans-serif;
-        }
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+    }
 
-        body {
-            background-color: #f4f4f9;
-            padding: 15px;
-        }
+    body {
+      background-color: #f4f4f9;
+      padding: 15px;
+    }
 
-        .product-container {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 12px;
-            max-width: 600px;
-            margin: 0 auto;
-        }
+    /* হেডার */
+    header {
+      text-align: center;
+      background: #2c3e50;
+      color: #ffffff;
+      padding: 15px;
+      border-radius: 8px;
+      margin-bottom: 20px;
+    }
 
-        .product-card {
-            background: #fff;
-            border: 1px solid #ddd;
-            border-radius: 8px;
-            padding: 10px;
-            position: relative;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
-        }
+    header h1 {
+      font-size: 24px;
+      margin-bottom: 4px;
+    }
 
-        .featured-badge {
-            position: absolute;
-            top: 15px;
-            left: 15px;
-            background-color: #ffc107;
-            color: #000;
-            font-size: 10px;
-            font-weight: bold;
-            padding: 2px 6px;
-            border-radius: 3px;
-        }
+    /* প্রডাক্ট গ্রিড */
+    .product-container {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+      max-width: 600px;
+      margin: 0 auto;
+    }
 
-        .product-card img {
-            width: 100%;
-            height: 150px;
-            object-fit: cover;
-            border-radius: 5px;
-            margin-bottom: 8px;
-        }
+    .product-card {
+      background: #fff;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      padding: 10px;
+      position: relative;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
 
-        .product-title {
-            font-size: 13px;
-            font-weight: bold;
-            color: #333;
-            margin-bottom: 4px;
-        }
+    .featured-badge {
+      position: absolute;
+      top: 15px;
+      left: 15px;
+      background-color: #ffc107;
+      color: #000;
+      font-size: 10px;
+      font-weight: bold;
+      padding: 2px 6px;
+      border-radius: 3px;
+    }
 
-        .product-price {
-            font-size: 14px;
-            color: #2c3e50;
-            font-weight: bold;
-            margin-bottom: 4px;
-        }
+    .product-card img {
+      width: 100%;
+      height: 150px;
+      object-fit: cover;
+      border-radius: 5px;
+      margin-bottom: 8px;
+    }
 
-        .product-phone {
-            font-size: 11px;
-            color: #555;
-            margin-bottom: 8px;
-        }
+    .product-title {
+      font-size: 13px;
+      font-weight: bold;
+      color: #333;
+      margin-bottom: 4px;
+    }
 
-        /* বাটন ও লিংক স্টাইল */
-        .btn-group {
-            display: flex;
-            flex-direction: column;
-            gap: 5px;
-        }
+    .product-price {
+      font-size: 14px;
+      color: #2c3e50;
+      font-weight: bold;
+      margin-bottom: 4px;
+    }
 
-        .buy-btn, .wa-btn {
-            width: 100%;
-            padding: 6px;
-            border-radius: 4px;
-            font-size: 12px;
-            border: none;
-            cursor: pointer;
-            text-align: center;
-            text-decoration: none;
-            font-weight: bold;
-            display: block;
-        }
+    .product-phone {
+      font-size: 11px;
+      color: #555;
+      margin-bottom: 8px;
+    }
 
-        .buy-btn {
-            background-color: #007bff;
-            color: white;
-        }
+    /* বাটন */
+    .btn-container {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
 
-        .wa-btn {
-            background-color: #25d366;
-            color: white;
-        }
+    .btn {
+      display: block;
+      text-align: center;
+      padding: 8px 0;
+      border-radius: 4px;
+      font-size: 12px;
+      font-weight: bold;
+      text-decoration: none;
+      color: white;
+    }
 
-        /* পেমেন্ট ও ইনফো সেকশন */
-        .info-box {
-            max-width: 600px;
-            margin: 20px auto;
-            background: #fff;
-            padding: 12px;
-            border-radius: 8px;
-            border: 1px solid #ddd;
-            font-size: 12px;
-            text-align: center;
-            color: #444;
-        }
+    .btn-call {
+      background-color: #007bff;
+    }
 
-        footer {
-            text-align: center;
-            margin-top: 20px;
-            font-size: 11px;
-            color: #666;
-        }
+    .btn-whatsapp {
+      background-color: #25d366;
+    }
 
-        footer a {
-            color: #007bff;
-            text-decoration: none;
-            margin: 0 5px;
-        }
-    </style>
+    /* সার্ভিস নোটিশ */
+    .notice-box {
+      max-width: 600px;
+      margin: 20px auto 10px;
+      background: #fff;
+      padding: 12px;
+      border-radius: 8px;
+      border: 1px solid #ddd;
+      font-size: 11px;
+      text-align: center;
+      line-height: 1.6;
+    }
+
+    /* সরাসরি অর্ডার ফর্ম */
+    .order-form-container {
+      max-width: 600px;
+      margin: 20px auto;
+      background: #fff;
+      padding: 15px;
+      border-radius: 8px;
+      border: 1px solid #ddd;
+    }
+
+    .order-form-container h3 {
+      font-size: 15px;
+      margin-bottom: 12px;
+      color: #2c3e50;
+      text-align: center;
+    }
+
+    .form-group {
+      margin-bottom: 10px;
+    }
+
+    .form-group input, .form-group textarea {
+      width: 100%;
+      padding: 8px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      font-size: 12px;
+    }
+
+    .btn-submit {
+      width: 100%;
+      background: #e67e22;
+      color: white;
+      border: none;
+      padding: 10px;
+      font-size: 13px;
+      font-weight: bold;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    /* ফুটার */
+    footer {
+      text-align: center;
+      font-size: 10px;
+      color: #777;
+      margin-top: 15px;
+    }
+
+    footer a {
+      color: #007bff;
+      text-decoration: none;
+    }
+  </style>
 </head>
 <body>
 
-    <div class="product-container">
-        <!-- প্রোডাক্ট ১ -->
-        <div class="product-card">
-            <span class="featured-badge">Featured</span>
-            <img src="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=400" alt="Samsung Galaxy S23">
-            <div class="product-title">Samsung Galaxy S23</div>
-            <div class="product-price">৳ 85000</div>
-            <div class="product-phone">📞 <a href="tel:01627340645" style="color: inherit; text-decoration: none;">01627340645</a></div>
-            <div class="btn-group">
-                <a href="tel:01627340645" class="buy-btn">কল দিয়ে কিনুন</a>
-                <a href="https://wa.me/8801627340645?text=আমি%20Samsung%20Galaxy%20S23%20অর্ডার%20করতে%20চাই" class="wa-btn" target="_blank">WhatsApp অর্ডার</a>
-            </div>
-        </div>
+  <!-- হেডার -->
+  <header>
+    <h1>HatBazar</h1>
+    <p style="font-size: 11px;">আপনার বিশ্বস্ত অনলাইন শপিং পার্টনার</p>
+  </header>
 
-        <!-- প্রোডাক্ট ২ -->
-        <div class="product-card">
-            <img src="https://images.unsplash.com/photo-1583391733956-3750e0ff4e8b?w=400" alt="মেয়েদের থ্রি-পিস">
-            <div class="product-title">মেয়েদের থ্রি-পিস</div>
-            <div class="product-price">৳ 1500</div>
-            <div class="product-phone">📞 <a href="tel:01627340645" style="color: inherit; text-decoration: none;">01627340645</a></div>
-            <div class="btn-group">
-                <a href="tel:01627340645" class="buy-btn">কল দিয়ে কিনুন</a>
-                <a href="https://wa.me/8801627340645?text=আমি%20মেয়েদের%20থ্রি-পিস%20অর্ডার%20করতে%20চাই" class="wa-btn" target="_blank">WhatsApp অর্ডার</a>
-            </div>
-        </div>
+  <!-- প্রোডাক্ট কার্ডস -->
+  <div class="product-container">
+    
+    <!-- প্রডাক্ট ১ -->
+    <div class="product-card">
+      <span class="featured-badge">Featured</span>
+      <img src="https://via.placeholder.com/150" alt="Samsung Galaxy S23">
+      <div>
+        <div class="product-title">Samsung Galaxy S23</div>
+        <div class="product-price">৳ 85000</div>
+        <div class="product-phone">📞 01627340645</div>
+      </div>
+      <div class="btn-container">
+        <a href="tel:01627340645" class="btn btn-call">কল দিয়ে কিনুন</a>
+        <a href="https://wa.me/8801627340645?text=আমি%20Samsung%20Galaxy%20S23%20অর্ডার%20করতে%20চাই" class="btn btn-whatsapp">WhatsApp অর্ডার</a>
+      </div>
     </div>
 
-    <!-- পেমেন্ট ও ডেলিভারি তথ্য -->
-    <div class="info-box">
-        <p>💳 <strong>পেমেন্ট:</strong> ক্যাশ অন ডেলিভারি / বিকাশ / নগদ</p>
-        <p>🚚 <strong>ডেলিভারি:</strong> সারা বাংলাদেশে হোম ডেলিভারি সুব্যবস্থা রয়েছে</p>
+    <!-- প্রডাক্ট ২ -->
+    <div class="product-card">
+      <img src="https://via.placeholder.com/150" alt="মেয়েদের থ্রি-পিস">
+      <div>
+        <div class="product-title">মেয়েদের থ্রি-পিস</div>
+        <div class="product-price">৳ 1500</div>
+        <div class="product-phone">📞 01627340645</div>
+      </div>
+      <div class="btn-container">
+        <a href="tel:01627340645" class="btn btn-call">কল দিয়ে কিনুন</a>
+        <a href="https://wa.me/8801627340645?text=আমি%20মেয়েদের%20থ্রি-পিস%20অর্ডার%20করতে%20চাই" class="btn btn-whatsapp">WhatsApp অর্ডার</a>
+      </div>
     </div>
 
-    <footer>
-        <p>© 2026 HatBazar. সর্বস্বত্ব সংরক্ষিত</p>
-        <p style="margin-top: 5px;">
-            <a href="https://facebook.com" target="_blank">Facebook Page</a> | 
-            <a href="https://api.whatsapp.com/send?text=HatBazar%20থেকে%20কেনাকাটা%20করুন!" target="_blank">Share on WhatsApp</a>
-        </p>
-    </footer>
+  </div>
+
+  <!-- পেমেন্ট ও ডেলিভারি সেকশন -->
+  <div class="notice-box">
+    💳 <strong>পেমেন্ট:</strong> ক্যাশ অন ডেলিভারি / বিকাশ / নগদ <br>
+    🚚 <strong>ডেলিভারি:</strong> সারা বাংলাদেশে হোম ডেলিভারি সুবিধা রয়েছে
+  </div>
+
+  <!-- কাস্টমার অর্ডার ফর্ম -->
+  <div class="order-form-container">
+    <h3>সহজে অর্ডার করুন</h3>
+    <form action="https://formspree.io/f/your_form_id" method="POST">
+      <div class="form-group">
+        <input type="text" name="name" placeholder="আপনার নাম" required>
+      </div>
+      <div class="form-group">
+        <input type="tel" name="phone" placeholder="মোবাইল নম্বর" required>
+      </div>
+      <div class="form-group">
+        <input type="text" name="product" placeholder="পণ্যের নাম" required>
+      </div>
+      <div class="form-group">
+        <textarea name="address" rows="2" placeholder="পূর্ণাঙ্গ ঠিকানা" required></textarea>
+      </div>
+      <button type="submit" class="btn-submit">অর্ডার কনফার্ম করুন</button>
+    </form>
+  </div>
+
+  <!-- ফুটার -->
+  <footer>
+    <p>© 2026 HatBazar. সর্বস্বত্ব সংরক্ষিত</p>
+    <p><a href="#">Facebook Page</a> | <a href="#">Share on WhatsApp</a></p>
+  </footer>
 
 </body>
 </html>
