@@ -1,309 +1,239 @@
 <!DOCTYPE html>
 <html lang="bn">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>HatBazar - হাটবাজারে আপনাকে স্বাগতম!</title>
-  <style>
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-      font-family: Arial, sans-serif;
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>হাটবাজার - অনলাইন শপ</title>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', Arial, sans-serif; }
+        body { background-color: #f4f6f8; color: #333; }
+        header { background: #fff; padding: 15px 20px; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 2px 5px rgba(0,0,0,0.1); sticky: top; }
+        .logo { font-size: 24px; font-weight: bold; color: #15803d; }
+        .cart-btn { background: #16a34a; color: white; border: none; padding: 10px 18px; border-radius: 6px; font-weight: bold; cursor: pointer; font-size: 15px; }
+        .cart-count { background: #ef4444; color: white; border-radius: 50%; padding: 2px 7px; font-size: 12px; margin-left: 5px; }
+        
+        .hero { background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://images.unsplash.com/photo-1542838132-92c53300491e?q=80&w=1000') center/cover; color: white; text-align: center; padding: 60px 20px; }
+        .hero h2 { font-size: 28px; margin-bottom: 10px; }
+        .hero p { margin-bottom: 20px; font-size: 16px; }
+        .btn-group { display: flex; justify-content: center; gap: 10px; flex-wrap: wrap; }
+        
+        .btn-primary { background: #f59e0b; color: white; text-decoration: none; padding: 10px 20px; border-radius: 6px; font-weight: bold; border: none; cursor: pointer; }
+        .btn-secondary { background: #15803d; color: white; text-decoration: none; padding: 10px 20px; border-radius: 6px; font-weight: bold; border: none; cursor: pointer; }
+        
+        .container { max-width: 1100px; margin: 30px auto; padding: 0 15px; }
+        .section-title { text-align: center; color: #15803d; margin-bottom: 25px; font-size: 22px; }
+        
+        .products-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px; }
+        .product-card { background: white; border-radius: 8px; overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,0.08); text-align: center; padding-bottom: 15px; }
+        .product-card img { width: 100%; h-height: 180px; object-fit: cover; height: 180px; }
+        .product-card h4 { margin: 10px 0 5px; font-size: 18px; }
+        .product-card p { color: #666; font-size: 13px; padding: 0 10px; }
+        .price { color: #15803d; font-size: 20px; font-weight: bold; margin: 10px 0; }
+        .order-btn { background: #f59e0b; color: white; border: none; padding: 8px 15px; border-radius: 5px; font-weight: bold; cursor: pointer; width: 85%; }
 
-    body {
-      background-color: #f8f9fa;
-      color: #333;
-    }
+        .links-section { max-width: 500px; margin: 40px auto; display: flex; flex-direction: column; gap: 12px; }
+        .link-btn { display: block; text-align: center; padding: 12px; border-radius: 6px; color: white; text-decoration: none; font-weight: bold; border: none; cursor: pointer; font-size: 15px; }
+        .wa-btn { background: #25d366; }
+        .call-btn { background: #1f2937; }
 
-    /* ১. হিরো ব্যানার সেকশন */
-    .hero-banner {
-      background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), 
-                  url('https://images.unsplash.com/photo-1542838132-92c53300491e?q=80&w=1000') center/cover no-repeat;
-      color: #fff;
-      text-align: center;
-      padding: 60px 15px;
-    }
-
-    .hero-banner h1 {
-      font-size: 24px;
-      margin-bottom: 8px;
-    }
-
-    .hero-banner p {
-      font-size: 13px;
-      margin-bottom: 20px;
-      color: #ddd;
-    }
-
-    .hero-buttons {
-      display: flex;
-      justify-content: center;
-      gap: 10px;
-      flex-wrap: wrap;
-    }
-
-    .btn-orange {
-      background-color: #ff9800;
-      color: #fff;
-      padding: 8px 16px;
-      border-radius: 4px;
-      text-decoration: none;
-      font-size: 12px;
-      font-weight: bold;
-      border: none;
-      cursor: pointer;
-    }
-
-    .btn-green {
-      background-color: #2e7d32;
-      color: #fff;
-      padding: 8px 16px;
-      border-radius: 4px;
-      text-decoration: none;
-      font-size: 12px;
-      font-weight: bold;
-      border: none;
-      cursor: pointer;
-    }
-
-    /* কমন কন্টেইনার */
-    .container {
-      max-width: 900px;
-      margin: 0 auto;
-      padding: 0 15px;
-    }
-
-    /* সেকশন শিরোনাম */
-    .section-title {
-      text-align: center;
-      color: #2e7d32;
-      font-size: 18px;
-      margin: 25px 0 15px;
-    }
-
-    /* অ্যাডভার্টাইজমেন্ট প্লেসহোল্ডার */
-    .ad-box {
-      border: 1px dashed #4caf50;
-      text-align: center;
-      padding: 10px;
-      margin: 20px auto;
-      font-size: 11px;
-      color: #777;
-      background: #fff;
-      border-radius: 4px;
-    }
-
-    /* ২. প্রডাক্ট গ্রিড সেকশন */
-    .product-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-      gap: 15px;
-    }
-
-    .product-card {
-      background: #fff;
-      border-radius: 6px;
-      padding: 10px;
-      text-align: center;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.05);
-      border: 1px solid #eee;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-    }
-
-    .product-card img {
-      width: 100%;
-      height: 120px;
-      object-fit: cover;
-      border-radius: 4px;
-      margin-bottom: 8px;
-    }
-
-    .product-card h3 {
-      font-size: 13px;
-      color: #222;
-      margin-bottom: 4px;
-    }
-
-    .product-card p {
-      font-size: 10px;
-      color: #777;
-      margin-bottom: 6px;
-    }
-
-    .product-card .price {
-      font-size: 12px;
-      font-weight: bold;
-      color: #2e7d32;
-      margin-bottom: 8px;
-    }
-
-    /* ৩. ডাইরেক্ট অ্যাড ব্যানার সেকশন */
-    .direct-ad-box {
-      border: 1px dashed #2e7d32;
-      background-color: #fff;
-      text-align: center;
-      padding: 15px;
-      border-radius: 6px;
-      margin: 20px 0;
-    }
-
-    .direct-ad-box p {
-      font-size: 11px;
-      color: #555;
-      margin: 4px 0 10px;
-    }
-
-    .btn-whatsapp {
-      background-color: #25d366;
-      color: white;
-      padding: 8px 16px;
-      border-radius: 4px;
-      text-decoration: none;
-      font-size: 12px;
-      font-weight: bold;
-      display: inline-block;
-    }
-
-    /* ৪ & ৫. অর্ডার ও সেলার সেকশন */
-    .action-box {
-      background: #fff;
-      border-radius: 6px;
-      text-align: center;
-      padding: 20px 15px;
-      margin: 15px 0;
-      box-shadow: 0 2px 4px rgba(0,0,0,0.03);
-    }
-
-    .action-box.green-bg {
-      background-color: #e8f5e9;
-    }
-
-    .action-box h3 {
-      font-size: 15px;
-      color: #2e7d32;
-      margin-bottom: 5px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 5px;
-    }
-
-    .action-box p {
-      font-size: 11px;
-      color: #666;
-      margin-bottom: 12px;
-    }
-
-    /* ৬. ফোন নম্বর সেকশন */
-    .contact-box {
-      background: #fff;
-      text-align: center;
-      padding: 12px;
-      border-radius: 6px;
-      margin: 20px 0 30px;
-      box-shadow: 0 1px 3px rgba(0,0,0,0.05);
-    }
-
-    .contact-box a {
-      color: #2e7d32;
-      font-weight: bold;
-      font-size: 13px;
-      text-decoration: none;
-    }
-  </style>
+        /* Modal styling */
+        .modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.6); justify-content: center; align-items: center; z-index: 1000; }
+        .modal-content { background: white; padding: 25px; border-radius: 8px; width: 90%; max-width: 450px; position: relative; max-height: 90vh; overflow-y: auto; }
+        .close-btn { position: absolute; top: 10px; right: 15px; font-size: 22px; cursor: pointer; font-weight: bold; }
+        .input-group { margin-bottom: 12px; text-align: left; }
+        .input-group label { display: block; font-size: 14px; font-weight: bold; margin-bottom: 5px; }
+        .input-group input, .input-group textarea, .input-group select { width: 100%; padding: 8px; border: 1px solid #ccc; border-radius: 4px; }
+    </style>
 </head>
 <body>
 
-  <!-- হিরো ব্যানার -->
-  <div class="hero-banner">
-    <h1>হাটবাজারে আপনাকে স্বাগতম!</h1>
-    <p>সতেজ, মানসম্মত ও আকর্ষণীয় পণ্য এখন হাতের মুঠোয়।</p>
-    <div class="hero-buttons">
-      <a href="#products" class="btn-orange">🛒 এখনই অর্ডার করুন</a>
-      <a href="#seller" class="btn-green">💻 সেলার হিসেবে যুক্ত হন</a>
-    </div>
-  </div>
+    <header>
+        <div class="logo">🛍️ হাটবাজার</div>
+        <button class="cart-btn" onclick="openCart()">🛒 কার্ট <span id="cart-count" class="cart-count">0</span></button>
+    </header>
 
-  <div class="container">
-    
-    <!-- অ্যাডভার্টাইজমেন্ট প্লেসহোল্ডার -->
-    <div class="ad-box">
-      — ADVERTISEMENT —
-    </div>
+    <section class="hero">
+        <h2>হাটবাজারে আপনাকে স্বাগতম!</h2>
+        <p>সতেজ, মানসম্মত ও আকর্ষণীয় পণ্য এখন হাতের মুঠোয়।</p>
+        <div class="btn-group">
+            <a href="#products" class="btn-primary">এখনই অর্ডার করুন</a>
+            <button class="btn-secondary" onclick="openModal('seller-modal')">সেলারে হিসেবে যুক্ত হন</button>
+        </div>
+    </section>
 
-    <!-- আমাদের বিশেষ পণ্যসমূহ -->
-    <h2 class="section-title" id="products">আমাদের বিশেষ পণ্যসমূহ</h2>
-    <div class="product-grid">
-      
-      <!-- প্রডাক্ট ১ -->
-      <div class="product-card">
-        <img src="https://images.unsplash.com/photo-1544816155-12df9643f363?q=80&w=400" alt="প্রিমিয়াম জুট ব্যাগ">
-        <h3>প্রিমিয়াম জুট ব্যাগ</h3>
-        <p>পরিবেশবান্ধব ও আকর্ষনীয় ডিজাইন।</p>
-        <div class="price">৳ ৩৫০</div>
-        <a href="https://wa.me/8801947819432?text=আমি%20প্রিমিয়াম%20জুট%20ব্যাগ%20অর্ডার%20করতে%20চাই" class="btn-orange">🛍️ অর্ডার করুন</a>
-      </div>
-
-      <!-- প্রডাক্ট ২ -->
-      <div class="product-card">
-        <img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?q=80&w=400" alt="স্টাইলিশ ঘড়ি">
-        <h3>স্টাইলিশ ঘড়ি</h3>
-        <p>স্মার্ট ও ক্যাজুয়াল পরিধানের জন্য।</p>
-        <div class="price">৳ ৭৫০</div>
-        <a href="https://wa.me/8801947819432?text=আমি%20স্টাইলিশ%20ঘড়ি%20অর্ডার%20করতে%20চাই" class="btn-orange">🛍️ অর্ডার করুন</a>
-      </div>
-
-      <!-- প্রডাক্ট ৩ -->
-      <div class="product-card">
-        <img src="https://images.unsplash.com/photo-1572635196237-14b3f281503f?q=80&w=400" alt="ফ্যাশনেবল চশমা">
-        <h3>ফ্যাশনেবল চশমা</h3>
-        <p>ইউভি প্রটেকশনসহ সানগ্লাস।</p>
-        <div class="price">৳ ৪৫০</div>
-        <a href="https://wa.me/8801947819432?text=আমি%20ফ্যাশনেবল%20চশমা%20অর্ডার%20করতে%20চাই" class="btn-orange">🛍️ অর্ডার করুন</a>
-      </div>
-
-      <!-- প্রডাক্ট ৪ -->
-      <div class="product-card">
-        <img src="https://images.unsplash.com/photo-1584100936595-c0654b55a2e2?q=80&w=400" alt="হাতের নকশীকাঁথা">
-        <h3>হাতের নকশীকাঁথা</h3>
-        <p>ঐতিহ্যবাহী হাতের কাজ করা সুতি কাঁথা।</p>
-        <div class="price">৳ ১,২০০</div>
-        <a href="https://wa.me/8801947819432?text=আমি%20হাতের%20নকশীকাঁথা%20অর্ডার%20করতে%20চাই" class="btn-orange">🛍️ অর্ডার করুন</a>
-      </div>
-
+    <div class="container" id="products">
+        <h3 class="section-title">আমাদের বিশেষ পণ্যসমূহ</h3>
+        <div class="products-grid">
+            <div class="product-card">
+                <img src="https://images.unsplash.com/photo-1544816155-12df9643f363?w=400" alt="ব্যাগ">
+                <h4>প্রিমিয়াম জুট ব্যাগ</h4>
+                <p>পরিবেশবান্ধব ও আকর্ষণীয় ডিজাইন।</p>
+                <div class="price">৳ ৪৫০</div>
+                <button class="order-btn" onclick="addToCart('প্রিমিয়াম জুট ব্যাগ', 450)">অর্ডার করুন</button>
+            </div>
+            <div class="product-card">
+                <img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=400" alt="ঘড়ি">
+                <h4>স্টাইলিশ ঘড়ি</h4>
+                <p>স্মার্ট ও ক্যাজুয়াল পরিধানের জন্য।</p>
+                <div class="price">৳ ৭৫০</div>
+                <button class="order-btn" onclick="addToCart('স্টাইলিশ ঘড়ি', 750)">অর্ডার করুন</button>
+            </div>
+            <div class="product-card">
+                <img src="https://images.unsplash.com/photo-1511499767150-a48a237f0083?w=400" alt="চশমা">
+                <h4>ফ্যাশনেবল চশমা</h4>
+                <p>ইউভি প্রটেকশনসহ সানগ্লাস।</p>
+                <div class="price">৳ ৪৫০</div>
+                <button class="order-btn" onclick="addToCart('ফ্যাশনেবল চশমা', 450)">অর্ডার করুন</button>
+            </div>
+            <div class="product-card">
+                <img src="https://images.unsplash.com/photo-1600121848594-d8644e57abab?w=400" alt="কাঁথা">
+                <h4>হাতের নকশীকাঁথা</h4>
+                <p>ঐতিহ্যবাহী হাতের কাজ করা সূতি কাঁথা।</p>
+                <div class="price">৳ ১,২০০</div>
+                <button class="order-btn" onclick="addToCart('হাতের নকশীকাঁথা', 1200)">অর্ডার করুন</button>
+            </div>
+        </div>
     </div>
 
-    <!-- ডাইরেক্ট অ্যাড ব্যানার -->
-    <div class="direct-ad-box">
-      <div style="font-size: 10px; color: #888;">— DIRECT AD BANNER —</div>
-      <p>📢 <strong>আপনার ব্যবসার বিজ্ঞাপন দিন এখানে!</strong><br>প্রতিদিন হাজারো মানুষের কাছে আপনার পণ্য পৌঁছে দিন।</p>
-      <a href="https://wa.me/8801947819432?text=আমি%20বিজ্ঞাপন%20দিতে%20চাই" class="btn-whatsapp">💬 যোগাযোগ করুন (WhatsApp)</a>
+    <div class="links-section">
+        <a href="https://wa.me/8801947819432?text=আমি%20হাটবাজার%20থেকে%20পণ্য%20কিনতে%20চাই" target="_blank" class="link-btn wa-btn">💬 সরাসরি যোগাযোগ করুন (WhatsApp)</a>
+        <button class="link-btn btn-primary" onclick="openModal('gform-modal')">📄 Google Form দিয়ে সহজে অর্ডার করুন</button>
+        <button class="link-btn btn-secondary" onclick="openModal('seller-modal')">👤 বিক্রেতা হিসেবে যুক্ত হন (নিবন্ধন)</button>
+        <a href="tel:01947819432" class="link-btn call-btn">📞 কল করুন: 01947819432</a>
     </div>
 
-    <!-- সহজে অর্ডার করুন -->
-    <div class="action-box">
-      <h3>🛒 সহজে অর্ডার করুন</h3>
-      <p>পছন্দের পণ্য অর্ডার করতে ফরমটি পূরণ করুন।</p>
-      <a href="https://forms.google.com" target="_blank" class="btn-orange">📄 Google Form দিয়ে অর্ডার করুন</a>
+    <!-- Cart Modal -->
+    <div id="cart-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeModal('cart-modal')">&times;</span>
+            <h3 style="color:#15803d; margin-bottom:15px;">আপনার কার্ট</h3>
+            <div id="cart-items">কার্ট খালি আছে!</div>
+            <hr style="margin:15px 0;">
+            <div style="font-weight:bold; font-size:18px; margin-bottom:15px;">মোট: <span id="cart-total" style="color:#15803d;">৳ ০</span></div>
+            <button class="btn-secondary" style="width:100%;" onclick="openCheckout()">অর্ডার কনফার্ম করতে যান</button>
+        </div>
     </div>
 
-    <!-- বিক্রেতা হিসেবে যুক্ত হন -->
-    <div class="action-box green-bg" id="seller">
-      <h3>💻 বিক্রেতা হিসেবে যুক্ত হন</h3>
-      <p>আপনার পণ্য মার্চেন্ট হিসেবে বিক্রি করতে বিক্রেতা নিবন্ধন ফরমটি পূরণ করুন।</p>
-      <a href="https://forms.google.com" target="_blank" class="btn-green">বিক্রেতা নিবন্ধন ফরম</a>
+    <!-- Checkout Modal -->
+    <div id="checkout-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeModal('checkout-modal')">&times;</span>
+            <h3 style="color:#15803d; margin-bottom:15px;">অর্ডারের ঠিকানা লিখুন</h3>
+            <form onsubmit="confirmOrder(event)">
+                <div class="input-group">
+                    <label>আপনার নাম</label>
+                    <input type="text" required>
+                </div>
+                <div class="input-group">
+                    <label>মোবাইল নম্বর</label>
+                    <input type="tel" required>
+                </div>
+                <div class="input-group">
+                    <label>ঠিকানা</label>
+                    <textarea required></textarea>
+                </div>
+                <div class="input-group">
+                    <label>পেমেন্ট মেথড</label>
+                    <select>
+                        <option>ক্যাশ অন ডেলিভারি</option>
+                        <option>বিকাশ (bKash)</option>
+                        <option>নগদ (Nagad)</option>
+                    </select>
+                </div>
+                <button type="submit" class="btn-primary" style="width:100%; margin-top:10px;">অর্ডার সম্পন্ন করুন</button>
+            </form>
+        </div>
     </div>
 
-    <!-- ফোন নম্বর যোগাযোগ -->
-    <div class="contact-box">
-      <a href="tel:01947819432">📞 যোগাযোগ করুন: 01947819432</a>
+    <!-- Seller Modal -->
+    <div id="seller-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeModal('seller-modal')">&times;</span>
+            <h3 style="color:#15803d; margin-bottom:15px;">বিক্রেতা নিবন্ধন</h3>
+            <form onsubmit="alert('আপনার আবেদন গৃহীত হয়েছে!'); closeModal('seller-modal'); return false;">
+                <div class="input-group">
+                    <label>দোকানের নাম</label>
+                    <input type="text" required>
+                </div>
+                <div class="input-group">
+                    <label>ফোন নম্বর</label>
+                    <input type="tel" required>
+                </div>
+                <button type="submit" class="btn-secondary" style="width:100%; margin-top:10px;">আবেদন জমা দিন</button>
+            </form>
+        </div>
     </div>
 
-  </div>
+    <!-- Google Form Modal -->
+    <div id="gform-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeModal('gform-modal')">&times;</span>
+            <h3 style="color:#f59e0b; margin-bottom:15px;">Google Form অর্ডার</h3>
+            <p style="margin-bottom:15px;">সরাসরি ফর্মের মাধ্যমে অর্ডার করতে নিচে ক্লিক করুন:</p>
+            <a href="https://forms.google.com" target="_blank" class="btn-primary" style="display:block; text-align:center;">গুগল ফর্ম খুলুন</a>
+        </div>
+    </div>
 
+    <script>
+        let cart = [];
+
+        function addToCart(title, price) {
+            cart.push({ title, price });
+            updateCart();
+            alert('"' + title + '" কার্টে যোগ করা হয়েছে!');
+        }
+
+        function updateCart() {
+            document.getElementById('cart-count').innerText = cart.length;
+            let cartDiv = document.getElementById('cart-items');
+            
+            if (cart.length === 0) {
+                cartDiv.innerHTML = 'কার্ট খালি আছে!';
+                document.getElementById('cart-total').innerText = '৳ ০';
+                return;
+            }
+
+            let html = '';
+            let total = 0;
+            cart.forEach((item, index) => {
+                total += item.price;
+                html += `<div style="display:flex; justify-between; margin-bottom:8px;">
+                    <span>${item.title} - <b>৳${item.price}</b></span>
+                    <button onclick="removeItem(${index})" style="color:red; border:none; background:none; cursor:pointer; font-weight:bold;">[মুছুন]</button>
+                </div>`;
+            });
+            
+            cartDiv.innerHTML = html;
+            document.getElementById('cart-total').innerText = '৳ ' + total;
+        }
+
+        function removeItem(index) {
+            cart.splice(index, 1);
+            updateCart();
+        }
+
+        function openCart() { openModal('cart-modal'); }
+        
+        function openModal(id) { document.getElementById(id).style.display = 'flex'; }
+        
+        function closeModal(id) { document.getElementById(id).style.display = 'none'; }
+
+        function openCheckout() {
+            if(cart.length === 0) {
+                alert('আপনার কার্ট খালি!');
+                return;
+            }
+            closeModal('cart-modal');
+            openModal('checkout-modal');
+        }
+
+        function confirmOrder(e) {
+            e.preventDefault();
+            alert('ধন্যবাদ! আপনার অর্ডারটি সফলভাবে জমা হয়েছে।');
+            cart = [];
+            updateCart();
+            closeModal('checkout-modal');
+        }
+    </script>
 </body>
 </html>
