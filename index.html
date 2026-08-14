@@ -7,7 +7,7 @@
     <style>
         * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', Arial, sans-serif; }
         body { background-color: #f4f6f8; color: #333; }
-        header { background: #fff; padding: 15px 20px; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 2px 5px rgba(0,0,0,0.1); sticky: top; }
+        header { background: #fff; padding: 15px 20px; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 2px 5px rgba(0,0,0,0.1); position: sticky; top: 0; z-index: 100; }
         .logo { font-size: 24px; font-weight: bold; color: #15803d; }
         .cart-btn { background: #16a34a; color: white; border: none; padding: 10px 18px; border-radius: 6px; font-weight: bold; cursor: pointer; font-size: 15px; }
         .cart-count { background: #ef4444; color: white; border-radius: 50%; padding: 2px 7px; font-size: 12px; margin-left: 5px; }
@@ -25,7 +25,7 @@
         
         .products-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px; }
         .product-card { background: white; border-radius: 8px; overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,0.08); text-align: center; padding-bottom: 15px; }
-        .product-card img { width: 100%; h-height: 180px; object-fit: cover; height: 180px; }
+        .product-card img { width: 100%; height: 180px; object-fit: cover; }
         .product-card h4 { margin: 10px 0 5px; font-size: 18px; }
         .product-card p { color: #666; font-size: 13px; padding: 0 10px; }
         .price { color: #15803d; font-size: 20px; font-weight: bold; margin: 10px 0; }
@@ -42,7 +42,7 @@
         .close-btn { position: absolute; top: 10px; right: 15px; font-size: 22px; cursor: pointer; font-weight: bold; }
         .input-group { margin-bottom: 12px; text-align: left; }
         .input-group label { display: block; font-size: 14px; font-weight: bold; margin-bottom: 5px; }
-        .input-group input, .input-group textarea, .input-group select { width: 100%; padding: 8px; border: 1px solid #ccc; border-radius: 4px; }
+        .input-group input, .input-group textarea, .input-group select { width: 100%; padding: 8px; border: 1px solid #ccc; border-radius: 4px; font-size: 15px; }
     </style>
 </head>
 <body>
@@ -57,7 +57,7 @@
         <p>সতেজ, মানসম্মত ও আকর্ষণীয় পণ্য এখন হাতের মুঠোয়।</p>
         <div class="btn-group">
             <a href="#products" class="btn-primary">এখনই অর্ডার করুন</a>
-            <button class="btn-secondary" onclick="openModal('seller-modal')">সেলারে হিসেবে যুক্ত হন</button>
+            <button class="btn-secondary" onclick="openModal('seller-modal')">সেলার হিসেবে যুক্ত হন</button>
         </div>
     </section>
 
@@ -118,29 +118,29 @@
     <div id="checkout-modal" class="modal">
         <div class="modal-content">
             <span class="close-btn" onclick="closeModal('checkout-modal')">&times;</span>
-            <h3 style="color:#15803d; margin-bottom:15px;">অর্ডারের ঠিকানা লিখুন</h3>
-            <form onsubmit="confirmOrder(event)">
+            <h3 style="color:#15803d; margin-bottom:15px;">অর্ডারের তথ্য দিন</h3>
+            <form id="order-form" onsubmit="confirmOrder(event)">
                 <div class="input-group">
                     <label>আপনার নাম</label>
-                    <input type="text" required>
+                    <input type="text" id="customer-name" required placeholder="আপনার পূর্ণ নাম">
                 </div>
                 <div class="input-group">
                     <label>মোবাইল নম্বর</label>
-                    <input type="tel" required>
+                    <input type="tel" id="customer-phone" required placeholder="01XXXXXXXXX">
                 </div>
                 <div class="input-group">
-                    <label>ঠিকানা</label>
-                    <textarea required></textarea>
+                    <label>সম্পূর্ণ ঠিকানা</label>
+                    <textarea id="customer-address" required placeholder="বাসা/রোড, এলাকা, জেলা"></textarea>
                 </div>
                 <div class="input-group">
                     <label>পেমেন্ট মেথড</label>
-                    <select>
-                        <option>ক্যাশ অন ডেলিভারি</option>
-                        <option>বিকাশ (bKash)</option>
-                        <option>নগদ (Nagad)</option>
+                    <select id="payment-method">
+                        <option value="ক্যাশ অন ডেলিভারি">ক্যাশ অন ডেলিভারি</option>
+                        <option value="বিকাশ">বিকাশ (bKash)</option>
+                        <option value="নগদ">নগদ (Nagad)</option>
                     </select>
                 </div>
-                <button type="submit" class="btn-primary" style="width:100%; margin-top:10px;">অর্ডার সম্পন্ন করুন</button>
+                <button type="submit" class="btn-primary" style="width:100%; margin-top:10px;">অর্ডার সম্পন্ন করুন (WhatsApp)</button>
             </form>
         </div>
     </div>
@@ -150,14 +150,18 @@
         <div class="modal-content">
             <span class="close-btn" onclick="closeModal('seller-modal')">&times;</span>
             <h3 style="color:#15803d; margin-bottom:15px;">বিক্রেতা নিবন্ধন</h3>
-            <form onsubmit="alert('আপনার আবেদন গৃহীত হয়েছে!'); closeModal('seller-modal'); return false;">
+            <form onsubmit="submitSeller(event)">
                 <div class="input-group">
                     <label>দোকানের নাম</label>
-                    <input type="text" required>
+                    <input type="text" id="shop-name" required>
                 </div>
                 <div class="input-group">
                     <label>ফোন নম্বর</label>
-                    <input type="tel" required>
+                    <input type="tel" id="shop-phone" required>
+                </div>
+                <div class="input-group">
+                    <label>পণ্যের ধরন (ঐচ্ছিক)</label>
+                    <input type="text" id="shop-type" placeholder="যেমন: জুট পণ্য, ঘড়ি ইত্যাদি">
                 </div>
                 <button type="submit" class="btn-secondary" style="width:100%; margin-top:10px;">আবেদন জমা দিন</button>
             </form>
@@ -171,22 +175,32 @@
             <h3 style="color:#f59e0b; margin-bottom:15px;">Google Form অর্ডার</h3>
             <p style="margin-bottom:15px;">সরাসরি ফর্মের মাধ্যমে অর্ডার করতে নিচে ক্লিক করুন:</p>
             <a href="https://forms.google.com" target="_blank" class="btn-primary" style="display:block; text-align:center;">গুগল ফর্ম খুলুন</a>
+            <p style="margin-top:12px; font-size:13px; color:#666;">নোট: আপনার আসল Google Form লিংক দিয়ে এই লিংকটা বদলে নিন।</p>
         </div>
     </div>
 
     <script>
-        let cart = [];
+        // localStorage থেকে কার্ট লোড
+        let cart = JSON.parse(localStorage.getItem('hatbazar_cart')) || [];
+
+        // পেজ লোড হলে কার্ট আপডেট
+        updateCart();
 
         function addToCart(title, price) {
             cart.push({ title, price });
+            saveCart();
             updateCart();
             alert('"' + title + '" কার্টে যোগ করা হয়েছে!');
+        }
+
+        function saveCart() {
+            localStorage.setItem('hatbazar_cart', JSON.stringify(cart));
         }
 
         function updateCart() {
             document.getElementById('cart-count').innerText = cart.length;
             let cartDiv = document.getElementById('cart-items');
-            
+
             if (cart.length === 0) {
                 cartDiv.innerHTML = 'কার্ট খালি আছে!';
                 document.getElementById('cart-total').innerText = '৳ ০';
@@ -197,29 +211,37 @@
             let total = 0;
             cart.forEach((item, index) => {
                 total += item.price;
-                html += `<div style="display:flex; justify-between; margin-bottom:8px;">
-                    <span>${item.title} - <b>৳${item.price}</b></span>
-                    <button onclick="removeItem(${index})" style="color:red; border:none; background:none; cursor:pointer; font-weight:bold;">[মুছুন]</button>
-                </div>`;
+                html += `
+                    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px; padding:8px; background:#f9fafb; border-radius:6px;">
+                        <span>\( {item.title} — <b>৳ \){item.price}</b></span>
+                        <button onclick="removeItem(${index})" style="color:#ef4444; border:none; background:none; cursor:pointer; font-weight:bold; font-size:18px;">×</button>
+                    </div>`;
             });
-            
+
             cartDiv.innerHTML = html;
             document.getElementById('cart-total').innerText = '৳ ' + total;
         }
 
         function removeItem(index) {
             cart.splice(index, 1);
+            saveCart();
             updateCart();
         }
 
-        function openCart() { openModal('cart-modal'); }
-        
-        function openModal(id) { document.getElementById(id).style.display = 'flex'; }
-        
-        function closeModal(id) { document.getElementById(id).style.display = 'none'; }
+        function openCart() {
+            openModal('cart-modal');
+        }
+
+        function openModal(id) {
+            document.getElementById(id).style.display = 'flex';
+        }
+
+        function closeModal(id) {
+            document.getElementById(id).style.display = 'none';
+        }
 
         function openCheckout() {
-            if(cart.length === 0) {
+            if (cart.length === 0) {
                 alert('আপনার কার্ট খালি!');
                 return;
             }
@@ -229,10 +251,65 @@
 
         function confirmOrder(e) {
             e.preventDefault();
-            alert('ধন্যবাদ! আপনার অর্ডারটি সফলভাবে জমা হয়েছে।');
+
+            const name = document.getElementById('customer-name').value.trim();
+            const phone = document.getElementById('customer-phone').value.trim();
+            const address = document.getElementById('customer-address').value.trim();
+            const payment = document.getElementById('payment-method').value;
+
+            if (!name || !phone || !address) {
+                alert('সব তথ্য পূরণ করুন!');
+                return;
+            }
+
+            // অর্ডার মেসেজ তৈরি
+            let total = 0;
+            let itemsText = cart.map((item, i) => {
+                total += item.price;
+                return `${i + 1}. \( {item.title} — ৳ \){item.price}`;
+            }).join('%0A');
+
+            const message = `নতুন অর্ডার - হাটবাজার%0A%0A` +
+                `নাম: ${name}%0A` +
+                `মোবাইল: ${phone}%0A` +
+                `ঠিকানা: ${address}%0A` +
+                `পেমেন্ট: ${payment}%0A%0A` +
+                `পণ্যসমূহ:%0A${itemsText}%0A%0A` +
+                `মোট: ৳${total}`;
+
+            // WhatsApp ওপেন
+            const whatsappURL = `https://wa.me/8801947819432?text=${message}`;
+            window.open(whatsappURL, '_blank');
+
+            // কার্ট খালি করে দিন
             cart = [];
+            saveCart();
             updateCart();
             closeModal('checkout-modal');
+
+            // ফর্ম রিসেট
+            document.getElementById('order-form').reset();
+
+            alert('ধন্যবাদ! WhatsApp-এ অর্ডার পাঠানো হয়েছে। আমরা শীঘ্রই যোগাযোগ করব।');
+        }
+
+        function submitSeller(e) {
+            e.preventDefault();
+            const shopName = document.getElementById('shop-name').value.trim();
+            const shopPhone = document.getElementById('shop-phone').value.trim();
+            const shopType = document.getElementById('shop-type').value.trim() || 'উল্লেখ নেই';
+
+            const message = `নতুন সেলার আবেদন - হাটবাজার%0A%0A` +
+                `দোকানের নাম: ${shopName}%0A` +
+                `ফোন: ${shopPhone}%0A` +
+                `পণ্যের ধরন: ${shopType}`;
+
+            const whatsappURL = `https://wa.me/8801947819432?text=${message}`;
+            window.open(whatsappURL, '_blank');
+
+            closeModal('seller-modal');
+            e.target.reset();
+            alert('আপনার আবেদন WhatsApp-এ পাঠানো হয়েছে!');
         }
     </script>
 </body>
