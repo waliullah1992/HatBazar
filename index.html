@@ -256,36 +256,53 @@ function placeOrder(e){
     return;
   }
 
-  const name = document.getElementById("name").value;
-  const phone = document.getElementById("phone").value;
-  const address = document.getElementById("address").value;
+  const name = document.getElementById("name").value.trim();
+  const phone = document.getElementById("phone").value.trim();
+  const address = document.getElementById("address").value.trim();
 
   if(!name || !phone || !address){
-    alert("সব তথ্য পূরণ করুন।");
+    alert("নাম, মোবাইল নম্বর ও ঠিকানা পূরণ করুন।");
     return;
   }
 
   const orderId = "HB" + Date.now().toString().slice(-8);
 
-  const total = cart.reduce((sum,id) => {
-    const p = products.find(x => x.id === id);
-    return sum + (p ? p.price : 0);
-  },0);
+  let total = 0;
+  let items = "";
 
-  alert(
-    "অর্ডার সফল হয়েছে!\n\n" +
-    "Order ID: " + orderId +
-    "\nনাম: " + name +
-    "\nমোবাইল: " + phone +
-    "\nমোট: ৳" + total.toLocaleString()
-  );
+  cart.forEach((id, index) => {
+    const p = products.find(x => x.id === id);
+
+    if(p){
+      total += p.price;
+      items += (index + 1) + ". " + p.name +
+               " - ৳" + p.price.toLocaleString() + "\n";
+    }
+  });
+
+  const message =
+    "🛒 HatBazar নতুন অর্ডার\n\n" +
+    "Order ID: " + orderId + "\n" +
+    "নাম: " + name + "\n" +
+    "মোবাইল: " + phone + "\n" +
+    "ঠিকানা: " + address + "\n\n" +
+    "পণ্য:\n" + items +
+    "\nমোট: ৳" + total.toLocaleString() +
+    "\nপেমেন্ট: Cash on Delivery";
+
+  const whatsappNumber = "8801627340645";
+
+  const whatsappURL =
+    "https://wa.me/" + whatsappNumber +
+    "?text=" + encodeURIComponent(message);
 
   cart = [];
   saveCart();
-  closeModal("checkoutModal");
-  renderProducts();
-}
 
+  closeModal("checkoutModal");
+
+  window.open(whatsappURL, "_blank");
+}
 function openModal(id){
   const modal = document.getElementById(id);
   if(modal){
