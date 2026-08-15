@@ -127,49 +127,188 @@ footer{margin-top:40px;background:#111827;color:#fff;padding:35px 18px}.foot{max
 <div class="modal" id="accountModal"><div class="box"><button class="close" onclick="closeModal('accountModal')">×</button><h2>👤 Customer Account</h2><p style="margin:15px 0">এই ডেমো ভার্সনে account interface আছে। আসল registration/login-এর জন্য database ও authentication backend যুক্ত করতে হবে।</p><button class="primary" onclick="alert('Registration backend পরবর্তী ধাপে যুক্ত করা হবে।')">Register / Login</button></div></div>
 
 <script>
-const products=[
-{id:1,name:"স্টাইলিশ ঘড়ি",price:850,old:1200,icon:"⌚",cat:"ঘড়ি"},
-{id:2,name:"ফ্যাশন চশমা",price:550,old:800,icon:"🕶️",cat:"চশমা"},
-{id:3,name:"জুট শপিং ব্যাগ",price:280,old:350,icon:"👜",cat:"জুট ব্যাগ"},
-{id:4,name:"ক্যাজুয়াল টি-শার্ট",price:650,old:900,icon:"👕",cat:"ফ্যাশন"},
-{id:5,name:"স্মার্ট ওয়াচ",price:1450,old:1900,icon:"⌚",cat:"ইলেকট্রনিক্স"},
-{id:6,name:"প্রিমিয়াম জুট ব্যাগ",price:450,old:600,icon:"🛍️",cat:"জুট ব্যাগ"},
-{id:7,name:"সানগ্লাস",price:700,old:950,icon:"😎",cat:"চশমা"},
-{id:8,name:"লেদার ওয়ালেট",price:500,old:700,icon:"👝",cat:"ফ্যাশন"}
+const products = [
+  {id:1,name:"টাইমলেস ঘড়ি",price:850,old:1200,icon:"⌚",cat:"ঘড়ি"},
+  {id:2,name:"ফ্যাশন চশমা",price:550,old:800,icon:"🕶️",cat:"চশমা"},
+  {id:3,name:"জুট শপিং ব্যাগ",price:280,old:350,icon:"👜",cat:"জুট ব্যাগ"},
+  {id:4,name:"কটন টি-শার্ট",price:650,old:900,icon:"👕",cat:"ফ্যাশন"},
+  {id:5,name:"স্মার্ট ওয়াচ",price:1450,old:1900,icon:"⌚",cat:"ইলেকট্রনিক্স"},
+  {id:6,name:"প্রিমিয়াম জুট ব্যাগ",price:450,old:600,icon:"🛍️",cat:"জুট ব্যাগ"},
+  {id:7,name:"সানগ্লাস",price:700,old:950,icon:"😎",cat:"চশমা"},
+  {id:8,name:"লেডিস ওয়ালেট",price:500,old:700,icon:"👛",cat:"ফ্যাশন"}
 ];
-let cart=JSON.parse(localStorage.getItem("hatbazar_cart")||"[]");
+
+let cart = JSON.parse(localStorage.getItem("hatbazar_cart") || "[]");
 
 function renderProducts(){
- const q=document.getElementById("search").value.toLowerCase().trim();
- const list=products.filter(p=>(p.name+" "+p.cat).toLowerCase().includes(q));
- document.getElementById("result").textContent=list.length+"টি পণ্য";
- document.getElementById("productGrid").innerHTML=list.map(p=>`
- <article class="card">
-  <div class="pic">${p.icon}</div>
-  <div class="info"><h3>${p.name}</h3><div class="price">৳${p.price.toLocaleString()} <span class="old">৳${p.old.toLocaleString()}</span></div>
-  <small>${p.cat}</small><button class="add" onclick="addToCart(${p.id})">🛒 কার্টে যোগ করুন</button></div>
- </article>`).join("") || "<p>কোনো পণ্য পাওয়া যায়নি।</p>";
+  const searchBox = document.getElementById("search");
+  const q = searchBox ? searchBox.value.toLowerCase().trim() : "";
+
+  const list = products.filter(p =>
+    (p.name + " " + p.cat).toLowerCase().includes(q)
+  );
+
+  const result = document.getElementById("result");
+  if(result){
+    result.textContent = list.length + "টি পণ্য";
+  }
+
+  const grid = document.getElementById("productGrid");
+  if(!grid) return;
+
+  grid.innerHTML = list.length
+    ? list.map(p => `
+      <article class="card">
+        <div class="pic">${p.icon}</div>
+        <div class="info">
+          <h3>${p.name}</h3>
+          <div class="price">
+            ৳${p.price.toLocaleString()}
+            <span class="old">৳${p.old.toLocaleString()}</span>
+          </div>
+          <small>${p.cat}</small>
+          <button class="add" onclick="addToCart(${p.id})">
+            🛒 কার্টে যোগ করুন
+          </button>
+        </div>
+      </article>
+    `).join("")
+    : "<p>কোনো পণ্য পাওয়া যায়নি।</p>";
 }
-function addToCart(id){cart.push(id);saveCart();alert("পণ্যটি কার্টে যোগ হয়েছে।")}
-function saveCart(){localStorage.setItem("hatbazar_cart",JSON.stringify(cart));document.getElementById("count").textContent=cart.length}
+
+function saveCart(){
+  localStorage.setItem("hatbazar_cart", JSON.stringify(cart));
+
+  const count = document.getElementById("count");
+  if(count){
+    count.textContent = cart.length;
+  }
+}
+
+function addToCart(id){
+  cart.push(id);
+  saveCart();
+  alert("পণ্যটি কার্টে যোগ হয়েছে!");
+}
+
 function openCart(){
- document.getElementById("cartItems").innerHTML=cart.length?cart.map((id,i)=>{let p=products.find(x=>x.id===id);return `<div class="cart-row"><span>${p.icon} ${p.name}</span><b>৳${p.price}</b><button onclick="removeItem(${i})">❌</button></div>`}).join(""):"<p style='padding:20px 0'>কার্ট খালি।</p>";
- document.getElementById("total").textContent=cart.reduce((s,id)=>s+products.find(p=>p.id===id).price,0).toLocaleString();
- openModal("cartModal");
+  const cartItems = document.getElementById("cartItems");
+  const total = document.getElementById("total");
+
+  if(!cartItems || !total){
+    alert("কার্ট প্রস্তুত করা হয়নি।");
+    return;
+  }
+
+  if(cart.length === 0){
+    cartItems.innerHTML = "<p>আপনার কার্ট খালি।</p>";
+    total.textContent = "৳0";
+    openModal("cartModal");
+    return;
+  }
+
+  cartItems.innerHTML = cart.map((id, index) => {
+    const p = products.find(x => x.id === id);
+    if(!p) return "";
+
+    return `
+      <div style="padding:10px;border-bottom:1px solid #ddd">
+        <b>${p.name}</b>
+        <span>৳${p.price.toLocaleString()}</span>
+        <button onclick="removeItem(${index})">
+          ❌ মুছুন
+        </button>
+      </div>
+    `;
+  }).join("");
+
+  const sum = cart.reduce((s,id) => {
+    const p = products.find(x => x.id === id);
+    return s + (p ? p.price : 0);
+  }, 0);
+
+  total.textContent = "৳" + sum.toLocaleString();
+
+  openModal("cartModal");
 }
-function removeItem(i){cart.splice(i,1);saveCart();openCart()}
-function checkout(){if(!cart.length){alert("আগে পণ্য কার্টে যোগ করুন।");return}closeModal("cartModal");openModal("checkoutModal")}
+
+function removeItem(index){
+  cart.splice(index,1);
+  saveCart();
+  openCart();
+}
+
+function checkout(){
+  if(cart.length === 0){
+    alert("আগে কার্টে পণ্য যোগ করুন।");
+    return;
+  }
+
+  closeModal("cartModal");
+  openModal("checkoutModal");
+}
+
 function placeOrder(e){
- e.preventDefault();
- const orderId="HB"+Date.now().toString().slice(-8);
- const total=cart.reduce((s,id)=>s+products.find(p=>p.id===id).price,0);
- alert("অর্ডার সফল!\\nOrder ID: "+orderId+"\\nমোট: ৳"+total.toLocaleString()+"\\n\\nএটি ডেমো অর্ডার। আসল database/order system পরবর্তী ধাপে যুক্ত করতে হবে।");
- cart=[];saveCart();closeModal("checkoutModal");
+  e.preventDefault();
+
+  if(cart.length === 0){
+    alert("কার্ট খালি।");
+    return;
+  }
+
+  const name = document.getElementById("name").value;
+  const phone = document.getElementById("phone").value;
+  const address = document.getElementById("address").value;
+
+  if(!name || !phone || !address){
+    alert("সব তথ্য পূরণ করুন।");
+    return;
+  }
+
+  const orderId = "HB" + Date.now().toString().slice(-8);
+
+  const total = cart.reduce((sum,id) => {
+    const p = products.find(x => x.id === id);
+    return sum + (p ? p.price : 0);
+  },0);
+
+  alert(
+    "অর্ডার সফল হয়েছে!\n\n" +
+    "Order ID: " + orderId +
+    "\nনাম: " + name +
+    "\nমোবাইল: " + phone +
+    "\nমোট: ৳" + total.toLocaleString()
+  );
+
+  cart = [];
+  saveCart();
+  closeModal("checkoutModal");
+  renderProducts();
 }
-function openModal(id){document.getElementById(id).style.display="block"}
-function closeModal(id){document.getElementById(id).style.display="none"}
-window.onclick=e=>{if(e.target.classList.contains("modal"))e.target.style.display="none"}
-renderProducts();saveCart();
+
+function openModal(id){
+  const modal = document.getElementById(id);
+  if(modal){
+    modal.style.display = "block";
+  }
+}
+
+function closeModal(id){
+  const modal = document.getElementById(id);
+  if(modal){
+    modal.style.display = "none";
+  }
+}
+
+window.onclick = function(e){
+  if(e.target.classList.contains("modal")){
+    e.target.style.display = "none";
+  }
+};
+
+renderProducts();
+saveCart();
+</script>
 </script>
 </body>
 </html>
