@@ -2,330 +2,204 @@
 <html lang="bn">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="HatBazar - অনলাইন শপিং ও ই-কমার্স মার্কেটপ্লেস">
-<meta name="keywords" content="HatBazar, ecommerce, online shopping, Bangladesh">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<meta name="description" content="HatBazar - অনলাইন শপিং">
 <title>HatBazar - Online Shopping</title>
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
 body{font-family:Arial,"Noto Sans Bengali",sans-serif;background:#f5f6f8;color:#222}
-a{text-decoration:none;color:inherit}
 button{cursor:pointer;border:0}
-.top{background:#111827;color:#fff;padding:8px 5%;font-size:14px;text-align:center}
+.top{background:#111827;color:#fff;padding:6px;text-align:center;font-size:13px}
 header{background:#fff;position:sticky;top:0;z-index:20;box-shadow:0 2px 10px #0001}
-.nav{max-width:1200px;margin:auto;display:flex;align-items:center;gap:18px;padding:14px 18px}
+.nav{max-width:1200px;margin:auto;display:flex;align-items:center;gap:10px;padding:14px 18px}
 .logo{font-size:27px;font-weight:800;color:#0f766e;white-space:nowrap}
-.search{flex:1;display:flex}
-.search input{width:100%;padding:12px;border:1px solid #ddd;border-radius:8px 0 0 8px;font-size:15px}
-.search button{padding:0 18px;background:#0f766e;color:#fff;border-radius:0 8px 8px 0}
-.navbtn{background:#f1f5f9;padding:11px 14px;border-radius:8px}
-.hero{background:linear-gradient(120deg,#0f766e,#14b8a6);color:#fff;padding:55px 18px}
-.hero-inner{max-width:1200px;margin:auto;display:flex;justify-content:space-between;align-items:center;gap:30px}
-.hero h1{font-size:42px;margin-bottom:12px}.hero p{font-size:18px;line-height:1.7}
-.hero button{margin-top:20px;padding:13px 22px;border-radius:8px;background:#fff;color:#0f766e;font-weight:bold}
-.hero-box{font-size:75px}
+.search{flex:1;display:flex}.search input{width:100%;padding:12px;border:1px solid #ddd;border-radius:8px 0 0 8px;font-size:15px}
+.search button,.navbtn,.primary{background:#0f766e;color:#fff;padding:12px 16px;border-radius:7px;font-weight:bold}
+.search button{border-radius:0 8px 8px 0}.navbtn{background:#f1f5f9;color:#111827}
+.hero{background:linear-gradient(120deg,#0f766e,#14b8a6);color:#fff;padding:52px 5%}
+.hero-inner{max-width:1200px;margin:auto}.hero h1{font-size:40px;margin-bottom:12px}.hero p{font-size:18px;line-height:1.7}
 .container{max-width:1200px;margin:30px auto;padding:0 18px}
 .section-title{display:flex;justify-content:space-between;align-items:center;margin-bottom:18px}
-.categories{display:grid;grid-template-columns:repeat(5,1fr);gap:12px}
-.cat{background:#fff;padding:20px;text-align:center;border-radius:12px;box-shadow:0 2px 8px #0000000d;font-weight:bold}
-.cat div{font-size:34px;margin-bottom:8px}
-.products{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
-.card{background:#fff;border-radius:12px;overflow:hidden;box-shadow:0 2px 10px #0001}
-.pic{height:190px;background:#e2e8f0;display:flex;align-items:center;justify-content:center;font-size:70px}
-.info{padding:15px}.info h3{font-size:17px;margin-bottom:8px}.price{color:#0f766e;font-size:20px;font-weight:bold}
-.old{text-decoration:line-through;color:#999;font-size:13px;margin-left:5px}
-.add{width:100%;margin-top:12px;padding:11px;background:#0f766e;color:#fff;border-radius:7px;font-weight:bold}
-.features{display:grid;grid-template-columns:repeat(4,1fr);gap:15px}
-.feature{background:#fff;padding:20px;border-radius:10px;text-align:center}.feature b{display:block;margin:8px 0}
-footer{margin-top:40px;background:#111827;color:#fff;padding:35px 18px}.foot{max-width:1200px;margin:auto;display:grid;grid-template-columns:2fr 1fr 1fr;gap:30px}.foot p{color:#cbd5e1;line-height:1.7;margin-top:8px}
-.modal{display:none;position:fixed;inset:0;background:#0008;z-index:50;padding:20px;overflow:auto}
-.box{background:#fff;max-width:650px;margin:30px auto;border-radius:12px;padding:22px;position:relative}
-.close{position:absolute;right:15px;top:12px;font-size:25px;background:none}
-.cart-row{display:flex;justify-content:space-between;gap:10px;padding:12px 0;border-bottom:1px solid #eee}
-.total{font-size:21px;font-weight:bold;text-align:right;padding:15px 0}
-.form input,.form textarea,.form select{width:100%;padding:11px;margin:7px 0 12px;border:1px solid #ddd;border-radius:7px}
-.primary{background:#0f766e;color:#fff;padding:12px 18px;border-radius:7px;font-weight:bold}
-.admin-note{background:#fff7ed;padding:15px;border-radius:10px;margin-top:20px;border-left:4px solid #f97316}
-@media(max-width:800px){
- .nav{flex-wrap:wrap}.search{order:3;flex-basis:100%}.hero-inner{flex-direction:column;text-align:center}.hero h1{font-size:32px}
- .categories{grid-template-columns:repeat(2,1fr)}.products{grid-template-columns:repeat(2,1fr)}.features{grid-template-columns:repeat(2,1fr)}.foot{grid-template-columns:1fr}
-}
-@media(max-width:450px){.products{grid-template-columns:1fr 1fr}.pic{height:140px;font-size:55px}.navbtn{padding:9px}.logo{font-size:23px}}
+.categories,.products,.features{display:grid;gap:12px}
+.categories{grid-template-columns:repeat(5,1fr)}.cat{background:#fff;padding:22px 10px;border-radius:12px;text-align:center;font-size:22px;font-weight:bold;box-shadow:0 2px 8px #0000000d}
+.products{grid-template-columns:repeat(4,1fr);gap:18px}.card{background:#fff;border-radius:12px;overflow:hidden;box-shadow:0 2px 10px #0001}.pic{height:170px;background:#e2e8f0;display:flex;align-items:center;justify-content:center;font-size:65px}.info{padding:15px}.info h3{font-size:16px;margin-bottom:8px}.price{font-size:20px;color:#0f766e;font-weight:bold}.old{text-decoration:line-through;color:#999;font-size:13px;margin-left:5px}.add{width:100%;margin-top:12px;background:#0f766e;color:#fff;padding:10px;border-radius:7px}
+.features{grid-template-columns:repeat(4,1fr)}.feature{background:#fff;padding:18px;text-align:center;border-radius:10px}.feature b{display:block;margin-bottom:8px}
+footer{margin-top:40px;background:#111827;color:#fff;padding:35px 18px}.foot{max-width:1200px;margin:auto;display:grid;grid-template-columns:2fr 1fr 1fr;gap:20px}
+.modal{display:none;position:fixed;inset:0;background:#0008;z-index:50;padding:20px}.box{background:#fff;max-width:520px;margin:50px auto;border-radius:12px;padding:22px;position:relative;max-height:85vh;overflow:auto}.close{position:absolute;right:15px;top:10px;background:none;font-size:25px}.box h2{margin-bottom:15px}.box input,.box textarea,.box select{width:100%;padding:11px;margin:7px 0 12px;border:1px solid #ddd;border-radius:7px}.row{display:flex;gap:8px;align-items:center}.row button{background:#ef4444;color:#fff;padding:6px 10px;border-radius:6px}.order{border:1px solid #ddd;border-radius:8px;padding:12px;margin:10px 0}.status{padding:7px;border-radius:6px;background:#f1f5f9}.danger{background:#dc2626!important;color:#fff!important}.admin-note{margin:25px auto;max-width:1200px;background:#fff7ed;border-left:4px solid #f97316;padding:12px}
+@media(max-width:800px){.nav{flex-wrap:wrap}.search{order:3;flex-basis:100%}.categories{grid-template-columns:repeat(2,1fr)}.products{grid-template-columns:repeat(2,1fr)}.features{grid-template-columns:repeat(2,1fr)}.hero h1{font-size:30px}.foot{grid-template-columns:1fr}}
+@media(max-width:450px){.products{grid-template-columns:1fr 1fr}.pic{height:135px;font-size:55px}.logo{font-size:22px}.navbtn{padding:9px 10px}}
 </style>
 </head>
 <body>
-<div class="top">🚚 সারা বাংলাদেশে ডেলিভারি | 💳 Cash on Delivery | 📞 Customer Support</div>
+<div class="top">🇧🇩 সারা বাংলাদেশে ডেলিভারি &nbsp;|&nbsp; 💵 Cash on Delivery &nbsp;|&nbsp; ☎ Customer Support</div>
 
 <header>
 <nav class="nav">
-  <a class="logo" href="#">🛒 HatBazar</a>
-  <div class="search">
-    <input id="search" placeholder="পণ্য খুঁজুন..." oninput="renderProducts()">
-    <button onclick="renderProducts()">🔎</button>
-  </div>
-  <button class="navbtn" onclick="openModal('accountModal')">👤 Account</button>
-  <button class="navbtn" onclick="openCart()">🛒 Cart (<span id="count">0</span>)</button>
+<a class="logo" href="#">🛒 HatBazar</a>
+<div class="search"><input id="search" placeholder="পণ্য খুঁজুন..." oninput="renderProducts()"><button onclick="renderProducts()">🔍</button></div>
+<button class="navbtn" onclick="openModal('accountModal')">👤 Account</button>
+<button class="navbtn" onclick="openCart()">🛒 Cart (<span id="count">0</span>)</button>
 </nav>
 </header>
 
-<section class="hero">
-<div class="hero-inner">
- <div><h1>HatBazar-এ স্বাগতম</h1><p>আপনার পছন্দের পণ্য অনলাইনে খুঁজুন, কার্টে যোগ করুন এবং সহজে অর্ডার করুন।</p><button onclick="document.getElementById('products').scrollIntoView()">এখনই কেনাকাটা করুন →</button></div>
- <div class="hero-box">🛍️</div>
-</div>
-</section>
+<section class="hero"><div class="hero-inner">
+<h1>HatBazar-এ স্বাগতম</h1>
+<p>আপনার পছন্দের পণ্য অনলাইনে খুঁজুন, কার্টে যোগ করুন এবং সহজে অর্ডার করুন।</p>
+</div></section>
 
 <main class="container">
 <section>
- <div class="section-title"><h2>জনপ্রিয় ক্যাটাগরি</h2></div>
- <div class="categories">
-  <div class="cat">⌚<div>ঘড়ি</div></div>
-  <div class="cat">🕶️<div>চশমা</div></div>
-  <div class="cat">👜<div>জুট ব্যাগ</div></div>
-  <div class="cat">👕<div>ফ্যাশন</div></div>
-  <div class="cat">📱<div>ইলেকট্রনিক্স</div></div>
- </div>
+<div class="section-title"><h2>জনপ্রিয় ক্যাটাগরি</h2></div>
+<div class="categories">
+<div class="cat">⌚<br>ঘড়ি</div><div class="cat">🕶️<br>চশমা</div><div class="cat">👜<br>জুট ব্যাগ</div><div class="cat">👕<br>ফ্যাশন</div><div class="cat">📱<br>ইলেকট্রনিক্স</div>
+</div>
 </section>
 
-<section id="products" style="margin-top:35px">
- <div class="section-title"><h2>সেরা পণ্য</h2><span id="result"></span></div>
- <div class="products" id="productGrid"></div>
+<section style="margin-top:35px">
+<div class="section-title"><h2>সেরা পণ্য</h2><span id="result"></span></div>
+<div class="products" id="productGrid"></div>
 </section>
 
 <section style="margin-top:40px">
- <div class="section-title"><h2>HatBazar কেন?</h2></div>
- <div class="features">
-  <div class="feature">🚚<b>দ্রুত ডেলিভারি</b><span>সারা বাংলাদেশে</span></div>
-  <div class="feature">🔒<b>নিরাপদ অর্ডার</b><span>আপনার তথ্য সুরক্ষিত</span></div>
-  <div class="feature">💰<b>Cash on Delivery</b><span>পণ্য হাতে পেয়ে পেমেন্ট</span></div>
-  <div class="feature">↩️<b>Return Support</b><span>নীতিমালা অনুযায়ী</span></div>
- </div>
+<div class="section-title"><h2>HatBazar কেন?</h2></div>
+<div class="features">
+<div class="feature">🚚<b>ফাস্ট ডেলিভারি</b><span>সারা বাংলাদেশে</span></div>
+<div class="feature">🔒<b>নিরাপদ অর্ডার</b><span>আপনার তথ্য সুরক্ষিত</span></div>
+<div class="feature">💰<b>Cash on Delivery</b><span>পণ্য হাতে পেয়ে পেমেন্ট</span></div>
+<div class="feature">↩️<b>Return Support</b><span>নীতিমালা অনুযায়ী</span></div>
+</div>
 </section>
-
-<div class="admin-note">⚙️ <b>পরবর্তী ধাপ:</b> এই এক-ফাইল ভার্সনটি GitHub Pages-এ চলবে। আসল online payment, database, customer login, seller dashboard, order storage ও courier API চালু করতে backend/database সংযোগ করতে হবে।</div>
 </main>
 
-<footer>
-<div class="foot">
- <div><h2>🛒 HatBazar</h2><p>একটি আধুনিক অনলাইন শপিং প্ল্যাটফর্ম।</p></div>
- <div><h3>সেবা</h3><p>অর্ডার<br>ডেলিভারি<br>রিটার্ন<br>সাপোর্ট</p></div>
- <div><h3>যোগাযোগ</h3><p>Facebook: HatBazar<br>Email: support@hatbazar.example</p></div>
-</div>
-</footer>
+<div class="admin-note">⚙️ <b>Admin:</b> এই সংস্করণে অর্ডার, কাস্টমার অ্যাকাউন্ট ও Admin Panel একই ব্রাউজারে সংরক্ষণ হবে। স্থায়ী অনলাইন database-এর জন্য পরে backend/database সংযোগ করতে হবে।</div>
 
-<div class="modal" id="cartModal"><div class="box"><button class="close" onclick="closeModal('cartModal')">×</button><h2>🛒 আপনার কার্ট</h2><div id="cartItems"></div><div class="total">মোট: ৳<span id="total">0</span></div><button class="primary" onclick="checkout()">Checkout / অর্ডার করুন</button></div></div>
+<footer><div class="foot">
+<div><h2>🛒 HatBazar</h2><p>একটি আধুনিক অনলাইন শপিং প্ল্যাটফর্ম</p></div>
+<div><h3>সেবা</h3><p>অর্ডার<br>ডেলিভারি<br>রিটার্ন</p></div>
+<div><h3>যোগাযোগ</h3><p>WhatsApp: 8801627304645<br>Email: support@hatbazar.example</p></div>
+</div></footer>
 
-<div class="modal" id="checkoutModal"><div class="box"><button class="close" onclick="closeModal('checkoutModal')">×</button><h2>📦 অর্ডার তথ্য</h2>
-<form class="form" onsubmit="placeOrder(event)">
+<!-- CART -->
+<div class="modal" id="cartModal"><div class="box">
+<button class="close" onclick="closeModal('cartModal')">×</button>
+<h2>🛒 আপনার কার্ট</h2><div id="cartItems"></div><h3 style="text-align:right;margin:15px 0">মোট: ৳<span id="total">0</span></h3>
+<button class="primary" onclick="checkout()">Checkout / অর্ডার করুন</button>
+</div></div>
+
+<!-- CHECKOUT -->
+<div class="modal" id="checkoutModal"><div class="box">
+<button class="close" onclick="closeModal('checkoutModal')">×</button>
+<h2>📦 অর্ডার তথ্য</h2>
+<form onsubmit="placeOrder(event)">
 <label>নাম</label><input id="name" required>
-<label>মোবাইল নম্বর</label><input id="phone" type="tel" required>
+<label>মোবাইল</label><input id="phone" type="tel" required>
 <label>ঠিকানা</label><textarea id="address" rows="3" required></textarea>
-<label>পেমেন্ট</label><select id="payment"><option>Cash on Delivery</option><option>বিকাশ (পরবর্তী ধাপে সংযোগ হবে)</option><option>নগদ (পরবর্তী ধাপে সংযোগ হবে)</option><option>কার্ড (পরবর্তী ধাপে সংযোগ হবে)</option></select>
-<button class="primary" type="submit">অর্ডার নিশ্চিত করুন</button>
-</form></div></div>
+<label>পেমেন্ট</label><select id="payment"><option>Cash on Delivery</option></select>
+<button class="primary" type="submit">WhatsApp-এ অর্ডার করুন</button>
+</form>
+</div></div>
 
-<div class="modal" id="accountModal"><div class="box"><button class="close" onclick="closeModal('accountModal')">×</button><h2>👤 Customer Account</h2><p style="margin:15px 0">এই ডেমো ভার্সনে account interface আছে। আসল registration/login-এর জন্য database ও authentication backend যুক্ত করতে হবে।</p><button class="primary" onclick="alert('Registration backend পরবর্তী ধাপে যুক্ত করা হবে।')">Register / Login</button></div></div>
+<!-- ACCOUNT -->
+<div class="modal" id="accountModal"><div class="box">
+<button class="close" onclick="closeModal('accountModal')">×</button>
+<h2>👤 Customer Account</h2>
+<div id="accountArea"></div>
+</div></div>
+
+<!-- ADMIN -->
+<div class="modal" id="adminModal"><div class="box">
+<button class="close" onclick="closeModal('adminModal')">×</button>
+<h2>⚙️ Admin Order Panel</h2>
+<p style="margin-bottom:12px">ডিফল্ট Admin PIN: <b>1234</b> (GitHub-এ প্রকাশিত সাইটে এটি নিরাপদ নয়; পরে backend authentication ব্যবহার করুন।)</p>
+<div id="adminArea"></div>
+</div></div>
 
 <script>
-const products = [
-  {id:1,name:"টাইমলেস ঘড়ি",price:850,old:1200,icon:"⌚",cat:"ঘড়ি"},
-  {id:2,name:"ফ্যাশন চশমা",price:550,old:800,icon:"🕶️",cat:"চশমা"},
-  {id:3,name:"জুট শপিং ব্যাগ",price:280,old:350,icon:"👜",cat:"জুট ব্যাগ"},
-  {id:4,name:"কটন টি-শার্ট",price:650,old:900,icon:"👕",cat:"ফ্যাশন"},
-  {id:5,name:"স্মার্ট ওয়াচ",price:1450,old:1900,icon:"⌚",cat:"ইলেকট্রনিক্স"},
-  {id:6,name:"প্রিমিয়াম জুট ব্যাগ",price:450,old:600,icon:"🛍️",cat:"জুট ব্যাগ"},
-  {id:7,name:"সানগ্লাস",price:700,old:950,icon:"😎",cat:"চশমা"},
-  {id:8,name:"লেডিস ওয়ালেট",price:500,old:700,icon:"👛",cat:"ফ্যাশন"}
+const products=[
+{id:1,name:"টাইমলেস ঘড়ি",price:850,old:1200,icon:"⌚",cat:"ঘড়ি"},
+{id:2,name:"ফ্যাশন চশমা",price:550,old:800,icon:"🕶️",cat:"চশমা"},
+{id:3,name:"জুট শপিং ব্যাগ",price:280,old:350,icon:"👜",cat:"জুট ব্যাগ"},
+{id:4,name:"কটন টি-শার্ট",price:650,old:900,icon:"👕",cat:"ফ্যাশন"},
+{id:5,name:"স্মার্ট ওয়াচ",price:1450,old:1900,icon:"⌚",cat:"ইলেকট্রনিক্স"},
+{id:6,name:"প্রিমিয়াম জুট ব্যাগ",price:450,old:600,icon:"🛍️",cat:"জুট ব্যাগ"},
+{id:7,name:"সানগ্লাস",price:700,old:950,icon:"😎",cat:"চশমা"},
+{id:8,name:"লেডিজ ওয়ালেট",price:500,old:700,icon:"👛",cat:"ফ্যাশন"}
 ];
 
-let cart = JSON.parse(localStorage.getItem("hatbazar_cart") || "[]");
+let cart=JSON.parse(localStorage.getItem("hatbazar_cart")||"[]");
+let orders=JSON.parse(localStorage.getItem("hatbazar_orders")||"[]");
+let user=JSON.parse(localStorage.getItem("hatbazar_user")||"null");
+
+function saveCart(){localStorage.setItem("hatbazar_cart",JSON.stringify(cart));updateCount()}
+function updateCount(){document.getElementById("count").textContent=cart.length}
+function openModal(id){document.getElementById(id).style.display="block";if(id==="accountModal")renderAccount();if(id==="adminModal")renderAdmin()}
+function closeModal(id){document.getElementById(id).style.display="none"}
 
 function renderProducts(){
-  const searchBox = document.getElementById("search");
-  const q = searchBox ? searchBox.value.toLowerCase().trim() : "";
-
-  const list = products.filter(p =>
-    (p.name + " " + p.cat).toLowerCase().includes(q)
-  );
-
-  const result = document.getElementById("result");
-  if(result){
-    result.textContent = list.length + "টি পণ্য";
-  }
-
-  const grid = document.getElementById("productGrid");
-  if(!grid) return;
-
-  grid.innerHTML = list.length
-    ? list.map(p => `
-      <article class="card">
-        <div class="pic">${p.icon}</div>
-        <div class="info">
-          <h3>${p.name}</h3>
-          <div class="price">
-            ৳${p.price.toLocaleString()}
-            <span class="old">৳${p.old.toLocaleString()}</span>
-          </div>
-          <small>${p.cat}</small>
-          <button class="add" onclick="addToCart(${p.id})">
-            🛒 কার্টে যোগ করুন
-          </button>
-        </div>
-      </article>
-    `).join("")
-    : "<p>কোনো পণ্য পাওয়া যায়নি।</p>";
+ const q=document.getElementById("search").value.trim().toLowerCase();
+ const list=products.filter(p=>(p.name+" "+p.cat).toLowerCase().includes(q));
+ document.getElementById("result").textContent=list.length+"টি পণ্য";
+ document.getElementById("productGrid").innerHTML=list.length?list.map(p=>`
+ <article class="card"><div class="pic">${p.icon}</div><div class="info">
+ <h3>${p.name}</h3><div class="price">৳${p.price.toLocaleString()} <span class="old">৳${p.old.toLocaleString()}</span></div>
+ <small>${p.cat}</small><button class="add" onclick="addToCart(${p.id})">🛒 কার্টে যোগ করুন</button>
+ </div></article>`).join(""):"<p>কোনো পণ্য পাওয়া যায়নি।</p>";
 }
-
-function saveCart(){
-  localStorage.setItem("hatbazar_cart", JSON.stringify(cart));
-
-  const count = document.getElementById("count");
-  if(count){
-    count.textContent = cart.length;
-  }
-}
-
-function addToCart(id){
-  cart.push(id);
-  saveCart();
-  alert("পণ্যটি কার্টে যোগ হয়েছে!");
-}
-
+function addToCart(id){cart.push(id);saveCart();alert("পণ্যটি কার্টে যোগ হয়েছে!")}
 function openCart(){
-  const cartItems = document.getElementById("cartItems");
-  const total = document.getElementById("total");
-
-  if(!cartItems || !total){
-    alert("কার্ট প্রস্তুত করা হয়নি।");
-    return;
-  }
-
-  if(cart.length === 0){
-    cartItems.innerHTML = "<p>আপনার কার্ট খালি।</p>";
-    total.textContent = "৳0";
-    openModal("cartModal");
-    return;
-  }
-
-  cartItems.innerHTML = cart.map((id, index) => {
-    const p = products.find(x => x.id === id);
-    if(!p) return "";
-
-    return `
-      <div style="padding:10px;border-bottom:1px solid #ddd">
-        <b>${p.name}</b>
-        <span>৳${p.price.toLocaleString()}</span>
-        <button onclick="removeItem(${index})">
-          ❌ মুছুন
-        </button>
-      </div>
-    `;
-  }).join("");
-
-  const sum = cart.reduce((s,id) => {
-    const p = products.find(x => x.id === id);
-    return s + (p ? p.price : 0);
-  }, 0);
-
-  total.textContent = "৳" + sum.toLocaleString();
-
-  openModal("cartModal");
+ if(!cart.length){alert("কার্ট খালি");return}
+ const items=document.getElementById("cartItems");
+ items.innerHTML=cart.map((id,i)=>{let p=products.find(x=>x.id===id);return `<div style="padding:10px;border-bottom:1px solid #ddd"><b>${p.name}</b> — ৳${p.price}<button class="row" style="float:right" onclick="removeItem(${i})">❌</button></div>`}).join("");
+ document.getElementById("total").textContent=cart.reduce((s,id)=>s+(products.find(p=>p.id===id)?.price||0),0).toLocaleString();
+ openModal("cartModal");
 }
-
-function removeItem(index){
-  cart.splice(index,1);
-  saveCart();
-  openCart();
-}
-
-function checkout(){
-  if(cart.length === 0){
-    alert("আগে কার্টে পণ্য যোগ করুন।");
-    return;
-  }
-
-  closeModal("cartModal");
-  openModal("checkoutModal");
-}
+function removeItem(i){cart.splice(i,1);saveCart();cart.length?openCart():closeModal("cartModal")}
+function checkout(){if(!cart.length)return alert("কার্ট খালি");closeModal("cartModal");openModal("checkoutModal")}
 
 function placeOrder(e){
-  e.preventDefault();
-
-  if(cart.length === 0){
-    alert("কার্ট খালি।");
-    return;
-  }
-
-  const name = document.getElementById("name").value.trim();
-  const phone = document.getElementById("phone").value.trim();
-  const address = document.getElementById("address").value.trim();
-
-  if(!name || !phone || !address){
-    alert("নাম, মোবাইল নম্বর ও ঠিকানা পূরণ করুন।");
-    return;
-  }
-
-  const orderId = "HB" + Date.now().toString().slice(-8);
-
-  let total = 0;
-  let items = "";
-
-  cart.forEach((id, index) => {
-    const p = products.find(x => x.id === id);
-
-    if(p){
-      total += p.price;
-      items += (index + 1) + ". " + p.name +
-               " - ৳" + p.price.toLocaleString() + "\n";
-    }
-  });
-
-  const message =
-    "🛒 HatBazar নতুন অর্ডার\n\n" +
-    "Order ID: " + orderId + "\n" +
-    "নাম: " + name + "\n" +
-    "মোবাইল: " + phone + "\n" +
-    "ঠিকানা: " + address + "\n\n" +
-    "পণ্য:\n" + items +
-    "\nমোট: ৳" + total.toLocaleString() +
-    "\nপেমেন্ট: Cash on Delivery";
-
-  const whatsappNumber = "8801627340645";
-
-  const whatsappURL =
-    "https://wa.me/" + whatsappNumber +
-    "?text=" + encodeURIComponent(message);
-
-  cart = [];
-  saveCart();
-
-  closeModal("checkoutModal");
-
-  window.open(whatsappURL, "_blank");
-}
-function openModal(id){
-  const modal = document.getElementById(id);
-  if(modal){
-    modal.style.display = "block";
-  }
+ e.preventDefault();
+ if(!cart.length)return alert("কার্ট খালি");
+ const name=document.getElementById("name").value.trim(),phone=document.getElementById("phone").value.trim(),address=document.getElementById("address").value.trim();
+ const total=cart.reduce((s,id)=>s+(products.find(p=>p.id===id)?.price||0),0);
+ const orderId="HB"+Date.now().toString().slice(-8);
+ const items=cart.map((id,i)=>{let p=products.find(x=>x.id===id);return `${i+1}. ${p.name} - ৳${p.price}`}).join("\n");
+ const order={id:orderId,name,phone,address,payment:document.getElementById("payment").value,items,total,status:"Pending",date:new Date().toLocaleString("bn-BD")};
+ orders.unshift(order);localStorage.setItem("hatbazar_orders",JSON.stringify(orders));
+ const message=`🛒 HatBazar অর্ডার\n\nOrder ID: ${orderId}\nনাম: ${name}\nমোবাইল: ${phone}\nঠিকানা: ${address}\n\nপণ্য:\n${items}\n\nমোট: ৳${total.toLocaleString()}\nপেমেন্ট: Cash on Delivery`;
+ cart=[];saveCart();closeModal("checkoutModal");
+ window.open("https://wa.me/8801627304645?text="+encodeURIComponent(message),"_blank");
+ alert("অর্ডার সংরক্ষণ হয়েছে। WhatsApp খুলবে।");
 }
 
-function closeModal(id){
-  const modal = document.getElementById(id);
-  if(modal){
-    modal.style.display = "none";
-  }
+function renderAccount(){
+ const a=document.getElementById("accountArea");
+ if(user){a.innerHTML=`<p>স্বাগতম, <b>${user.name}</b></p><p style="margin:10px 0">মোবাইল: ${user.phone}</p><button class="primary" onclick="logout()">Logout</button>`}
+ else a.innerHTML=`<form onsubmit="register(event)"><label>নাম</label><input id="regName" required><label>মোবাইল</label><input id="regPhone" required><label>পাসওয়ার্ড</label><input id="regPass" type="password" required><button class="primary" type="submit">Register / Login</button></form>`;
 }
+function register(e){e.preventDefault();user={name:regName.value.trim(),phone:regPhone.value.trim(),password:regPass.value};localStorage.setItem("hatbazar_user",JSON.stringify(user));renderAccount();alert("Account তৈরি হয়েছে।")}
+function logout(){user=null;localStorage.removeItem("hatbazar_user");renderAccount()}
 
-window.onclick = function(e){
-  if(e.target.classList.contains("modal")){
-    e.target.style.display = "none";
-  }
-};
+function adminLogin(){
+ const pin=prompt("Admin PIN দিন:");
+ if(pin==="1234")renderAdminPanel();else alert("ভুল PIN");
+}
+function renderAdmin(){
+ document.getElementById("adminArea").innerHTML=`<button class="primary" onclick="adminLogin()">Admin Panel খুলুন</button>`;
+}
+function renderAdminPanel(){
+ const a=document.getElementById("adminArea");
+ if(!orders.length){a.innerHTML="<p>এখনো কোনো অর্ডার নেই।</p>";return}
+ a.innerHTML=`<button class="danger" style="padding:9px 12px;border-radius:6px;margin-bottom:10px" onclick="clearOrders()">সব অর্ডার মুছুন</button>`+
+ orders.map((o,i)=>`<div class="order"><b>Order #${o.id}</b><br>তারিখ: ${o.date}<br>নাম: ${o.name}<br>মোবাইল: ${o.phone}<br>ঠিকানা: ${o.address}<br><br>${o.items.replaceAll("\n","<br>")}<br><b>মোট: ৳${o.total.toLocaleString()}</b><br><br><select class="status" onchange="changeStatus(${i},this.value)"><option ${o.status==="Pending"?"selected":""}>Pending</option><option ${o.status==="Confirmed"?"selected":""}>Confirmed</option><option ${o.status==="Delivered"?"selected":""}>Delivered</option><option ${o.status==="Cancelled"?"selected":""}>Cancelled</option></select></div>`).join("");
+}
+function changeStatus(i,s){orders[i].status=s;localStorage.setItem("hatbazar_orders",JSON.stringify(orders));renderAdminPanel()}
+function clearOrders(){if(confirm("সব অর্ডার মুছে ফেলবেন?")){orders=[];localStorage.removeItem("hatbazar_orders");renderAdminPanel()}}
 
-renderProducts();
-saveCart();
-</script>
+document.addEventListener("click",e=>{if(e.target.classList.contains("modal"))e.target.style.display="none"});
+renderProducts();updateCount();
+
+/* Admin shortcut: footer-এর HatBazar নামটি 5 বার চাপলে Admin Panel */
+let taps=0;document.querySelector("footer h2").onclick=()=>{taps++;if(taps>=5){taps=0;openModal("adminModal")}};
 </script>
 </body>
 </html>
