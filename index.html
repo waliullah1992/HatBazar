@@ -1,108 +1,172 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="bn">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>HatBazar — অনলাইন শপ</title>
-<style>
-*{box-sizing:border-box}body{margin:0;font-family:Arial,"Noto Sans Bengali",sans-serif;background:#f5f7fa;color:#17202a}
-a{text-decoration:none;color:inherit}.top{background:#0d1726;color:#fff;text-align:center;padding:7px;font-size:13px}
-nav{background:#fff;display:flex;gap:10px;align-items:center;padding:12px 4%;position:sticky;top:0;z-index:10;box-shadow:0 2px 8px #0001}.brand{font-size:23px;font-weight:800;color:#087f70;white-space:nowrap}
-#search{flex:1;min-width:80px;padding:11px;border:1px solid #ddd;border-radius:8px}button{border:0;border-radius:8px;padding:11px 15px;cursor:pointer}.primary{background:#087f70;color:#fff}.cartbtn{background:#eef7f5;color:#087f70;font-weight:700}
-.hero{background:linear-gradient(120deg,#078b78,#18b6a1);color:#fff;padding:45px 5%}.hero h1{font-size:36px;margin:0 0 10px}.hero p{font-size:17px}
-main{max-width:1200px;margin:auto;padding:25px 4%}h2{margin-top:28px}.cats{display:grid;grid-template-columns:repeat(5,1fr);gap:12px}.cat{background:#fff;padding:18px;text-align:center;border-radius:10px;box-shadow:0 2px 8px #0000000d;font-weight:700}
-.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:15px}.card{background:#fff;border-radius:12px;overflow:hidden;box-shadow:0 2px 10px #0001}.pic{height:170px;background:#e8eef5;display:flex;align-items:center;justify-content:center;font-size:72px}.info{padding:12px}.price{font-size:21px;color:#087f70;font-weight:800}.old{text-decoration:line-through;color:#888;font-size:13px;margin-left:6px}.card button{width:100%;margin-top:10px}
-.checkout,.policies{background:#fff;border-radius:12px;padding:18px;margin-top:28px;box-shadow:0 2px 10px #0001}.cartrow{display:flex;justify-content:space-between;gap:10px;border-bottom:1px solid #eee;padding:10px 0}.qty button{padding:5px 9px}.total{font-size:20px;font-weight:800;text-align:right;margin:15px 0}
-form{display:grid;gap:10px}input,textarea,select{width:100%;padding:12px;border:1px solid #ddd;border-radius:8px;font:inherit}textarea{min-height:90px}
-.whygrid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}.whygrid div{background:#fff;padding:18px;text-align:center;border-radius:10px;box-shadow:0 2px 8px #0001}.whygrid b,.whygrid small{display:block;margin-top:7px}
-footer{background:#0d1726;color:#fff;padding:28px 5%;margin-top:35px}
-.notice{padding:12px;border-radius:8px;background:#fff4df;margin:12px 0}.success{background:#e7f8ef;color:#126b40}.danger{background:#ffe8e8;color:#9b2020}
-@media(max-width:800px){.cats{grid-template-columns:repeat(2,1fr)}.grid{grid-template-columns:repeat(2,1fr)}.whygrid{grid-template-columns:repeat(2,1fr)}nav{flex-wrap:wrap}.brand{width:100%}}
-@media(max-width:480px){.grid{grid-template-columns:1fr 1fr}.pic{height:130px}.hero h1{font-size:28px}}
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HatBazar - অনলাইন শপ</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 0; padding: 0; background-color: #f4f4f4; color: #333; }
+        .top-bar { background: #002b20; color: white; text-align: center; padding: 8px; font-size: 13px; }
+        header { background: #00897b; color: white; padding: 20px; text-align: center; }
+        .container { max-width: 1000px; margin: 20px auto; padding: 0 15px; }
+        
+        /* প্রোডাক্ট গ্রিড */
+        .product-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; margin-bottom: 30px; }
+        .product-card { background: white; border: 1px solid #ddd; border-radius: 8px; padding: 15px; text-align: center; }
+        .price { color: #00897b; font-weight: bold; font-size: 18px; margin: 8px 0; }
+        .btn-add { background: #00897b; color: white; border: none; padding: 10px 15px; border-radius: 4px; cursor: pointer; font-weight: bold; width: 100%; }
+        .btn-add:hover { background: #00695c; }
+        
+        /* অর্ডার ও কার্ট ফর্ম */
+        .order-section { background: white; padding: 20px; border-radius: 8px; border: 1px solid #ddd; max-width: 500px; margin: 0 auto 40px auto; }
+        .cart-summary { background: #eef7f6; padding: 12px; border-radius: 5px; margin-bottom: 15px; }
+        .form-group { margin-bottom: 12px; }
+        .form-group input, .form-group textarea { width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box; }
+        .btn-order { background: #ff5722; color: white; border: none; padding: 12px; border-radius: 4px; cursor: pointer; font-weight: bold; width: 100%; font-size: 16px; }
+        .btn-order:hover { background: #e64a19; }
+        
+        /* ফুটার */
+        footer { background: #222; color: white; text-align: center; padding: 20px; margin-top: 30px; font-size: 14px; }
+        footer a { color: #00897b; text-decoration: none; }
+    </style>
 </head>
 <body>
-<div class="top">🇧🇩 সারা বাংলাদেশে ডেলিভারি | 💵 Cash on Delivery | ☎ Customer Support</div>
-<nav>
-<a class="brand" href="#">🛒 HatBazar</a>
-<input id="search" placeholder="পণ্য খুঁজুন..." oninput="renderProducts()">
-<button onclick="document.getElementById('checkout').scrollIntoView()">🛒 Cart (<span id="cartCount">0</span>)</button>
-</nav>
-<section class="hero"><h1>HatBazar-এ স্বাগতম</h1><p>আপনার পছন্দের পণ্য অনলাইনে খুঁজুন, কার্টে যোগ করুন এবং সহজে অর্ডার করুন।</p></section>
-<main>
-<h2>জনপ্রিয় ক্যাটাগরি</h2><div id="cats" class="cats"></div>
-<h2>সেরা পণ্য</h2><div id="products" class="grid"></div>
 
-<section class="why"><h2>HatBazar কেন?</h2><div class="whygrid">
-<div>🚚<b>ফাস্ট ডেলিভারি</b><small>সারা বাংলাদেশে</small></div>
-<div>🔒<b>নিরাপদ অর্ডার</b><small>প্রয়োজনীয় তথ্যই নেওয়া হবে</small></div>
-<div>💰<b>Cash on Delivery</b><small>পণ্য হাতে পেয়ে পেমেন্ট</small></div>
-<div>↩️<b>Return Support</b><small>নীতিমালা অনুযায়ী</small></div>
-</div></section>
+    <div class="top-bar">🇧🇩 সারা বাংলাদেশে ডেলিভারি | 💵 Cash on Delivery | 📞 Customer Support: 01627340645</div>
+    
+    <header>
+        <h1>HatBazar-এ স্বাগতম</h1>
+        <p>আপনার পছন্দের পণ্য অনলাইনে খুঁজুন এবং সহজে অর্ডার করুন</p>
+    </header>
 
-<section id="checkout" class="checkout"><h2>🛒 অর্ডার করুন</h2><div id="cartBox"></div>
-<form id="orderForm">
-<input required name="name" placeholder="আপনার নাম">
-<input required name="phone" inputmode="tel" placeholder="মোবাইল নম্বর">
-<textarea required name="address" placeholder="সম্পূর্ণ ঠিকানা"></textarea>
-<select name="area"><option value="inside">ঢাকার ভিতরে — ডেলিভারি ৳60</option><option value="outside">ঢাকার বাইরে — ডেলিভারি ৳120</option></select>
-<select name="payment"><option>Cash on Delivery</option><option>bKash (Manual)</option><option>Nagad (Manual)</option></select>
-<input name="transaction" placeholder="bKash/Nagad হলে Transaction ID">
-<button class="primary" type="submit">অর্ডার নিশ্চিত করুন</button>
-</form>
-<div id="orderMsg"></div></section>
+    <div class="container">
+        <h2>সেরা পণ্যসমূহ</h2>
+        
+        <!-- প্রোডাক্ট লিস্ট -->
+        <div class="product-grid">
+            <div class="product-card">
+                <h3>টাইমলেস ঘড়ি</h3>
+                <div class="price">৳৮৫০</div>
+                <button class="btn-add" onclick="addToCart('টাইমলেস ঘড়ি', 850)">কার্টে যোগ করুন</button>
+            </div>
+            <div class="product-card">
+                <h3>ফ্যাশন চশমা</h3>
+                <div class="price">৳৫৫০</div>
+                <button class="btn-add" onclick="addToCart('ফ্যাশন চশমা', 550)">কার্টে যোগ করুন</button>
+            </div>
+            <div class="product-card">
+                <h3>জুট শপিং ব্যাগ</h3>
+                <div class="price">৳২৮০</div>
+                <button class="btn-add" onclick="addToCart('জুট শপিং ব্যাগ', 280)">কার্টে যোগ করুন</button>
+            </div>
+            <div class="product-card">
+                <h3>কটন টি-শার্ট</h3>
+                <div class="price">৳৬৫০</div>
+                <button class="btn-add" onclick="addToCart('কটন টি-শার্ট', 650)">কার্টে যোগ করুন</button>
+            </div>
+        </div>
 
-<section class="policies"><h2>নীতিমালা</h2>
-<h3>Delivery</h3><p>ঢাকার ভিতরে আনুমানিক 1–3 কর্মদিবস; ঢাকার বাইরে 2–5 কর্মদিবস।</p>
-<h3>Return & Exchange</h3><p>ভুল/ক্ষতিগ্রস্ত পণ্য পেলে দ্রুত যোগাযোগ করুন। ব্যবহৃত পণ্যের রিটার্ন শর্তসাপেক্ষ।</p>
-<h3>Privacy</h3><p>অর্ডার সম্পন্ন করতে প্রয়োজনীয় নাম, ফোন ও ঠিকানা ব্যবহার করা হবে।</p>
-</section>
-</main>
-<footer><b>HatBazar</b><p>একটি আধুনিক অনলাইন শপ প্ল্যাটফর্ম</p><p>WhatsApp: <a href="https://wa.me/88016127304645" target="_blank">88016127304645</a><br>Email: support@hatbazar.com</p><p><a href="admin.html">⚙ Admin Panel</a></p></footer>
+        <!-- অর্ডার ফরম ও কার্ট হিসেব -->
+        <div class="order-section">
+            <h3>🛒 আপনার অর্ডার বিবরণ</h3>
+            
+            <div class="cart-summary">
+                <p>পণ্য সমূহ: <strong id="cart-items-list">কোন পণ্য যোগ করা হয়নি</strong></p>
+                <p>পণ্য মোট: ৳<span id="product-total">0</span></p>
+                <p>ডেলিভারি চার্জ: ৳<span id="delivery-charge">60</span></p>
+                <hr>
+                <p style="font-size: 18px;"><strong>সর্বমোট: ৳<span id="grand-total">60</span></strong></p>
+            </div>
 
-<script>
-const PRODUCTS=[
-{id:1,name:"টাইমলেস ঘড়ি",cat:"ঘড়ি",price:850,old:1200,icon:"⌚",stock:20},
-{id:2,name:"ফ্যাশন চশমা",cat:"চশমা",price:550,old:800,icon:"🕶️",stock:15},
-{id:3,name:"জুট শপিং ব্যাগ",cat:"জুট ব্যাগ",price:280,old:350,icon:"👜",stock:30},
-{id:4,name:"কটন টি-শার্ট",cat:"ফ্যাশন",price:650,old:900,icon:"👕",stock:25},
-{id:5,name:"স্মার্ট ওয়াচ",cat:"ইলেকট্রনিক্স",price:1450,old:1900,icon:"⌚",stock:10},
-{id:6,name:"ফ্রেন্ডলি জুট ব্যাগ",cat:"জুট ব্যাগ",price:450,old:600,icon:"🛍️",stock:18},
-{id:7,name:"সানগ্লাস",cat:"চশমা",price:700,old:950,icon:"😎",stock:12},
-{id:8,name:"লেডিজ ওয়ালেট",cat:"ফ্যাশন",price:500,old:700,icon:"👛",stock:22}
-];
-let cart=JSON.parse(localStorage.getItem("hat_cart")||"[]");
-const money=n=>"৳"+Number(n).toLocaleString("bn-BD");
-function save(){localStorage.setItem("hat_cart",JSON.stringify(cart))}
-function renderCats(){
- let cats=[...new Set(PRODUCTS.map(p=>p.cat))];
- document.getElementById("cats").innerHTML=cats.map(c=>`<div class="cat" onclick="document.getElementById('search').value='${c}';renderProducts()">🛍️<br>${c}</div>`).join("");
-}
-function renderProducts(){
- let q=document.getElementById("search").value.trim().toLowerCase();
- let ps=PRODUCTS.filter(p=>(p.name+p.cat).toLowerCase().includes(q));
- document.getElementById("products").innerHTML=ps.map(p=>`<div class="card"><div class="pic">${p.icon}</div><div class="info"><b>${p.name}</b><div class="price">${money(p.price)} <span class="old">${money(p.old)}</span></div><small>${p.cat} | স্টক: ${p.stock}</small><button class="primary" onclick="add(${p.id})">🛒 কার্টে যোগ করুন</button></div></div>`).join("")||"<p>কোনো পণ্য পাওয়া যায়নি।</p>";
-}
-function add(id){let p=PRODUCTS.find(x=>x.id===id);let x=cart.find(x=>x.id===id);if(x){if(x.qty<p.stock)x.qty++;else return alert("এই পণ্যের স্টক শেষ।")}else cart.push({id,qty:1});save();renderCart()}
-function change(id,d){let x=cart.find(x=>x.id===id);if(!x)return;x.qty+=d;if(x.qty<=0)cart=cart.filter(y=>y.id!==id);save();renderCart()}
-function renderCart(){
- document.getElementById("cartCount").textContent=cart.reduce((a,x)=>a+x.qty,0);
- let subtotal=0;
- let html=cart.map(x=>{let p=PRODUCTS.find(y=>y.id===x.id);let s=p.price*x.qty;subtotal+=s;return `<div class="cartrow"><span>${p.name}<br>${money(p.price)} × ${x.qty}</span><span class="qty"><button onclick="change(${x.id},-1)">−</button> <b>${x.qty}</b> <button onclick="change(${x.id},1)">+</button></span></div>`}).join("");
- if(!cart.length)html="<p>কার্ট খালি। আগে পণ্য যোগ করুন।</p>";
- let area=document.querySelector('[name=area]').value;let delivery=cart.length?(area==="inside"?60:120):0;
- document.getElementById("cartBox").innerHTML=html+`<div class="total">পণ্য: ${money(subtotal)}<br>ডেলিভারি: ${money(delivery)}<br>সর্বমোট: ${money(subtotal+delivery)}</div>`;
-}
-document.querySelector('[name=area]').addEventListener("change",renderCart);
-document.getElementById("orderForm").addEventListener("submit",e=>{
- e.preventDefault(); if(!cart.length)return alert("কার্টে পণ্য যোগ করুন।");
- let f=new FormData(e.target), area=f.get("area"), subtotal=cart.reduce((s,x)=>s+PRODUCTS.find(p=>p.id===x.id).price*x.qty,0), delivery=area==="inside"?60:120;
- let order={id:"HB"+Date.now().toString().slice(-8),date:new Date().toLocaleString("bn-BD"),customer:{name:f.get("name"),phone:f.get("phone"),address:f.get("address")},payment:f.get("payment"),transaction:f.get("transaction"),items:cart.map(x=>{let p=PRODUCTS.find(p=>p.id===x.id);return {name:p.name,qty:x.qty,price:p.price}}),subtotal,delivery,total:subtotal+delivery,status:"নতুন"};
- let orders=JSON.parse(localStorage.getItem("hat_orders")||"[]");orders.unshift(order);localStorage.setItem("hat_orders",JSON.stringify(orders));
- let wa="https://wa.me/88016127304645?text="+encodeURIComponent(`HatBazar Order ${order.id}\nনাম: ${order.customer.name}\nফোন: ${order.customer.phone}\nঠিকানা: ${order.customer.address}\nমোট: ${money(order.total)}`);
- document.getElementById("orderMsg").innerHTML=`<div class="notice success">অর্ডার সফল! Order ID: <b>${order.id}</b><br><a href="${wa}" target="_blank"><button class="primary">WhatsApp-এ অর্ডার পাঠান</button></a></div>`;
- cart=[];save();renderCart();e.target.reset();
-});
-renderCats();renderProducts();renderCart();
-</script>
-</body></html>
+            <form id="checkoutForm">
+                <div class="form-group">
+                    <label><strong>ডেলিভারি এরিয়া বেছে নিন:</strong></label><br><br>
+                    <label><input type="radio" name="delivery" value="60" checked onclick="updateTotal()"> ঢাকার ভেতরে (৳৬০)</label>&nbsp;&nbsp;
+                    <label><input type="radio" name="delivery" value="120" onclick="updateTotal()"> ঢাকার বাইরে (৳১২০)</label>
+                </div>
+                <div class="form-group">
+                    <input type="text" id="custName" placeholder="আপনার নাম" required>
+                </div>
+                <div class="form-group">
+                    <input type="tel" id="custPhone" placeholder="মোবাইল নম্বর" required>
+                </div>
+                <div class="form-group">
+                    <textarea id="custAddress" placeholder="সম্পূর্ণ ঠিকানা" rows="3" required></textarea>
+                </div>
+                <button type="button" class="btn-order" onclick="sendOrderToWhatsApp()">অর্ডার নিশ্চিত করুন (WhatsApp-এ পাঠান)</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- ফুটার সেকশন -->
+    <footer>
+        <p>&copy; 2026 HatBazar. All rights reserved.</p>
+        <p>যোগাযোগ: 01627340645 | <a href="#">Privacy Policy</a> | <a href="#">Return Policy</a></p>
+    </footer>
+
+    <!-- JavaScript লজিক -->
+    <script>
+        let cart = [];
+        let productTotal = 0;
+
+        // কার্টে পণ্য যোগ করা
+        function addToCart(name, price) {
+            cart.push({ name, price });
+            updateCartUI();
+        }
+
+        // UI ও হিসেব আপডেট করা
+        function updateCartUI() {
+            let itemsText = cart.map(item => item.name).join(', ');
+            document.getElementById('cart-items-list').innerText = itemsText || 'কোন পণ্য যোগ করা হয়নি';
+
+            productTotal = cart.reduce((sum, item) => sum + item.price, 0);
+            document.getElementById('product-total').innerText = productTotal;
+            updateTotal();
+        }
+
+        // ডেলিভারি সহ মোট দাম হিসাব
+        function updateTotal() {
+            let deliveryCharge = parseInt(document.querySelector('input[name="delivery"]:checked').value);
+            document.getElementById('delivery-charge').innerText = deliveryCharge;
+            document.getElementById('grand-total').innerText = productTotal + deliveryCharge;
+        }
+
+        // WhatsApp-এ অর্ডার তথ্য পাঠানো
+        function sendOrderToWhatsApp() {
+            let name = document.getElementById('custName').value.trim();
+            let phone = document.getElementById('custPhone').value.trim();
+            let address = document.getElementById('custAddress').value.trim();
+            let deliveryCharge = document.querySelector('input[name="delivery"]:checked').value;
+            let grandTotal = productTotal + parseInt(deliveryCharge);
+
+            if (cart.length === 0) {
+                alert('দয়া করে অন্তত একটি পণ্য কার্টে যোগ করুন!');
+                return;
+            }
+
+            if (!name || !phone || !address) {
+                alert('দয়া করে আপনার নাম, মোবাইল নম্বর এবং ঠিকানা পূরণ করুন।');
+                return;
+            }
+
+            // আপনার দেওয়া হোয়াটসঅ্যাপ নম্বর
+            let myPhoneNumber = "8801627340645"; 
+
+            let itemDetails = cart.map(item => `- ${item.name} (৳${item.price})`).join('\n');
+            let message = `*নতুন অর্ডার (HatBazar)*\n\n` +
+                          `*অর্ডারকৃত পণ্য:*\n${itemDetails}\n\n` +
+                          `*পণ্যের মোট:* ৳${productTotal}\n` +
+                          `*ডেলিভারি চার্জ:* ৳${deliveryCharge}\n` +
+                          `*সর্বমোট বিল:* ৳${grandTotal}\n\n` +
+                          `*গ্রাহকের তথ্য:*\n` +
+                          `👤 নাম: ${name}\n` +
+                          `📞 মোবাইল: ${phone}\n` +
+                          `🏠 ঠিকানা: ${address}`;
+
+            let encodedMessage = encodeURIComponent(message);
+            window.open(`https://wa.me/${myPhoneNumber}?text=${encodedMessage}`, '_blank');
+        }
+    </script>
+</body>
+</html>
